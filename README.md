@@ -1,6 +1,7 @@
 # XACML2mCRL2
 This repository contains the code related to a paper entitled XXXX.
-#######################################################################
+*********************************************
+*********************************************
 
 The following shows the XACML policies and corresponsing mCRL2 specifications of the Examples used in the paper. 
 
