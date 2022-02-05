@@ -52,11 +52,13 @@ sort AAttName = struct actionid;
 sort AAttValue = struct Release;
 sort Decision = struct Permit | Deny;
 sort ObgID = struct email | log;
-**act**
+
+act
    Request:FSet(SAtt)#FSet(OAtt)#FSet(AAtt);
    Obligation:FSet(SAtt)#FSet(OAtt)#FSet(AAtt)#ObgID;
    Response:FSet(SAtt)#FSet(OAtt)#FSet(AAtt)#Decision;		   
-**proc**		
+
+proc		
      PolicySet_root(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt)) = Request(RS,RO,RA).Policy_Policy1(RS,RO,RA);			
 	
      Policy_Policy1(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=				
@@ -66,7 +68,8 @@ sort ObgID = struct email | log;
 
     Rule_Rule1(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))= (attribute(subjectid,Doctor) in RS)-> Response(RS,RO,RA,Permit);		
     
-**init** **sum** RS:FSet(SAtt).sum RO:FSet(OAtt).sum RA:FSet(AAtt).(RS !={} && RO !={} && RA !={})->PolicySet_root(RS,RO,RA);
+init sum RS:FSet(SAtt).sum RO:FSet(OAtt).sum RA:FSet(AAtt).(RS !={} && RO !={} && RA !={})->PolicySet_root(RS,RO,RA);
 
-***************************************
 ```
+***************************************
+
