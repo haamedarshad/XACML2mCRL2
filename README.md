@@ -1,4 +1,9 @@
 # XACML2mCRL2
+This repository contains the code related to a paper entitled XXXX.
+#######################################################################
+
+The following shows the XACML policies and corresponsing mCRL2 specifications of the Examples used in the paper. 
+
 
 ```xml
 <PolicySet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xacml:3.0:core:schema:wd-17 http://docs.oasis-open.org/xacml/3.0/xacml-core-v3-schema-wd-17.xsd" PolicySetId="root" Version="1" PolicyCombiningAlgId="urn:oasis:names:tc:xacml:3.0:policy-combining-algorithm:permit-overrides">
