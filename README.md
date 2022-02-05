@@ -4,7 +4,7 @@ This repository contains the code related to a paper entitled XXXX.
 
 The following shows the XACML policies and corresponsing mCRL2 specifications of the Examples used in the paper. 
 
-*The XACML policy related to Example 1*
+**The XACML policy related to Example 1**
 
 ```xml
 <PolicySet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xacml:3.0:core:schema:wd-17 http://docs.oasis-open.org/xacml/3.0/xacml-core-v3-schema-wd-17.xsd" PolicySetId="root" Version="1" PolicyCombiningAlgId="urn:oasis:names:tc:xacml:3.0:policy-combining-algorithm:permit-overrides">
@@ -69,67 +69,3 @@ sort ObgID = struct email | log;
 **init** **sum** RS:FSet(SAtt).sum RO:FSet(OAtt).sum RA:FSet(AAtt).(RS !={} && RO !={} && RA !={})->PolicySet_root(RS,RO,RA);
 
 ***************************************
-
-
-
-
-		sort SAttribute = struct attribute(name:SAttName, value:SAttValue);
-
-		sort SAttName = struct subjectid;
-		
-		sort SAttValue = struct CareGiverA|Doctor;
-		
-		sort OAttribute = struct attribute(name:OAttName, value:OAttValue);
-
-		sort OAttName = struct resourceid;
-		
-		sort OAttValue = struct HealthData;
-		
-		sort AAttribute = struct attribute(name:AAttName, value:AAttValue);
-
-		sort AAttName = struct actionid;
-		
-		sort AAttValue = struct Release;
-		
-		sort Decision = struct Permit | Deny;
-		
-		sort ObgID = struct email | log;
-
-		act
-		Request:FSet(SAttribute)#FSet(OAttribute)#FSet(AAttribute);
-		Obligation:FSet(SAttribute)#FSet(OAttribute)#FSet(AAttribute)#ObgID;
-		Response:FSet(SAttribute)#FSet(OAttribute)#FSet(AAttribute)#Decision;
-		
-		
-		proc		
-			PolicyFSet_root(RS:FSet(SAttribute), RO:FSet(OAttribute), RA:FSet(AAttribute)) = Request(RS,RO,RA).
-			
-				Policy_Policy1(RS,RO,RA);	
-			
-			Policy_Policy1(RS:FSet(SAttribute), RO:FSet(OAttribute), RA:FSet(AAttribute))=	
-							
-					(	
-						
-							(attribute(resourceid,HealthData) in 
-							
-								RO) &&
-								
-							(attribute(actionid,Release) in 
-							
-								RA) 
-							
-					)->				
-					
-					Rule_Rule1(RS,RO,RA);
-					
-			Rule_Rule1(RS:FSet(SAttribute), RO:FSet(OAttribute), RA:FSet(AAttribute))=
-			
-					(attribute(subjectid,Doctor) in 
-					
-						RS)-> 
-						
-			Response(RS,RO,RA,Permit);
-		
-			
-		init sum RS:FSet(SAttribute).sum RO:FSet(OAttribute).sum RA:FSet(AAttribute).(RS !={} && RO !={} && RA !={})->PolicyFSet_root(RS,RO,RA);
-	
