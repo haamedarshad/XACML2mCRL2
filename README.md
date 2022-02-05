@@ -40,7 +40,7 @@ The following shows the XACML policies and corresponsing mCRL2 specifications of
 ```
 *********************************************
 **The mCRL2 specification related to Example 1**
-```
+```mcrl2
 sort SAtt = struct attribute(name:SAttName, value:SAttValue);
 sort SAttName = struct subjectid;
 sort SAttValue = struct CareGiverA|Doctor;
