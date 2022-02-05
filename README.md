@@ -40,7 +40,7 @@ The following shows the XACML policies and corresponsing mCRL2 specifications of
 ```
 *********************************************
 **The mCRL2 specification related to Example 1**
-
+```
 sort SAtt = struct attribute(name:SAttName, value:SAttValue);
 sort SAttName = struct subjectid;
 sort SAttValue = struct CareGiverA|Doctor;
@@ -69,3 +69,4 @@ sort ObgID = struct email | log;
 **init** **sum** RS:FSet(SAtt).sum RO:FSet(OAtt).sum RA:FSet(AAtt).(RS !={} && RO !={} && RA !={})->PolicySet_root(RS,RO,RA);
 
 ***************************************
+```
