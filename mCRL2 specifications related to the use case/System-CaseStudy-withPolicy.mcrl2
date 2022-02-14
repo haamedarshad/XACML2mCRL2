@@ -1,0 +1,47 @@
+sort CareGivers = struct CG1 | CG2;
+sort EL = struct EID1 | EID2;
+sort SAttribute = struct attribute(name:SAttName, value:SAttValue);
+
+sort SAttName = struct subjectid;
+sort SAttValue = struct CareGiverA|Doctor;		
+sort OAttribute = struct attribute(name:OAttName, value:OAttValue);
+sort OAttName = struct resourceid;		
+sort OAttValue = struct HealthData;		
+sort AAttribute = struct attribute(name:AAttName, value:AAttValue);
+sort AAttName = struct actionid;		
+sort AAttValue = struct Release;		
+sort Decision = struct Permit | Deny;		
+sort ObgID = struct email | log;
+
+act Fall, Panic, Read;
+SndAlarm,RcvAlarm,Alarm:EL;
+SndNotification,RcvNotification,Notification,SndAssigned,RcvAssigned,Assigned, SndFinished, RcvFinished, Finished,SndOpenLock,RcvOpenLock,OpenLock,LockOpened,Rejected:EL#CareGivers;
+SndResponse,RcvResponse,Response,assignment,get_assignment:EL#CareGivers#Bool;
+set_emergency,get_emergency:EL#Bool;
+SndACRequest, RcvACRequest, ACRequest:FSet(SAttribute)#FSet(OAttribute)#FSet(AAttribute);
+Obligation:FSet(SAttribute)#FSet(OAttribute)#FSet(AAttribute)#ObgID;
+RcvACResponse,SndACResponse,ACResponse:FSet(SAttribute)#FSet(OAttribute)#FSet(AAttribute)#Decision;
+		
+proc
+Elderly=(Fall+Panic).sum E:EL.SndAlarm(E);
+
+CareService(L:List(CareGivers)) = sum E:EL.RcvAlarm(E).set_emergency(E, true).sum i:Nat.(i<#L)->(SndNotification(E, L.i).sum Res:Bool.RcvResponse(E, L.i, Res).((Res==true)->SndAssigned(E, L.i).assignment(E,L.i,true).RcvFinished(E, L.i).set_emergency(E, false).assignment(E, L.i, false)));
+
+CareGiver(RS:FSet(SAttribute), RO:FSet(OAttribute), RA:FSet(AAttribute)) = sum E:EL,CG:CareGivers.RcvNotification(E, CG).(SndResponse(E, CG, true).RcvAssigned(E, CG).SndOpenLock(E, CG).((SndACRequest(RS,RO,RA).sum D:Decision.RcvACResponse(RS,RO,RA,D).(D==Permit)->Read.SndFinished(E, CG))+(SndFinished(E, CG))) + (SndResponse(E, CG, false)));
+
+Lock=sum E:EL,CG:CareGivers,ev,av:Bool.RcvOpenLock(E,CG).get_emergency(E,ev).get_assignment(E,CG,av).((ev==true) && (av==true))->LockOpened(E,CG)<>Rejected(E,CG);
+
+PolicySet_root(RS:FSet(SAttribute), RO:FSet(OAttribute), RA:FSet(AAttribute)) = RcvACRequest(RS,RO,RA).Policy_Policy1(RS,RO,RA);	
+			
+Policy_Policy1(RS:FSet(SAttribute), RO:FSet(OAttribute), RA:FSet(AAttribute))=								
+	(	
+	(attribute(resourceid,HealthData) in RO) &&	(attribute(actionid,Release) in RA) 
+	)->Rule_Rule1(RS,RO,RA);
+				
+Rule_Rule1(RS:FSet(SAttribute), RO:FSet(OAttribute), RA:FSet(AAttribute))=			
+	(attribute(subjectid,CareGiverA) in RS)-> SndACResponse(RS,RO,RA,Permit);
+
+init allow({Alarm,Response,Assigned, Notification,Fall,Panic,set_emergency,OpenLock,LockOpened,Rejected,Finished,assignment, ACRequest, ACResponse, Read},
+       comm({SndAlarm|RcvAlarm->Alarm, SndNotification|RcvNotification->Notification,SndResponse|RcvResponse->Response,SndAssigned|RcvAssigned->Assigned,SndOpenLock|RcvOpenLock->OpenLock,SndFinished|RcvFinished->Finished,SndACRequest|RcvACRequest->ACRequest, SndACResponse|RcvACResponse->ACResponse},
+         Elderly||CareService([CG1,CG2])||CareGiver({attribute(subjectid, CareGiverA)},{attribute(resourceid,HealthData)},{attribute(actionid, Release)})||Lock||sum RS:FSet(SAttribute).sum RO:FSet(OAttribute).sum RA:FSet(AAttribute).(RS !={} && RO !={} && RA !={})->PolicySet_root(RS,RO,RA)
+     ));	 
