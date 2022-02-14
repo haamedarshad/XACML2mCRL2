@@ -1,0 +1,1 @@
+[true*]forall rs:FSet(SAtt),ro:FSet(OAtt),ra:FSet(AAtt).[Request(rs, ro, ra)]!(<true*.Response(rs, ro, ra, Deny)>true && <true*.Response(rs, ro, ra, Permit)>true)
