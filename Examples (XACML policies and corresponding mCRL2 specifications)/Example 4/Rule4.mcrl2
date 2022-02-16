@@ -42,13 +42,29 @@
 							
 					)->				
 				
-					Rule_Rule1(RS,RO,RA)+
+					Rule_Rule1(RS,RO,RA)
+					+
 								
 					(	
+						
+							(attribute(resourceid,HealthData) in RO) &&
+								
 							(attribute(actionid,Read) in RA) 
+							
+					)->				
+				
+					Rule_Rule2(RS,RO,RA)
+					+
+								
+					(	
+						
+							(attribute(resourceid,HealthData) in RO) &&
+								
+							(attribute(actionid,Read) in RA) 
+							
 					)->				
 					
-					Rule_Rule2(RS,RO,RA);
+					Rule_Rule3(RS,RO,RA);
 					
 			Rule_Rule1(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
 			
@@ -57,8 +73,11 @@
 			
 			Rule_Rule2(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
 			
-							(attribute(subjectid,Doctor) in RS)-> 
-																Obligation(RS,RO,RA,log).Response(RS,RO,RA,Permit);
+							!(attribute(subjectid,Doctor) in RS)-> 
+																	Obligation(RS,RO,RA,email).Response(RS,RO,RA,Deny);
+			
+			Rule_Rule3(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+					(attribute(subjectid,CareGiverA) in RS)-> Response(RS,RO,RA,Permit);
 		
 		init sum RS:FSet(SAtt).sum RO:FSet(OAtt).sum RA:FSet(AAtt).(RS !={} && RO !={} && RA !={})->PolicySet_root(RS,RO,RA);
-	

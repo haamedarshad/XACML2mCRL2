@@ -26,38 +26,28 @@
 		</Apply>
 	</Condition>
 </Rule>
-<Rule RuleId= "Rule2" Effect="Deny">
+<Rule RuleId= "Rule2" Effect="Permit">
 	<Target>
 		<AnyOf>
 			<AllOf>
 				<Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
-					<AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">HealthData</AttributeValue>
-					<AttributeDesignator MustBePresent="false" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" AttributeId="resource-id" DataType="http://www.w3.org/2001/XMLSchema#string"/>					
-				</Match>
-				<Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
-					<AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Read</AttributeValue>
-					<AttributeDesignator MustBePresent="false" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:action" AttributeId="action-id" DataType="http://www.w3.org/2001/XMLSchema#string"/>
-				</Match>
+					<AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Doctor</AttributeValue>
+					<AttributeDesignator MustBePresent="false" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="subject-id" DataType="http://www.w3.org/2001/XMLSchema#string"/>				</Match>
 			</AllOf>
 		</AnyOf>
 	</Target>
 	<Condition>
-	    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
         <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
 		<Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
-				<AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Doctor</AttributeValue>
+				<AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Read</AttributeValue>
 		</Apply>
-			<AttributeDesignator MustBePresent="false" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="subject-id" DataType="http://www.w3.org/2001/XMLSchema#string"/>
-		</Apply>
+			<AttributeDesignator MustBePresent="false" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:action" AttributeId="action-id" DataType="http://www.w3.org/2001/XMLSchema#string"/>
 		</Apply>
 	</Condition>
+	<ObligationExpressions>
+		<ObligationExpression FulfillOn="Permit" ObligationId="log">
+		</ObligationExpression>
+	</ObligationExpressions>
 </Rule>
-<ObligationExpressions>
-      <ObligationExpression FulfillOn="Deny" ObligationId="email">
-         <AttributeAssignmentExpression AttributeId="email">
-            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Bob@example.com</AttributeValue>
-         </AttributeAssignmentExpression>
-      </ObligationExpression>
-   </ObligationExpressions>
 </Policy>
 </PolicySet>

@@ -1,1 +1,1 @@
-[true*]forall rs:FSet(SAtt),ro:FSet(OAtt),ra:FSet(AAtt).[Request(rs, ro, ra)]mu X.([!exists d:Decision.Response(rs, ro, ra, d)]X && <true>true)
+forall rs:FSet(SAtt),ro:FSet(OAtt),ra:FSet(AAtt).[Request(rs, ro, ra)]mu X.([!exists d:Decision.Response(rs, ro, ra, d)]X && <true>true)

@@ -1,1 +1,1 @@
-[true*]forall rs:FSet(SAtt),ro:FSet(OAtt),ra:FSet(AAtt),d:Decision,o:ObgID.[Response(rs, ro, ra, d).true*.Obligation(rs, ro, ra, o)]false
+forall rs:FSet(SAtt), ro:FSet(OAtt), ra:FSet(AAtt).[Request(rs,ro,ra)]([exists o:ObgID.Obligation(rs,ro,ra,o)]false || [!exists o:ObgID.Obligation(rs,ro,ra,o)]false)
