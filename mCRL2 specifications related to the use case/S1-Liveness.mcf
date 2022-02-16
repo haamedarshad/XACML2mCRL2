@@ -1,1 +1,3 @@
-[true*]forall e:EL.[SndAlarm(e).(!exists cg:CareGivers.Finished(e,cg))*]<true*.exists cg:CareGivers.Finished(e,cg)>true
+[true*]forall e:EL.
+[SndAlarm(e).(!exists cg:CareGivers.Finished(e,cg))*]
+<true*.exists cg:CareGivers.Finished(e,cg)>true

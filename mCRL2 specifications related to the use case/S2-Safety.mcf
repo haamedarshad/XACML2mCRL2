@@ -1,1 +1,0 @@
-forall e:EL,cg:CareGivers.nu X.([!exists res:Bool. Response(e,cg,res)]X && [Notification(e,cg)]false && forall res:Bool.[Response(e,cg,res)]nu Y.([!Notification(e,cg)]Y && [Notification(e,cg)]X))

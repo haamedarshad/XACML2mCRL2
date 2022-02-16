@@ -24,8 +24,8 @@ RcvACResponse,SndACResponse,ACResponse, Response:FSet(SAtt)#FSet(OAtt)#FSet(AAtt
 		
 proc Elderly=(Fall+Panic).sum E:EL.SndAlarm(E).Elderly;
 
-	CareService(L:List(CareGivers)) = sum E:EL.RcvAlarm(E).set_emergency(E, true).
-	sum i:Nat.(i<#L)->SndNotification(E, L.i).set_assignment(E, L.i, true).RcvFinished(E, L.i).set_emergency(E, false).set_assignment(E, L.i, false).CareService();
+	CareService(L:FSet(CareGivers)) = sum E:EL.RcvAlarm(E).set_emergency(E, true).
+	sum cg:CareGivers.(cg in L) -> SndNotification(E, cg).set_assignment(E, cg, true).RcvFinished(E, cg).set_emergency(E, false).set_assignment(E, cg, false).CareService();
 
 	CareGiver(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt)) = 
 	Willing.sum E:EL,CG:CareGivers.RcvNotification(E, CG).SndOpenLock(E, CG).
@@ -36,8 +36,10 @@ proc Elderly=(Fall+Panic).sum E:EL.SndAlarm(E).Elderly;
 	)
 	+	Notwilling.CareGiver();
 
-	Lock=sum E:EL, ev:Bool.get_emergency(E,ev).sum CG:CareGivers.sum av:Bool.get_assignment(E,CG,av).RcvOpenLock(E,CG).(((ev==true) && (av==true))->LockOpened(E,CG)<>Rejected(E,CG)).Lock;
-
+	Lock(ev, av:Bool) = sum E:EL,CG:CareGivers.RcvOpenLock(E,CG).((ev && av) -> LockOpened(E,CG) <> Rejected(E,CG)).Lock(ev, av)
+					   + sum E:EL. sum ev':Bool.get_emergency(E,ev').Lock(ev', av)
+					   + sum E:EL, CG:CareGivers.sum av':Bool.get_assignment(E, CG, av').Lock(ev, av');
+					   
 	PolicySet_root(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt)) = Request(RS,RO,RA).Policy_Policy1(RS,RO,RA);	
 			
 	Policy_Policy1(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	
@@ -83,5 +85,5 @@ init allow({Notwilling,Willing,Alarm,Reply,Assigned, Notification,Fall,Panic,eme
        comm({set_assignment|get_assignment->assignment,set_emergency|get_emergency->emergency,
 	   SndAlarm|RcvAlarm->Alarm, SndNotification|RcvNotification->Notification,SndReply|RcvReply->Reply,SndAssigned|RcvAssigned->Assigned,SndOpenLock|RcvOpenLock->OpenLock,SndFinished|RcvFinished->Finished,SndACRequest|RcvACRequest->ACRequest, SndACResponse|RcvACResponse->ACResponse},
 			rename({Request-> RcvACRequest, Response->SndACResponse},
-				Elderly||CareService([CG1,CG2])||CareGiver({attribute(subjectid, CareGiverA)},{attribute(resourceid,HealthData)},{attribute(actionid, Read)})||Lock||AccessControl
+				Elderly||CareService({CG1,CG2})||CareGiver({attribute(subjectid, CareGiverA)},{attribute(resourceid,HealthData)},{attribute(actionid, Read)})||Lock(false, false)||AccessControl
      )));	 

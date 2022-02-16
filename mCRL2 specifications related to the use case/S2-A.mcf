@@ -1,0 +1,3 @@
+forall e:EL,cg:CareGivers.nu X.([!assignment(e,cg,true)]X && 
+[LockOpened(e, cg)]false && [assignment(e,cg,true)] nu Y.
+([!assignment(e,cg,false)]Y && [assignment(e,cg,false)]X))
