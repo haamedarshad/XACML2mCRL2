@@ -28,7 +28,7 @@
 		
 		
 		proc		
-			PolicySet_root(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt)) = Request(RS,RO,RA).
+			PolicySet_root(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt)) = 
 			
 				Policy_Policy1(RS,RO,RA);	
 			
@@ -60,5 +60,5 @@
 							(attribute(subjectid,Doctor) in RS)-> 
 																Obligation(RS,RO,RA,log).Response(RS,RO,RA,Permit);
 		
-		init sum RS:FSet(SAtt).sum RO:FSet(OAtt).sum RA:FSet(AAtt).(RS !={} && RO !={} && RA !={})->PolicySet_root(RS,RO,RA);
+		init sum RS:FSet(SAtt).sum RO:FSet(OAtt).sum RA:FSet(AAtt).(RS !={} && RO !={} && RA !={})->Request(RS,RO,RA).PolicySet_root(RS,RO,RA);
 	

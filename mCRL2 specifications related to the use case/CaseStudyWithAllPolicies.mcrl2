@@ -40,7 +40,7 @@ proc Elderly=(Fall+Panic).sum E:EL.SndAlarm(E).Elderly;
 					   + sum E:EL. sum ev':Bool.get_emergency(E,ev').Lock(ev', av)
 					   + sum E:EL, CG:CareGivers.sum av':Bool.get_assignment(E, CG, av').Lock(ev, av');
 					   
-	PolicySet_root(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt)) = Request(RS,RO,RA).Policy_Policy1(RS,RO,RA);	
+	PolicySet_root(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt)) = Policy_Policy1(RS,RO,RA);	
 			
 	Policy_Policy1(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	
 	(
@@ -56,30 +56,30 @@ proc Elderly=(Fall+Panic).sum E:EL.SndAlarm(E).Elderly;
 		&&
 		(attribute(actionid,Read) in RA) 
 	)->				
-		Rule_Rule2(RS,RO,RA)
+		Rule_Rule3(RS,RO,RA)
 	+
 	(	
 		(attribute(resourceid,HealthData) in RO) 
 		&&
 		(attribute(actionid,Read) in RA) 
 	)->				
-		Rule_Rule3(RS,RO,RA);
+		Rule_Rule4(RS,RO,RA);
 					
 	Rule_Rule1(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
 	(attribute(subjectid,Doctor) in RS)-> 
 										Response(RS,RO,RA,Permit);
 			
-	Rule_Rule2(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+	Rule_Rule3(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
 			
 	!(attribute(subjectid,Doctor) in RS)-> 
 										Obligation(RS,RO,RA,email).Response(RS,RO,RA,Deny);
 			
-	Rule_Rule3(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+	Rule_Rule4(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
 	(attribute(subjectid,CareGiverA) in RS)-> 
 											Response(RS,RO,RA,Permit);
 
 	AccessControl = 
-	(sum RS:FSet(SAtt).sum RO:FSet(OAtt).sum RA:FSet(AAtt).(RS !={} && RO !={} && RA !={})->PolicySet_root(RS,RO,RA)).AccessControl;
+	(sum RS:FSet(SAtt).sum RO:FSet(OAtt).sum RA:FSet(AAtt).(RS !={} && RO !={} && RA !={})->Request(RS,RO,RA).PolicySet_root(RS,RO,RA)).AccessControl;
 
 init allow({Notwilling,Willing,Alarm,Reply,Assigned, Notification,Fall,Panic,emergency,OpenLock,LockOpened,Rejected,Finished,assignment, ACRequest, ACResponse, Read},
        comm({set_assignment|get_assignment->assignment,set_emergency|get_emergency->emergency,

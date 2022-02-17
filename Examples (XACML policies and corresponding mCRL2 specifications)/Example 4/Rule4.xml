@@ -26,7 +26,7 @@
 		</Apply>
 	</Condition>
 </Rule>
-<Rule RuleId= "Rule2" Effect="Deny">
+<Rule RuleId= "Rule3" Effect="Deny">
 	<Target>
 		<AnyOf>
 			<AllOf>
@@ -52,7 +52,7 @@
 		</Apply>
 	</Condition>
 </Rule>
-<Rule RuleId= "Rule3" Effect="Permit">
+<Rule RuleId= "Rule4" Effect="Permit">
 	<Target>
 		<AnyOf>
 			<AllOf>
