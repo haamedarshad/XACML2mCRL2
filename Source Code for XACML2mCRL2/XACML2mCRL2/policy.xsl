@@ -1,19 +1,19 @@
 <xsl:stylesheet version = "1.0" xmlns:xsl = "http://www.w3.org/1999/XSL/Transform"> 
 	<xsl:output method="text"/>
 	<xsl:template match = "/">
-		sort SAtt = struct attribute(name:SAttName, value:SAttValue);
+		sort SAttribute = struct attribute(name:SAttName, value:SAttValue);
 
 		sort SAttName = struct subjectid;
 		
 		sort SAttValue = struct CareGiverA|Doctor;
 		
-		sort OAtt = struct attribute(name:OAttName, value:OAttValue);
+		sort OAttribute = struct attribute(name:OAttName, value:OAttValue);
 
 		sort OAttName = struct resourceid;
 		
 		sort OAttValue = struct HealthData;
 		
-		sort AAtt = struct attribute(name:AAttName, value:AAttValue);
+		sort AAttribute = struct attribute(name:AAttName, value:AAttValue);
 
 		sort AAttName = struct actionid;
 		
@@ -24,13 +24,13 @@
 		sort ObgID = struct email | log;
 
 		act
-		Request:FSet(SAtt)#FSet(OAtt)#FSet(AAtt);
-		Obligation:FSet(SAtt)#FSet(OAtt)#FSet(AAtt)#ObgID;
-		Response:FSet(SAtt)#FSet(OAtt)#FSet(AAtt)#Decision;
+		Request:Set(SAttribute)#Set(OAttribute)#Set(AAttribute);
+		Obligation:Set(SAttribute)#Set(OAttribute)#Set(AAttribute)#ObgID;
+		Response:Set(SAttribute)#Set(OAttribute)#Set(AAttribute)#Decision;
 		
 		
 		proc		
-			PolicySet_<xsl:value-of select="PolicySet/@PolicySetId"/>(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt)) = 
+			PolicySet_<xsl:value-of select="PolicySet/@PolicySetId"/>(RS:Set(SAttribute), RO:Set(OAttribute), RA:Set(AAttribute)) = Request(RS,RO,RA).
 		<xsl:if test="(PolicySet/Target!='')">
 			(<xsl:value-of select = "PolicySet/Target"/>)->	
 		</xsl:if> 
@@ -126,7 +126,7 @@
 				)->	
 			</xsl:if>	
 		<!-- End of checking if the policy has a target -->
-		<!-- Calling the policies inside a policySet -->
+		<!-- Calling the policies inside a policyset -->
 			<xsl:if test="position() != last()">	
 				Policy_<xsl:value-of select="@PolicyId"/>(RS,RO,RA)+	
 			</xsl:if>
@@ -134,11 +134,11 @@
 				Policy_<xsl:value-of select="@PolicyId"/>(RS,RO,RA);	
 			</xsl:if>
 		</xsl:for-each>
-		<!-- End of calling policies inside a policySet -->
+		<!-- End of calling policies inside a policyset -->
 			
 		<!-- Defining a new process for each policy -->
 		<xsl:for-each select = "PolicySet/Policy">
-			Policy_<xsl:value-of select="@PolicyId"/>(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	
+			Policy_<xsl:value-of select="@PolicyId"/>(RS:Set(SAttribute), RO:Set(OAttribute), RA:Set(AAttribute))=	
 			<xsl:for-each select = "Rule">
 			<!-- Check if the rule has a target -->		
 				<xsl:if test="(Target!='')">				
@@ -241,7 +241,7 @@
 			
 		<!-- Defining a new process for each Rule -->
 		<xsl:for-each select = "PolicySet/Policy/Rule">	
-			Rule_<xsl:value-of select="@RuleId"/>(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			Rule_<xsl:value-of select="@RuleId"/>(RS:Set(SAttribute), RO:Set(OAttribute), RA:Set(AAttribute))=
 			<xsl:if test="(Condition!='')">	
 				<xsl:choose>
 					<xsl:when test="not(Condition/Apply/AttributeDesignator/@AttributeId)">
@@ -284,18 +284,24 @@
 			</xsl:if>
 			<xsl:choose>
 				<xsl:when test="((../../ObligationExpressions/ObligationExpression/@ObligationId!='') and (@Effect =../../ObligationExpressions/ObligationExpression/@FulfillOn))">
-					Obligation(RS,RO,RA,<xsl:value-of select="../../ObligationExpressions/ObligationExpression/AttributeAssignmentExpression/@AttributeId"/>).
+					<xsl:for-each select = "../../ObligationExpressions/ObligationExpression">	
+					Obligation(RS,RO,RA,<xsl:value-of select="@ObligationId"/>).
+					</xsl:for-each>
 				</xsl:when>
 				<xsl:when test="((../ObligationExpressions/ObligationExpression/@ObligationId!='') and (@Effect =../ObligationExpressions/ObligationExpression/@FulfillOn))">
-					Obligation(RS,RO,RA,<xsl:value-of select="../ObligationExpressions/ObligationExpression/AttributeAssignmentExpression/@AttributeId"/>).
+					<xsl:for-each select = "../ObligationExpressions/ObligationExpression">	
+						Obligation(RS,RO,RA,<xsl:value-of select="@ObligationId"/>).
+					</xsl:for-each>
 				</xsl:when>
 				<xsl:when test="((ObligationExpressions/ObligationExpression/@ObligationId!='') and (@Effect =ObligationExpressions/ObligationExpression/@FulfillOn))">
-					Obligation(RS,RO,RA,<xsl:value-of select="ObligationExpressions/ObligationExpression/AttributeAssignmentExpression/@AttributeId"/>).
+					<xsl:for-each select = "ObligationExpressions/ObligationExpression">	
+						Obligation(RS,RO,RA,<xsl:value-of select="@ObligationId"/>).
+					</xsl:for-each>	
 				</xsl:when>
 			</xsl:choose>
 			Response(RS,RO,RA,<xsl:value-of select="@Effect"/>);
 		</xsl:for-each>
 			
-		init sum RS:FSet(SAtt).sum RO:FSet(OAtt).sum RA:FSet(AAtt).(RS !={} &amp;&amp; RO !={} &amp;&amp; RA !={})->Request(RS,RO,RA).PolicySet_<xsl:value-of select="PolicySet/@PolicySetId"/>(RS,RO,RA);
+		init sum RS:Set(SAttribute).sum RO:Set(OAttribute).sum RA:Set(AAttribute).(RS !={} &amp;&amp; RO !={} &amp;&amp; RA !={})->PolicySet_<xsl:value-of select="PolicySet/@PolicySetId"/>(RS,RO,RA);
 	</xsl:template>
 </xsl:stylesheet>
