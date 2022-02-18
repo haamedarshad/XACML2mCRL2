@@ -74,7 +74,7 @@
 			Rule_Rule3(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
 			
 							!(attribute(subjectid,Doctor) in RS)-> 
-																	Obligation(RS,RO,RA,email).Response(RS,RO,RA,Deny);
+																	Response(RS,RO,RA,Deny);
 			
 			Rule_Rule4(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
 			

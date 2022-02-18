@@ -231,13 +231,6 @@ init sum RS:FSet(SAtt).sum RO:FSet(OAtt).sum RA:FSet(AAtt).(RS !={} && RO !={} &
 		</Apply>
 	</Condition>
 </Rule>
-<ObligationExpressions>
-	<ObligationExpression FulfillOn="Deny" ObligationId="email">
-         <AttributeAssignmentExpression AttributeId="email">
-            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Bob@example.com</AttributeValue>
-         </AttributeAssignmentExpression>
-      </ObligationExpression>
-</ObligationExpressions>
 </Policy>
 </PolicySet>
 
@@ -281,7 +274,7 @@ proc
 	(attribute(subjectid,Doctor) in RS)-> Response(RS,RO,RA,Permit);
 
 	Rule_Rule3(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))= 
-	!(attribute(subjectid,Doctor) in RS)->Obligation(RS,RO,RA,email).Response(RS,RO,RA,Deny);
+	!(attribute(subjectid,Doctor) in RS)->Response(RS,RO,RA,Deny);
 		
 init sum RS:FSet(SAtt).sum RO:FSet(OAtt).sum RA:FSet(AAtt).(RS !={} && RO !={} && RA !={})->Request(RS,RO,RA).PolicySet_root(RS,RO,RA);
 ```
@@ -368,13 +361,6 @@ init sum RS:FSet(SAtt).sum RO:FSet(OAtt).sum RA:FSet(AAtt).(RS !={} && RO !={} &
 		</Apply>
 	</Condition>
 </Rule>
-<ObligationExpressions>
-    <ObligationExpression FulfillOn="Deny" ObligationId="email">
-      <AttributeAssignmentExpression AttributeId="email">
-         <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Bob@example.com</AttributeValue>
-      </AttributeAssignmentExpression>
-    </ObligationExpression>
-</ObligationExpressions>
 </Policy>
 </PolicySet>
 
@@ -420,7 +406,7 @@ proc
 	
 	Rule_Rule1(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))= (attribute(subjectid,Doctor) in RS)-> Response(RS,RO,RA,Permit);
 	
-	Rule_Rule3(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))= !(attribute(subjectid,Doctor) in RS)-> Obligation(RS,RO,RA,email).Response(RS,RO,RA,Deny);
+	Rule_Rule3(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))= !(attribute(subjectid,Doctor) in RS)-> Response(RS,RO,RA,Deny);
 	
 	Rule_Rule4(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))= (attribute(subjectid,CareGiverA) in RS)-> Response(RS,RO,RA,Permit);
 

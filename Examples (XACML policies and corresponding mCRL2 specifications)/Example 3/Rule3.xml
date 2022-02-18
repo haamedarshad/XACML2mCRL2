@@ -52,12 +52,5 @@
 		</Apply>
 	</Condition>
 </Rule>
-<ObligationExpressions>
-      <ObligationExpression FulfillOn="Deny" ObligationId="email">
-         <AttributeAssignmentExpression AttributeId="email">
-            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Bob@example.com</AttributeValue>
-         </AttributeAssignmentExpression>
-      </ObligationExpression>
-   </ObligationExpressions>
 </Policy>
 </PolicySet>
