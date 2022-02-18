@@ -24,13 +24,13 @@
 		sort ObgID = struct email | log;
 
 		act
-		Request:Set(SAtt)#Set(OAtt)#Set(AAtt);
-		Obligation:Set(SAtt)#Set(OAtt)#Set(AAtt)#ObgID;
-		Response:Set(SAtt)#Set(OAtt)#Set(AAtt)#Decision;
+		Request:FSet(SAtt)#FSet(OAtt)#FSet(AAtt);
+		Obligation:FSet(SAtt)#FSet(OAtt)#FSet(AAtt)#ObgID;
+		Response:FSet(SAtt)#FSet(OAtt)#FSet(AAtt)#Decision;
 		
 		
 		proc		
-			PolicySet_<xsl:value-of select="PolicySet/@PolicySetId"/>(RS:Set(SAtt), RO:Set(OAtt), RA:Set(AAtt)) = 
+			PolicySet_<xsl:value-of select="PolicySet/@PolicySetId"/>(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt)) = 
 		<xsl:if test="(PolicySet/Target!='')">
 			(<xsl:value-of select = "PolicySet/Target"/>)->	
 		</xsl:if> 
@@ -138,7 +138,7 @@
 			
 		<!-- Defining a new process for each policy -->
 		<xsl:for-each select = "PolicySet/Policy">
-			Policy_<xsl:value-of select="@PolicyId"/>(RS:Set(SAtt), RO:Set(OAtt), RA:Set(AAtt))=	
+			Policy_<xsl:value-of select="@PolicyId"/>(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	
 			<xsl:for-each select = "Rule">
 			<!-- Check if the rule has a target -->		
 				<xsl:if test="(Target!='')">				
@@ -241,7 +241,7 @@
 			
 		<!-- Defining a new process for each Rule -->
 		<xsl:for-each select = "PolicySet/Policy/Rule">	
-			Rule_<xsl:value-of select="@RuleId"/>(RS:Set(SAtt), RO:Set(OAtt), RA:Set(AAtt))=
+			Rule_<xsl:value-of select="@RuleId"/>(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
 			<xsl:if test="(Condition!='')">	
 				<xsl:choose>
 					<xsl:when test="not(Condition/Apply/AttributeDesignator/@AttributeId)">
@@ -302,6 +302,6 @@
 			Response(RS,RO,RA,<xsl:value-of select="@Effect"/>);
 		</xsl:for-each>
 			
-		init sum RS:Set(SAtt).sum RO:Set(OAtt).sum RA:Set(AAtt).(RS !={} &amp;&amp; RO !={} &amp;&amp; RA !={})-> Request(RS,RO,RA).PolicySet_<xsl:value-of select="PolicySet/@PolicySetId"/>(RS,RO,RA);
+		init sum RS:FSet(SAtt).sum RO:FSet(OAtt).sum RA:FSet(AAtt).(RS !={} &amp;&amp; RO !={} &amp;&amp; RA !={})-> Request(RS,RO,RA).PolicySet_<xsl:value-of select="PolicySet/@PolicySetId"/>(RS,RO,RA);
 	</xsl:template>
 </xsl:stylesheet>
