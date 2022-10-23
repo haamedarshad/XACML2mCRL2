@@ -5,7 +5,7 @@
 
 		sort SAttName = struct subjectid;
 		
-		sort SAttValue = struct CareGiverA|Doctor;
+		sort SAttValue = struct CareGiverA|Doctor|Researcher;
 		
 		sort OAtt = struct attribute(name:OAttName, value:OAttValue);
 
