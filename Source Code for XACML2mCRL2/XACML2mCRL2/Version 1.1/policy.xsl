@@ -37,7 +37,9 @@
 
 		act
 		Request:FSet(SAtt)#FSet(OAtt)#FSet(AAtt);
+		<xsl:if test="descendant::*/ObligationExpression">
 		Obligation:FSet(SAtt)#FSet(OAtt)#FSet(AAtt)#ObgID;
+		</xsl:if>		
 		Response:FSet(SAtt)#FSet(OAtt)#FSet(AAtt)#Decision;
 		
 		
