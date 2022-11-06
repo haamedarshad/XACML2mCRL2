@@ -169,7 +169,7 @@ proc
 init sum RS:FSet(SAtt).sum RO:FSet(OAtt).sum RA:FSet(AAtt).(RS !={} && RO !={} && RA !={})-> Request(RS,RO,RA).PolicySet_root(RS,RO,RA);	
 ```
 ***************************************
-**Example 3: XACML Policy **
+** Example 3: XACML Policy **
 
 ```xml
 
@@ -232,7 +232,7 @@ init sum RS:FSet(SAtt).sum RO:FSet(OAtt).sum RA:FSet(AAtt).(RS !={} && RO !={} &
 
 ```
 ************************************
-**Example 3: mCRL2 specifications**
+** Example 3: mCRL2 specifications **
 
 ```
 sort SAtt = struct attribute(name:SAttName, value:SAttValue);
@@ -277,7 +277,7 @@ init sum RS:FSet(SAtt).sum RO:FSet(OAtt).sum RA:FSet(AAtt).(RS !={} && RO !={} &
 ```
 
 **************************************
-**Example 4: XACML Policy**
+** Example 4: XACML Policy **
 
 ```xml
 <PolicySet xmlns="urn:oasis:names:tc:xacml:3.0:core:schema:wd-17" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xacml:3.0:core:schema:wd-17 http://docs.oasis-open.org/xacml/3.0/xacml-core-v3-schema-wd-17.xsd" PolicySetId="urn:oasis:names:tc:xacml:3.0:example:root" Version="3.0" PolicyCombiningAlgId="urn:oasis:names:tc:xacml:3.0:policy-combining-algorithm:permit-overrides">
@@ -365,8 +365,7 @@ init sum RS:FSet(SAtt).sum RO:FSet(OAtt).sum RA:FSet(AAtt).(RS !={} && RO !={} &
 
 ```
 *****************************************
-
-**Example 4: mCRL2 specifications **
+** Example 4: mCRL2 specifications**
 
 ```
 sort SAtt = struct attribute(name:SAttName, value:SAttValue);
@@ -421,8 +420,7 @@ init sum RS:FSet(SAtt).sum RO:FSet(OAtt).sum RA:FSet(AAtt).(RS !={} && RO !={} &
 ```
 
 ***************************************
-**************************************
-**Example SOP: XACML Policy**
+** Example SOP: XACML Policy **
 
 ```xml
 <PolicySet xmlns="urn:oasis:names:tc:xacml:3.0:core:schema:wd-17" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xacml:3.0:core:schema:wd-17 http://docs.oasis-open.org/xacml/3.0/xacml-core-v3-schema-wd-17.xsd" PolicySetId="root" Version="3.0" PolicyCombiningAlgId="urn:oasis:names:tc:xacml:3.0:policy-combining-algorithm:permit-overrides">
@@ -481,8 +479,7 @@ init sum RS:FSet(SAtt).sum RO:FSet(OAtt).sum RA:FSet(AAtt).(RS !={} && RO !={} &
 
 ```
 *****************************************
-
-**Example SOP: mCRL2 specifications **
+** Example SOP: mCRL2 specifications **
 
 ```
 sort SAtt = struct attribute(name:SAttName, value:SAttValue);
