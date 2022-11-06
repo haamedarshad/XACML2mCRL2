@@ -3,7 +3,7 @@
 **Please note that these examples are verified using the first version of XACML2mCRL2 (i.e., v1.0).**
 **Since these policies are simplified version of original policies, they cannot be translated to proper mCRL2 specifications using the latest version of XACML2mCRL2 (i.e., v1.2).**
 
-The following shows the XACML policies and corresponsing mCRL2 specifications of the Examples used in the paper. 
+The following shows the XACML policies and corresponsing mCRL2 specifications of the Examples used in a paper entitled "Process Algebra Can Save Lives: Static Analysis of XACML Access Control Policies Using mCRL2". 
 
 **The XACML policy related to Example 1**
 
