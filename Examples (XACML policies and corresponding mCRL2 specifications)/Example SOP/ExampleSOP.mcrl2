@@ -1,29 +1,35 @@
 sort SAtt = struct attribute(name:SAttName, value:SAttValue);
-sort SAttName = struct subjectid;	
-sort SAttValue = struct Doctor|EmergencyStaff;		
-sort OAtt = struct attribute(name:OAttName, value:OAttValue);		
-sort OAttName = struct resourceid;		
-sort OAttValue = struct MedicalRecords;		
-sort AAtt = struct attribute(name:AAttName, value:AAttValue);		
-sort AAttName = struct actionid;		
-sort AAttValue = struct Read;		
-sort Decision = struct Permit | Deny;		
+sort SAttName = struct subjectid;
+sort SAttValue = struct Doctor|EmergencyStaff;
+sort OAtt = struct attribute(name:OAttName, value:OAttValue);
+sort OAttName = struct resourceid;
+sort OAttValue = struct MedicalRecords;
+sort AAtt = struct attribute(name:AAttName, value:AAttValue);
+sort AAttName = struct actionid;
+sort AAttValue = struct Read;
+sort Decision = struct Permit | Deny;
+
 act
-	Request:FSet(SAtt)#FSet(OAtt)#FSet(AAtt);			
-	Response:FSet(SAtt)#FSet(OAtt)#FSet(AAtt)#Decision;	
-proc		
+	Request:FSet(SAtt)#FSet(OAtt)#FSet(AAtt);
+	Response:FSet(SAtt)#FSet(OAtt)#FSet(AAtt)#Decision;
+
+proc			
 	PolicySet_root(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt)) = Policy_PolicySOP(RS,RO,RA);	
-	Policy_PolicySOP(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
-		((attribute(resourceid,MedicalRecords) in RO))-> Rule_RuleA(RS,RO,RA)
+			
+	Policy_PolicySOP(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	
+	(	
+		(attribute(resourceid,MedicalRecords) in RO) 
+	)->	Rule_RuleA(RS,RO,RA)
 	+
-		((attribute(resourceid,MedicalRecords) in RO) 
-		&& (attribute(actionid,Read) in RA))-> Rule_RuleB(RS,RO,RA);
-				
+	(	
+		(attribute(resourceid,MedicalRecords) in RO) 
+		&&
+		(attribute(actionid,Read) in RA) 
+	)->	Rule_RuleB(RS,RO,RA);
+
 	Rule_RuleA(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
-		!(attribute(subjectid,Doctor) in RS)-> Response(RS,RO,RA,Deny);
-
+	!(attribute(subjectid, Doctor) in RS)-> Response(RS,RO,RA,Deny);
+			
 	Rule_RuleB(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
-		(attribute(subjectid,EmergencyStaff) in RS)-> Response(RS,RO,RA,Permit);
-
-init sum RS:FSet(SAtt).sum RO:FSet(OAtt).sum RA:FSet(AAtt).(RS !={} && RO !={} && RA !={})-> 
-	 Request(RS,RO,RA).PolicySet_root(RS,RO,RA);
+	(attribute(subjectid, EmergencyStaff) in RS)-> Response(RS,RO,RA,Permit);
+init sum RS:FSet(SAtt).sum RO:FSet(OAtt).sum RA:FSet(AAtt).(RS !={} && RO !={} && RA !={})-> Request(RS,RO,RA).PolicySet_root(RS,RO,RA);
