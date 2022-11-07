@@ -1,5 +1,6 @@
 <xsl:stylesheet version = "1.0" xmlns:xsl = "http://www.w3.org/1999/XSL/Transform" xmlns:xacml="urn:oasis:names:tc:xacml:3.0:core:schema:wd-17" > 
-	<xsl:output method="text" />
+	<xsl:output method="text" indent="no"/>
+      <xsl:strip-space elements="*"/>
   
 <!-- This block removes the unnecessary part of attribute names. For example, "actionid" will be returned instead of "urn:oasis:names:tc:xacml:1.0:action:action-id"   -->
 	<xsl:template name="getName">
@@ -286,6 +287,7 @@
 			<xsl:for-each select = "xacml:Target/xacml:AnyOf/xacml:AllOf">
 			<xsl:choose>	
 			<xsl:when test="position() != last()">
+			(
 				<xsl:for-each select = "xacml:Match">
 					<xsl:choose>	
 					<xsl:when test="position() != last()">
@@ -322,11 +324,13 @@
 							</xsl:otherwise>
 						</xsl:choose>
 					</xsl:otherwise>	
-					</xsl:choose>	
+					</xsl:choose>		
 				</xsl:for-each>
+			)	
 				||
 			</xsl:when>
 			<xsl:otherwise>
+			(
 				<xsl:for-each select = "xacml:Match">
 					<xsl:choose>	
 						<xsl:when test="position() != last()">
@@ -365,6 +369,7 @@
 						</xsl:otherwise>	
 					</xsl:choose>	
 				</xsl:for-each>
+			)	
 			</xsl:otherwise>
 			</xsl:choose>			
 			</xsl:for-each>
@@ -391,6 +396,7 @@
 					<xsl:for-each select = "xacml:Target/xacml:AnyOf/xacml:AllOf">
 						<xsl:choose>	
 							<xsl:when test="position() != last()">
+					(
 								<xsl:for-each select = "xacml:Match">	
 									<xsl:choose>
 									<xsl:when test="position() != last()">	
@@ -428,10 +434,12 @@
 										</xsl:choose>
 									</xsl:otherwise>
 									</xsl:choose>
-								</xsl:for-each>					
+								</xsl:for-each>	
+						)			
 							||
 						</xsl:when>
 						<xsl:otherwise>
+						(
 						<xsl:for-each select = "xacml:Match">	
 									<xsl:choose>
 									<xsl:when test="position() != last()">	
@@ -470,6 +478,7 @@
 									</xsl:otherwise>
 									</xsl:choose>
 								</xsl:for-each>
+						)		
 						</xsl:otherwise>
 						</xsl:choose>			
 					</xsl:for-each>
