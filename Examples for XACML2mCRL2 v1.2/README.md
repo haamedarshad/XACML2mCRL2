@@ -522,6 +522,7 @@ init sum RS:FSet(SAtt).sum RO:FSet(OAtt).sum RA:FSet(AAtt).(RS !={} && RO !={} &
 
 ***************************************
 **Example 6: XACML Policy**
+
 **We have taken the following policy from https://github.com/nassirim/xacBench/tree/master/xacmltranslator**
 
 
@@ -2285,6 +2286,8 @@ init sum RS:FSet(SAtt).sum RO:FSet(OAtt).sum RA:FSet(AAtt).(RS !={} && RO !={} &
 ```
 *****************************************
 **Example 6: mCRL2 specifications**
+
+**As you can see below, the obligation expressions are not translated into mCRL2. This is because the Obligation expressions that exist in the XACML policy do not include all the [Required] attributes and elements.** 
 
 ```
 sort SAtt = struct attribute(name:SAttName, value:SAttValue);
