@@ -521,3 +521,2137 @@ init sum RS:FSet(SAtt).sum RO:FSet(OAtt).sum RA:FSet(AAtt).(RS !={} && RO !={} &
 ```
 
 ***************************************
+**Example 6: XACML Policy**
+**We have taken the following policy from https://github.com/nassirim/xacBench/tree/master/xacmltranslator**
+
+
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PolicySet xmlns="urn:oasis:names:tc:xacml:3.0:core:schema:wd-17" PolicyCombiningAlgId="deny-overrides" PolicySetId="root_ps">
+    <Target/>
+    <Policy PolicyId="P1" RuleCombiningAlgId="permit-overrides">
+        <Target/>
+        <Rule Effect="Permit" RuleId="R1">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-less-than-or-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">medical-file20</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                        </Match>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-less-than">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">read21</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:action" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-less-than-or-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">medical-file65</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                        </Match>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-less-than">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">read50</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:action" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+            <Condition>
+                <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:hospital" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                        </Apply>
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Val-de-Grace</AttributeValue>
+                    </Apply>
+                </Apply>
+            </Condition>
+            <ObligationExpressions>
+                <ObligationExpression>
+                    <AttributeAssignmentExpression>
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:and">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+<Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+    <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+</Apply>
+<AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">clinical-researcher</AttributeValue>
+                            </Apply>
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+<Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+    <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-confidentiality" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+</Apply>
+<AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">personal</AttributeValue>
+                            </Apply>
+                        </Apply>
+                    </AttributeAssignmentExpression>
+                </ObligationExpression>
+            </ObligationExpressions>
+            <AdviceExpressions>
+                <AdviceExpression>
+                    <AttributeAssignmentExpression>
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+<AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                            </Apply>
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">radiologist</AttributeValue>
+                        </Apply>
+                    </AttributeAssignmentExpression>
+                </AdviceExpression>
+            </AdviceExpressions>
+        </Rule>
+        <ObligationExpressions>
+            <ObligationExpression>
+                <AttributeAssignmentExpression>
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                        </Apply>
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">physician</AttributeValue>
+                    </Apply>
+                </AttributeAssignmentExpression>
+            </ObligationExpression>
+        </ObligationExpressions>
+        <AdviceExpressions>
+            <AdviceExpression>
+                <AttributeAssignmentExpression>
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+<AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:location" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                            </Apply>
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Europe</AttributeValue>
+                        </Apply>
+                    </Apply>
+                </AttributeAssignmentExpression>
+            </AdviceExpression>
+        </AdviceExpressions>
+    </Policy>
+    <Policy PolicyId="P2" RuleCombiningAlgId="permit-overrides">
+        <Target>
+            <AnyOf>
+                <AllOf>
+                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-greater-than">
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">write65</AttributeValue>
+                        <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:action" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                    </Match>
+                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-less-than">
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">patient-record93</AttributeValue>
+                        <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                    </Match>
+                </AllOf>
+            </AnyOf>
+        </Target>
+        <Rule Effect="Permit" RuleId="R2">
+            <Target/>
+            <Condition>
+                <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+                        <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                    </Apply>
+                    <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">radiologist</AttributeValue>
+                </Apply>
+            </Condition>
+            <ObligationExpressions>
+                <ObligationExpression>
+                    <AttributeAssignmentExpression>
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+<AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                            </Apply>
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">radiologist</AttributeValue>
+                        </Apply>
+                    </AttributeAssignmentExpression>
+                </ObligationExpression>
+            </ObligationExpressions>
+            <AdviceExpressions>
+                <AdviceExpression>
+                    <AttributeAssignmentExpression>
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+<AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                            </Apply>
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">administrator</AttributeValue>
+                        </Apply>
+                    </AttributeAssignmentExpression>
+                </AdviceExpression>
+            </AdviceExpressions>
+        </Rule>
+        <ObligationExpressions>
+            <ObligationExpression>
+                <AttributeAssignmentExpression>
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+<AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:hospital" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                            </Apply>
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Val-de-Grace</AttributeValue>
+                        </Apply>
+                    </Apply>
+                </AttributeAssignmentExpression>
+            </ObligationExpression>
+        </ObligationExpressions>
+        <AdviceExpressions>
+            <AdviceExpression>
+                <AttributeAssignmentExpression>
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+<AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:hospital" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                            </Apply>
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Val-de-Grace</AttributeValue>
+                        </Apply>
+                    </Apply>
+                </AttributeAssignmentExpression>
+            </AdviceExpression>
+        </AdviceExpressions>
+    </Policy>
+    <Policy PolicyId="P3" RuleCombiningAlgId="deny-overrides">
+        <Target/>
+        <Rule Effect="Permit" RuleId="R3">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">radiography81</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-greater-than-or-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">write104</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:action" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                        </Match>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-greater-than-or-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">radiography26</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+            <Condition>
+                <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:and">
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                        </Apply>
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">clinical-researcher</AttributeValue>
+                    </Apply>
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-confidentiality" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                        </Apply>
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">personal</AttributeValue>
+                    </Apply>
+                </Apply>
+            </Condition>
+            <ObligationExpressions>
+                <ObligationExpression>
+                    <AttributeAssignmentExpression>
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+<Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+    <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:hospital" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+</Apply>
+<AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Val-de-Grace</AttributeValue>
+                            </Apply>
+                        </Apply>
+                    </AttributeAssignmentExpression>
+                </ObligationExpression>
+            </ObligationExpressions>
+            <AdviceExpressions>
+                <AdviceExpression>
+                    <AttributeAssignmentExpression>
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+<Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+    <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:location" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+</Apply>
+<AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Europe</AttributeValue>
+                            </Apply>
+                        </Apply>
+                    </AttributeAssignmentExpression>
+                </AdviceExpression>
+            </AdviceExpressions>
+        </Rule>
+        <ObligationExpressions>
+            <ObligationExpression>
+                <AttributeAssignmentExpression>
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                        </Apply>
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">physician</AttributeValue>
+                    </Apply>
+                </AttributeAssignmentExpression>
+            </ObligationExpression>
+        </ObligationExpressions>
+        <AdviceExpressions>
+            <AdviceExpression>
+                <AttributeAssignmentExpression>
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                        </Apply>
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">radiologist</AttributeValue>
+                    </Apply>
+                </AttributeAssignmentExpression>
+            </AdviceExpression>
+        </AdviceExpressions>
+    </Policy>
+    <Policy PolicyId="P4" RuleCombiningAlgId="deny-overrides">
+        <Target>
+            <AnyOf>
+                <AllOf>
+                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-greater-than-or-equal">
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">read43</AttributeValue>
+                        <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:action" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                    </Match>
+                </AllOf>
+            </AnyOf>
+        </Target>
+        <Rule Effect="Deny" RuleId="R4">
+            <Target/>
+            <Condition>
+                <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+                        <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                    </Apply>
+                    <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">radiologist</AttributeValue>
+                </Apply>
+            </Condition>
+            <ObligationExpressions>
+                <ObligationExpression>
+                    <AttributeAssignmentExpression>
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+<AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                            </Apply>
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">administrator</AttributeValue>
+                        </Apply>
+                    </AttributeAssignmentExpression>
+                </ObligationExpression>
+            </ObligationExpressions>
+            <AdviceExpressions>
+                <AdviceExpression>
+                    <AttributeAssignmentExpression>
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+<AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                            </Apply>
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">physician</AttributeValue>
+                        </Apply>
+                    </AttributeAssignmentExpression>
+                </AdviceExpression>
+            </AdviceExpressions>
+        </Rule>
+        <ObligationExpressions>
+            <ObligationExpression>
+                <AttributeAssignmentExpression>
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                        </Apply>
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">physician</AttributeValue>
+                    </Apply>
+                </AttributeAssignmentExpression>
+            </ObligationExpression>
+        </ObligationExpressions>
+        <AdviceExpressions>
+            <AdviceExpression>
+                <AttributeAssignmentExpression>
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+<AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:hospital" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                            </Apply>
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Val-de-Grace</AttributeValue>
+                        </Apply>
+                    </Apply>
+                </AttributeAssignmentExpression>
+            </AdviceExpression>
+        </AdviceExpressions>
+    </Policy>
+    <Policy PolicyId="P5" RuleCombiningAlgId="permit-overrides">
+        <Target/>
+        <Rule Effect="Permit" RuleId="R5">
+            <Target/>
+            <Condition>
+                <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+                        <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                    </Apply>
+                    <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">physician</AttributeValue>
+                </Apply>
+            </Condition>
+            <ObligationExpressions>
+                <ObligationExpression>
+                    <AttributeAssignmentExpression>
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:and">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+<Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+    <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+</Apply>
+<AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">clinical-researcher</AttributeValue>
+                            </Apply>
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+<Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+    <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-confidentiality" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+</Apply>
+<AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">personal</AttributeValue>
+                            </Apply>
+                        </Apply>
+                    </AttributeAssignmentExpression>
+                </ObligationExpression>
+            </ObligationExpressions>
+            <AdviceExpressions>
+                <AdviceExpression>
+                    <AttributeAssignmentExpression>
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+<AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                            </Apply>
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">administrator</AttributeValue>
+                        </Apply>
+                    </AttributeAssignmentExpression>
+                </AdviceExpression>
+            </AdviceExpressions>
+        </Rule>
+        <ObligationExpressions>
+            <ObligationExpression>
+                <AttributeAssignmentExpression>
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                        </Apply>
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">radiologist</AttributeValue>
+                    </Apply>
+                </AttributeAssignmentExpression>
+            </ObligationExpression>
+        </ObligationExpressions>
+        <AdviceExpressions>
+            <AdviceExpression>
+                <AttributeAssignmentExpression>
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+<AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:location" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                            </Apply>
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Europe</AttributeValue>
+                        </Apply>
+                    </Apply>
+                </AttributeAssignmentExpression>
+            </AdviceExpression>
+        </AdviceExpressions>
+    </Policy>
+    <Policy PolicyId="P6" RuleCombiningAlgId="permit-overrides">
+        <Target/>
+        <Rule Effect="Deny" RuleId="R6">
+            <Target/>
+            <Condition>
+                <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+                        <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                    </Apply>
+                    <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">physician</AttributeValue>
+                </Apply>
+            </Condition>
+            <ObligationExpressions>
+                <ObligationExpression>
+                    <AttributeAssignmentExpression>
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:and">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+<Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+    <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+</Apply>
+<AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">clinical-researcher</AttributeValue>
+                            </Apply>
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+<Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+    <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-confidentiality" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+</Apply>
+<AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">personal</AttributeValue>
+                            </Apply>
+                        </Apply>
+                    </AttributeAssignmentExpression>
+                </ObligationExpression>
+            </ObligationExpressions>
+            <AdviceExpressions>
+                <AdviceExpression>
+                    <AttributeAssignmentExpression>
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+<Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+    <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:hospital" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+</Apply>
+<AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Val-de-Grace</AttributeValue>
+                            </Apply>
+                        </Apply>
+                    </AttributeAssignmentExpression>
+                </AdviceExpression>
+            </AdviceExpressions>
+        </Rule>
+        <ObligationExpressions>
+            <ObligationExpression>
+                <AttributeAssignmentExpression>
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                        </Apply>
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">administrator</AttributeValue>
+                    </Apply>
+                </AttributeAssignmentExpression>
+            </ObligationExpression>
+        </ObligationExpressions>
+        <AdviceExpressions>
+            <AdviceExpression>
+                <AttributeAssignmentExpression>
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                        </Apply>
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">physician</AttributeValue>
+                    </Apply>
+                </AttributeAssignmentExpression>
+            </AdviceExpression>
+        </AdviceExpressions>
+    </Policy>
+    <Policy PolicyId="P7" RuleCombiningAlgId="permit-overrides">
+        <Target/>
+        <Rule Effect="Permit" RuleId="R7">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">medical-file</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                        </Match>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-greater-than-or-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">read102</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:action" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-greater-than-or-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">patient-record19</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                        </Match>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-less-than">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">read38</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:action" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+            <Condition>
+                <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+                        <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                    </Apply>
+                    <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">radiologist</AttributeValue>
+                </Apply>
+            </Condition>
+            <ObligationExpressions>
+                <ObligationExpression>
+                    <AttributeAssignmentExpression>
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+<AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                            </Apply>
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">physician</AttributeValue>
+                        </Apply>
+                    </AttributeAssignmentExpression>
+                </ObligationExpression>
+            </ObligationExpressions>
+            <AdviceExpressions>
+                <AdviceExpression>
+                    <AttributeAssignmentExpression>
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+<AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                            </Apply>
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">administrator</AttributeValue>
+                        </Apply>
+                    </AttributeAssignmentExpression>
+                </AdviceExpression>
+            </AdviceExpressions>
+        </Rule>
+        <ObligationExpressions>
+            <ObligationExpression>
+                <AttributeAssignmentExpression>
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                        </Apply>
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">radiologist</AttributeValue>
+                    </Apply>
+                </AttributeAssignmentExpression>
+            </ObligationExpression>
+        </ObligationExpressions>
+        <AdviceExpressions>
+            <AdviceExpression>
+                <AttributeAssignmentExpression>
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                        </Apply>
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">administrator</AttributeValue>
+                    </Apply>
+                </AttributeAssignmentExpression>
+            </AdviceExpression>
+        </AdviceExpressions>
+    </Policy>
+    <Policy PolicyId="P8" RuleCombiningAlgId="deny-overrides">
+        <Target>
+            <AnyOf>
+                <AllOf>
+                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">radiography81</AttributeValue>
+                        <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                    </Match>
+                </AllOf>
+                <AllOf>
+                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-greater-than-or-equal">
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">write104</AttributeValue>
+                        <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:action" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                    </Match>
+                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-greater-than-or-equal">
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">radiography26</AttributeValue>
+                        <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                    </Match>
+                </AllOf>
+            </AnyOf>
+        </Target>
+        <Rule Effect="Permit" RuleId="R8">
+            <Target/>
+            <Condition>
+                <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+                        <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                    </Apply>
+                    <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">radiologist</AttributeValue>
+                </Apply>
+            </Condition>
+            <ObligationExpressions>
+                <ObligationExpression>
+                    <AttributeAssignmentExpression>
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:and">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+<Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+    <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+</Apply>
+<AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">clinical-researcher</AttributeValue>
+                            </Apply>
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+<Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+    <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-confidentiality" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+</Apply>
+<AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">personal</AttributeValue>
+                            </Apply>
+                        </Apply>
+                    </AttributeAssignmentExpression>
+                </ObligationExpression>
+            </ObligationExpressions>
+            <AdviceExpressions>
+                <AdviceExpression>
+                    <AttributeAssignmentExpression>
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+<AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                            </Apply>
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">administrator</AttributeValue>
+                        </Apply>
+                    </AttributeAssignmentExpression>
+                </AdviceExpression>
+            </AdviceExpressions>
+        </Rule>
+        <ObligationExpressions>
+            <ObligationExpression>
+                <AttributeAssignmentExpression>
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                        </Apply>
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">administrator</AttributeValue>
+                    </Apply>
+                </AttributeAssignmentExpression>
+            </ObligationExpression>
+        </ObligationExpressions>
+        <AdviceExpressions>
+            <AdviceExpression>
+                <AttributeAssignmentExpression>
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:and">
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+<AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                            </Apply>
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">clinical-researcher</AttributeValue>
+                        </Apply>
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+<AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-confidentiality" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                            </Apply>
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">personal</AttributeValue>
+                        </Apply>
+                    </Apply>
+                </AttributeAssignmentExpression>
+            </AdviceExpression>
+        </AdviceExpressions>
+    </Policy>
+    <Policy PolicyId="P9" RuleCombiningAlgId="permit-overrides">
+        <Target>
+            <AnyOf>
+                <AllOf>
+                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-less-than">
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">read52</AttributeValue>
+                        <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:action" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                    </Match>
+                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-less-than-or-equal">
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">radiography34</AttributeValue>
+                        <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                    </Match>
+                </AllOf>
+            </AnyOf>
+        </Target>
+        <Rule Effect="Permit" RuleId="R9">
+            <Target/>
+            <Condition>
+                <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:hospital" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                        </Apply>
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Val-de-Grace</AttributeValue>
+                    </Apply>
+                </Apply>
+            </Condition>
+            <ObligationExpressions>
+                <ObligationExpression>
+                    <AttributeAssignmentExpression>
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+<Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+    <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:hospital" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+</Apply>
+<AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Val-de-Grace</AttributeValue>
+                            </Apply>
+                        </Apply>
+                    </AttributeAssignmentExpression>
+                </ObligationExpression>
+            </ObligationExpressions>
+            <AdviceExpressions>
+                <AdviceExpression>
+                    <AttributeAssignmentExpression>
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+<AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                            </Apply>
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">physician</AttributeValue>
+                        </Apply>
+                    </AttributeAssignmentExpression>
+                </AdviceExpression>
+            </AdviceExpressions>
+        </Rule>
+        <ObligationExpressions>
+            <ObligationExpression>
+                <AttributeAssignmentExpression>
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+<AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:hospital" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                            </Apply>
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Val-de-Grace</AttributeValue>
+                        </Apply>
+                    </Apply>
+                </AttributeAssignmentExpression>
+            </ObligationExpression>
+        </ObligationExpressions>
+        <AdviceExpressions>
+            <AdviceExpression>
+                <AttributeAssignmentExpression>
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+<AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:location" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                            </Apply>
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Europe</AttributeValue>
+                        </Apply>
+                    </Apply>
+                </AttributeAssignmentExpression>
+            </AdviceExpression>
+        </AdviceExpressions>
+    </Policy>
+    <Policy PolicyId="P10" RuleCombiningAlgId="permit-overrides">
+        <Target>
+            <AnyOf>
+                <AllOf>
+                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-less-than-or-equal">
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">patient-record107</AttributeValue>
+                        <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                    </Match>
+                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-greater-than-or-equal">
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">read41</AttributeValue>
+                        <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:action" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                    </Match>
+                </AllOf>
+            </AnyOf>
+        </Target>
+        <Rule Effect="Permit" RuleId="R10">
+            <Target/>
+            <Condition>
+                <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:location" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                        </Apply>
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Europe</AttributeValue>
+                    </Apply>
+                </Apply>
+            </Condition>
+            <ObligationExpressions>
+                <ObligationExpression>
+                    <AttributeAssignmentExpression>
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+<Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+    <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:hospital" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+</Apply>
+<AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Val-de-Grace</AttributeValue>
+                            </Apply>
+                        </Apply>
+                    </AttributeAssignmentExpression>
+                </ObligationExpression>
+            </ObligationExpressions>
+            <AdviceExpressions>
+                <AdviceExpression>
+                    <AttributeAssignmentExpression>
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+<AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                            </Apply>
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">administrator</AttributeValue>
+                        </Apply>
+                    </AttributeAssignmentExpression>
+                </AdviceExpression>
+            </AdviceExpressions>
+        </Rule>
+        <ObligationExpressions>
+            <ObligationExpression>
+                <AttributeAssignmentExpression>
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+<AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:hospital" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                            </Apply>
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Val-de-Grace</AttributeValue>
+                        </Apply>
+                    </Apply>
+                </AttributeAssignmentExpression>
+            </ObligationExpression>
+        </ObligationExpressions>
+        <AdviceExpressions>
+            <AdviceExpression>
+                <AttributeAssignmentExpression>
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                        </Apply>
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">radiologist</AttributeValue>
+                    </Apply>
+                </AttributeAssignmentExpression>
+            </AdviceExpression>
+        </AdviceExpressions>
+    </Policy>
+    <Policy PolicyId="P11" RuleCombiningAlgId="deny-overrides">
+        <Target/>
+        <Rule Effect="Permit" RuleId="R11">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-greater-than-or-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">write22</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:action" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                        </Match>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-less-than">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">write3</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:action" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+            <Condition>
+                <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+                        <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                    </Apply>
+                    <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">physician</AttributeValue>
+                </Apply>
+            </Condition>
+            <ObligationExpressions>
+                <ObligationExpression>
+                    <AttributeAssignmentExpression>
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:and">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+<Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+    <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+</Apply>
+<AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">clinical-researcher</AttributeValue>
+                            </Apply>
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+<Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+    <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-confidentiality" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+</Apply>
+<AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">personal</AttributeValue>
+                            </Apply>
+                        </Apply>
+                    </AttributeAssignmentExpression>
+                </ObligationExpression>
+            </ObligationExpressions>
+            <AdviceExpressions>
+                <AdviceExpression>
+                    <AttributeAssignmentExpression>
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+<Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+    <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:location" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+</Apply>
+<AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Europe</AttributeValue>
+                            </Apply>
+                        </Apply>
+                    </AttributeAssignmentExpression>
+                </AdviceExpression>
+            </AdviceExpressions>
+        </Rule>
+        <ObligationExpressions>
+            <ObligationExpression>
+                <AttributeAssignmentExpression>
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                        </Apply>
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">radiologist</AttributeValue>
+                    </Apply>
+                </AttributeAssignmentExpression>
+            </ObligationExpression>
+        </ObligationExpressions>
+        <AdviceExpressions>
+            <AdviceExpression>
+                <AttributeAssignmentExpression>
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+<AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:hospital" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                            </Apply>
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Val-de-Grace</AttributeValue>
+                        </Apply>
+                    </Apply>
+                </AttributeAssignmentExpression>
+            </AdviceExpression>
+        </AdviceExpressions>
+    </Policy>
+    <Policy PolicyId="P12" RuleCombiningAlgId="permit-overrides">
+        <Target/>
+        <Rule Effect="Permit" RuleId="R12">
+            <Target/>
+            <Condition>
+                <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+                        <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                    </Apply>
+                    <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">radiologist</AttributeValue>
+                </Apply>
+            </Condition>
+            <ObligationExpressions>
+                <ObligationExpression>
+                    <AttributeAssignmentExpression>
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+<AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                            </Apply>
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">radiologist</AttributeValue>
+                        </Apply>
+                    </AttributeAssignmentExpression>
+                </ObligationExpression>
+            </ObligationExpressions>
+            <AdviceExpressions>
+                <AdviceExpression>
+                    <AttributeAssignmentExpression>
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+<Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+    <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:hospital" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+</Apply>
+<AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Val-de-Grace</AttributeValue>
+                            </Apply>
+                        </Apply>
+                    </AttributeAssignmentExpression>
+                </AdviceExpression>
+            </AdviceExpressions>
+        </Rule>
+        <ObligationExpressions>
+            <ObligationExpression>
+                <AttributeAssignmentExpression>
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:and">
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+<AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                            </Apply>
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">clinical-researcher</AttributeValue>
+                        </Apply>
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+<AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-confidentiality" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                            </Apply>
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">personal</AttributeValue>
+                        </Apply>
+                    </Apply>
+                </AttributeAssignmentExpression>
+            </ObligationExpression>
+        </ObligationExpressions>
+        <AdviceExpressions>
+            <AdviceExpression>
+                <AttributeAssignmentExpression>
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+<AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:hospital" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                            </Apply>
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Val-de-Grace</AttributeValue>
+                        </Apply>
+                    </Apply>
+                </AttributeAssignmentExpression>
+            </AdviceExpression>
+        </AdviceExpressions>
+    </Policy>
+    <Policy PolicyId="P13" RuleCombiningAlgId="deny-overrides">
+        <Target>
+            <AnyOf>
+                <AllOf>
+                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-less-than">
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">medical-file21</AttributeValue>
+                        <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                    </Match>
+                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-greater-than-or-equal">
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">medical-file22</AttributeValue>
+                        <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                    </Match>
+                </AllOf>
+                <AllOf>
+                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-greater-than-or-equal">
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">patient-record80</AttributeValue>
+                        <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                    </Match>
+                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-greater-than-or-equal">
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">patient-record</AttributeValue>
+                        <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                    </Match>
+                </AllOf>
+            </AnyOf>
+        </Target>
+        <Rule Effect="Deny" RuleId="R13">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-less-than">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">medical-file21</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                        </Match>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-greater-than-or-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">medical-file22</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-greater-than">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">radiography47</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                        </Match>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">patient-record38</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+            <Condition>
+                <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+                        <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                    </Apply>
+                    <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">administrator</AttributeValue>
+                </Apply>
+            </Condition>
+            <ObligationExpressions>
+                <ObligationExpression>
+                    <AttributeAssignmentExpression>
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+<Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+    <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:hospital" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+</Apply>
+<AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Val-de-Grace</AttributeValue>
+                            </Apply>
+                        </Apply>
+                    </AttributeAssignmentExpression>
+                </ObligationExpression>
+            </ObligationExpressions>
+            <AdviceExpressions>
+                <AdviceExpression>
+                    <AttributeAssignmentExpression>
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+<AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                            </Apply>
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">administrator</AttributeValue>
+                        </Apply>
+                    </AttributeAssignmentExpression>
+                </AdviceExpression>
+            </AdviceExpressions>
+        </Rule>
+        <ObligationExpressions>
+            <ObligationExpression>
+                <AttributeAssignmentExpression>
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+<AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:location" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                            </Apply>
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Europe</AttributeValue>
+                        </Apply>
+                    </Apply>
+                </AttributeAssignmentExpression>
+            </ObligationExpression>
+        </ObligationExpressions>
+        <AdviceExpressions>
+            <AdviceExpression>
+                <AttributeAssignmentExpression>
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                        </Apply>
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">radiologist</AttributeValue>
+                    </Apply>
+                </AttributeAssignmentExpression>
+            </AdviceExpression>
+        </AdviceExpressions>
+    </Policy>
+    <Policy PolicyId="P14" RuleCombiningAlgId="permit-overrides">
+        <Target>
+            <AnyOf>
+                <AllOf>
+                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-greater-than-or-equal">
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">patient-record71</AttributeValue>
+                        <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                    </Match>
+                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">patient-record118</AttributeValue>
+                        <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                    </Match>
+                </AllOf>
+                <AllOf>
+                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-greater-than">
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">patient-record25</AttributeValue>
+                        <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                    </Match>
+                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-less-than">
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">read93</AttributeValue>
+                        <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:action" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+						
+
+                    </Match>
+                </AllOf>
+            </AnyOf>
+        </Target>
+        <Rule Effect="Permit" RuleId="R14">
+            <Target/>
+            <Condition>
+                <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:hospital" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                        </Apply>
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Val-de-Grace</AttributeValue>
+                    </Apply>
+                </Apply>
+            </Condition>
+            <ObligationExpressions>
+                <ObligationExpression>
+                    <AttributeAssignmentExpression>
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+<AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                            </Apply>
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">physician</AttributeValue>
+                        </Apply>
+                    </AttributeAssignmentExpression>
+                </ObligationExpression>
+            </ObligationExpressions>
+            <AdviceExpressions>
+                <AdviceExpression>
+                    <AttributeAssignmentExpression>
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+<AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                            </Apply>
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">physician</AttributeValue>
+                        </Apply>
+                    </AttributeAssignmentExpression>
+                </AdviceExpression>
+            </AdviceExpressions>
+        </Rule>
+        <ObligationExpressions>
+            <ObligationExpression>
+                <AttributeAssignmentExpression>
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                        </Apply>
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">physician</AttributeValue>
+                    </Apply>
+                </AttributeAssignmentExpression>
+            </ObligationExpression>
+        </ObligationExpressions>
+        <AdviceExpressions>
+            <AdviceExpression>
+                <AttributeAssignmentExpression>
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                        </Apply>
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">administrator</AttributeValue>
+                    </Apply>
+                </AttributeAssignmentExpression>
+            </AdviceExpression>
+        </AdviceExpressions>
+    </Policy>
+    <Policy PolicyId="P15" RuleCombiningAlgId="deny-overrides">
+        <Target>
+            <AnyOf>
+                <AllOf>
+                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-less-than-or-equal">
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">write5</AttributeValue>
+                        <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:action" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                    </Match>
+                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-less-than-or-equal">
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">read9</AttributeValue>
+                        <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:action" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                    </Match>
+                </AllOf>
+            </AnyOf>
+        </Target>
+        <Rule Effect="Permit" RuleId="R15">
+            <Target/>
+            <Condition>
+                <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+                        <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                    </Apply>
+                    <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">radiologist</AttributeValue>
+                </Apply>
+            </Condition>
+            <ObligationExpressions>
+                <ObligationExpression>
+                    <AttributeAssignmentExpression>
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+<Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+    <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:hospital" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+</Apply>
+<AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Val-de-Grace</AttributeValue>
+                            </Apply>
+                        </Apply>
+                    </AttributeAssignmentExpression>
+                </ObligationExpression>
+            </ObligationExpressions>
+            <AdviceExpressions>
+                <AdviceExpression>
+                    <AttributeAssignmentExpression>
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+<Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+    <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:location" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+</Apply>
+<AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Europe</AttributeValue>
+                            </Apply>
+                        </Apply>
+                    </AttributeAssignmentExpression>
+                </AdviceExpression>
+            </AdviceExpressions>
+        </Rule>
+        <ObligationExpressions>
+            <ObligationExpression>
+                <AttributeAssignmentExpression>
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+<AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:hospital" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                            </Apply>
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Val-de-Grace</AttributeValue>
+                        </Apply>
+                    </Apply>
+                </AttributeAssignmentExpression>
+            </ObligationExpression>
+        </ObligationExpressions>
+        <AdviceExpressions>
+            <AdviceExpression>
+                <AttributeAssignmentExpression>
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:and">
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+<AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                            </Apply>
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">clinical-researcher</AttributeValue>
+                        </Apply>
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+<AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-confidentiality" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                            </Apply>
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">personal</AttributeValue>
+                        </Apply>
+                    </Apply>
+                </AttributeAssignmentExpression>
+            </AdviceExpression>
+        </AdviceExpressions>
+    </Policy>
+    <Policy PolicyId="P16" RuleCombiningAlgId="deny-overrides">
+        <Target>
+            <AnyOf>
+                <AllOf>
+                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-less-than-or-equal">
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">medical-file20</AttributeValue>
+                        <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                    </Match>
+                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-less-than">
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">read21</AttributeValue>
+                        <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:action" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                    </Match>
+                </AllOf>
+                <AllOf>
+                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-less-than-or-equal">
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">medical-file65</AttributeValue>
+                        <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                    </Match>
+                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-less-than">
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">read50</AttributeValue>
+                        <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:action" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                    </Match>
+                </AllOf>
+            </AnyOf>
+        </Target>
+        <Rule Effect="Permit" RuleId="R16">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-greater-than-or-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">write104</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:action" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                        </Match>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-greater-than-or-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">radiography26</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+            <Condition>
+                <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:and">
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                        </Apply>
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">clinical-researcher</AttributeValue>
+                    </Apply>
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-confidentiality" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                        </Apply>
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">personal</AttributeValue>
+                    </Apply>
+                </Apply>
+            </Condition>
+            <ObligationExpressions>
+                <ObligationExpression>
+                    <AttributeAssignmentExpression>
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+<AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                            </Apply>
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">administrator</AttributeValue>
+                        </Apply>
+                    </AttributeAssignmentExpression>
+                </ObligationExpression>
+            </ObligationExpressions>
+            <AdviceExpressions>
+                <AdviceExpression>
+                    <AttributeAssignmentExpression>
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+<AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                            </Apply>
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">radiologist</AttributeValue>
+                        </Apply>
+                    </AttributeAssignmentExpression>
+                </AdviceExpression>
+            </AdviceExpressions>
+        </Rule>
+        <ObligationExpressions>
+            <ObligationExpression>
+                <AttributeAssignmentExpression>
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                        </Apply>
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">administrator</AttributeValue>
+                    </Apply>
+                </AttributeAssignmentExpression>
+            </ObligationExpression>
+        </ObligationExpressions>
+        <AdviceExpressions>
+            <AdviceExpression>
+                <AttributeAssignmentExpression>
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:and">
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+<AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                            </Apply>
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">clinical-researcher</AttributeValue>
+                        </Apply>
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+<AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-confidentiality" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                            </Apply>
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">personal</AttributeValue>
+                        </Apply>
+                    </Apply>
+                </AttributeAssignmentExpression>
+            </AdviceExpression>
+        </AdviceExpressions>
+    </Policy>
+    <Policy PolicyId="P17" RuleCombiningAlgId="permit-overrides">
+        <Target>
+            <AnyOf>
+                <AllOf>
+                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-greater-than-or-equal">
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">read43</AttributeValue>
+                        <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:action" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                    </Match>
+                </AllOf>
+            </AnyOf>
+        </Target>
+        <Rule Effect="Deny" RuleId="R17">
+            <Target/>
+            <Condition>
+                <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:location" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                        </Apply>
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Europe</AttributeValue>
+                    </Apply>
+                </Apply>
+            </Condition>
+            <ObligationExpressions>
+                <ObligationExpression>
+                    <AttributeAssignmentExpression>
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+<Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+    <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:location" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+</Apply>
+<AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Europe</AttributeValue>
+                            </Apply>
+                        </Apply>
+                    </AttributeAssignmentExpression>
+                </ObligationExpression>
+            </ObligationExpressions>
+            <AdviceExpressions>
+                <AdviceExpression>
+                    <AttributeAssignmentExpression>
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+<Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+    <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:hospital" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+</Apply>
+<AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Val-de-Grace</AttributeValue>
+                            </Apply>
+                        </Apply>
+                    </AttributeAssignmentExpression>
+                </AdviceExpression>
+            </AdviceExpressions>
+        </Rule>
+        <ObligationExpressions>
+            <ObligationExpression>
+                <AttributeAssignmentExpression>
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+<AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:hospital" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                            </Apply>
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Val-de-Grace</AttributeValue>
+                        </Apply>
+                    </Apply>
+                </AttributeAssignmentExpression>
+            </ObligationExpression>
+        </ObligationExpressions>
+        <AdviceExpressions>
+            <AdviceExpression>
+                <AttributeAssignmentExpression>
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+<AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:location" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                            </Apply>
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Europe</AttributeValue>
+                        </Apply>
+                    </Apply>
+                </AttributeAssignmentExpression>
+            </AdviceExpression>
+        </AdviceExpressions>
+    </Policy>
+    <Policy PolicyId="P18" RuleCombiningAlgId="permit-overrides">
+        <Target>
+            <AnyOf>
+                <AllOf>
+                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">read28</AttributeValue>
+                        <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:action" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                    </Match>
+                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">radiography10</AttributeValue>
+                        <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                    </Match>
+                </AllOf>
+            </AnyOf>
+        </Target>
+        <Rule Effect="Permit" RuleId="R18">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-greater-than">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">patient-record85</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-less-than-or-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">medical-file20</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                        </Match>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-less-than">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">read21</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:action" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+            <Condition>
+                <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:hospital" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                        </Apply>
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Val-de-Grace</AttributeValue>
+                    </Apply>
+                </Apply>
+            </Condition>
+            <ObligationExpressions>
+                <ObligationExpression>
+                    <AttributeAssignmentExpression>
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+<AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                            </Apply>
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">physician</AttributeValue>
+                        </Apply>
+                    </AttributeAssignmentExpression>
+                </ObligationExpression>
+            </ObligationExpressions>
+            <AdviceExpressions>
+                <AdviceExpression>
+                    <AttributeAssignmentExpression>
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+<AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                            </Apply>
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">physician</AttributeValue>
+                        </Apply>
+                    </AttributeAssignmentExpression>
+                </AdviceExpression>
+            </AdviceExpressions>
+        </Rule>
+        <ObligationExpressions>
+            <ObligationExpression>
+                <AttributeAssignmentExpression>
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+<AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:location" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                            </Apply>
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Europe</AttributeValue>
+                        </Apply>
+                    </Apply>
+                </AttributeAssignmentExpression>
+            </ObligationExpression>
+        </ObligationExpressions>
+        <AdviceExpressions>
+            <AdviceExpression>
+                <AttributeAssignmentExpression>
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:and">
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+<AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                            </Apply>
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">clinical-researcher</AttributeValue>
+                        </Apply>
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+<AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-confidentiality" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                            </Apply>
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">personal</AttributeValue>
+                        </Apply>
+                    </Apply>
+                </AttributeAssignmentExpression>
+            </AdviceExpression>
+        </AdviceExpressions>
+    </Policy>
+    <Policy PolicyId="P19" RuleCombiningAlgId="permit-overrides">
+        <Target>
+            <AnyOf>
+                <AllOf>
+                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-less-than-or-equal">
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">patient-record108</AttributeValue>
+                        <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                    </Match>
+                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">patient-record</AttributeValue>
+                        <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                    </Match>
+                </AllOf>
+            </AnyOf>
+        </Target>
+        <Rule Effect="Permit" RuleId="R19">
+            <Target/>
+            <Condition>
+                <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:and">
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                        </Apply>
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">clinical-researcher</AttributeValue>
+                    </Apply>
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-confidentiality" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                        </Apply>
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">personal</AttributeValue>
+                    </Apply>
+                </Apply>
+            </Condition>
+            <ObligationExpressions>
+                <ObligationExpression>
+                    <AttributeAssignmentExpression>
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+<AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                            </Apply>
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">radiologist</AttributeValue>
+                        </Apply>
+                    </AttributeAssignmentExpression>
+                </ObligationExpression>
+            </ObligationExpressions>
+            <AdviceExpressions>
+                <AdviceExpression>
+                    <AttributeAssignmentExpression>
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+<AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                            </Apply>
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">radiologist</AttributeValue>
+                        </Apply>
+                    </AttributeAssignmentExpression>
+                </AdviceExpression>
+            </AdviceExpressions>
+        </Rule>
+        <ObligationExpressions>
+            <ObligationExpression>
+                <AttributeAssignmentExpression>
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                        </Apply>
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">physician</AttributeValue>
+                    </Apply>
+                </AttributeAssignmentExpression>
+            </ObligationExpression>
+        </ObligationExpressions>
+        <AdviceExpressions>
+            <AdviceExpression>
+                <AttributeAssignmentExpression>
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                        </Apply>
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">administrator</AttributeValue>
+                    </Apply>
+                </AttributeAssignmentExpression>
+            </AdviceExpression>
+        </AdviceExpressions>
+    </Policy>
+    <Policy PolicyId="P20" RuleCombiningAlgId="permit-overrides">
+        <Target/>
+        <Rule Effect="Permit" RuleId="R20">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-greater-than">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">read55</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:action" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+            <Condition>
+                <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:hospital" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                        </Apply>
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Val-de-Grace</AttributeValue>
+                    </Apply>
+                </Apply>
+            </Condition>
+            <ObligationExpressions>
+                <ObligationExpression>
+                    <AttributeAssignmentExpression>
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+<AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                            </Apply>
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">radiologist</AttributeValue>
+                        </Apply>
+                    </AttributeAssignmentExpression>
+                </ObligationExpression>
+            </ObligationExpressions>
+            <AdviceExpressions>
+                <AdviceExpression>
+                    <AttributeAssignmentExpression>
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+<AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                            </Apply>
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">administrator</AttributeValue>
+                        </Apply>
+                    </AttributeAssignmentExpression>
+                </AdviceExpression>
+            </AdviceExpressions>
+        </Rule>
+        <ObligationExpressions>
+            <ObligationExpression>
+                <AttributeAssignmentExpression>
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:and">
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+<AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                            </Apply>
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">clinical-researcher</AttributeValue>
+                        </Apply>
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+<AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-confidentiality" Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                            </Apply>
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">personal</AttributeValue>
+                        </Apply>
+                    </Apply>
+                </AttributeAssignmentExpression>
+            </ObligationExpression>
+        </ObligationExpressions>
+        <AdviceExpressions>
+            <AdviceExpression>
+                <AttributeAssignmentExpression>
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+<AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:2.0:subject:location" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                            </Apply>
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Europe</AttributeValue>
+                        </Apply>
+                    </Apply>
+                </AttributeAssignmentExpression>
+            </AdviceExpression>
+        </AdviceExpressions>
+    </Policy>
+    
+</PolicySet>
+
+```
+*****************************************
+**Example 6: mCRL2 specifications**
+
+```
+sort SAtt = struct attribute(name:SAttName, value:SAttValue);
+sort SAttName = struct hospital|role|location;
+sort SAttValue = struct ValdeGrace|clinicalresearcher|radiologist|physician|Europe|administrator;
+sort OAtt = struct attribute(name:OAttName, value:OAttValue);
+sort OAttName = struct resourceid|resourceconfidentiality;
+sort OAttValue = struct 
+				medicalfile20|
+				medicalfile65|
+				personal|
+				patientrecord93|
+				radiography81|
+				radiography26|
+				medicalfile|
+				patientrecord19|
+				radiography34|
+				patientrecord107|
+				medicalfile21|
+				medicalfile22|
+				patientrecord80|
+				patientrecord|
+				radiography47|
+				patientrecord38|
+				patientrecord71|
+				patientrecord118|
+				patientrecord25|
+				radiography10|
+				patientrecord85|
+				patientrecord108;
+		
+sort AAtt = struct attribute(name:AAttName, value:AAttValue);
+sort AAttName = struct actionid;
+sort AAttValue = struct read21|read50|write65|write104|read43|read102|read38|read52|read41|write22|write3|read93|write5|read9|read28|read55;
+sort Decision = struct Permit | Deny;
+
+act
+	Request:FSet(SAtt)#FSet(OAtt)#FSet(AAtt);
+	Response:FSet(SAtt)#FSet(OAtt)#FSet(AAtt)#Decision;
+
+proc			
+	PolicySet_root_ps(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt)) = 
+		Policy_P1(RS,RO,RA)
+		+	
+		(
+			(
+				(attribute(actionid,write65) in RA) 
+				&&
+				(attribute(resourceid,patientrecord93) in RO)
+			)	
+		)->	Policy_P2(RS,RO,RA)
+		+	
+		Policy_P3(RS,RO,RA)
+		+	
+		(
+			(
+				(attribute(actionid,read43) in RA)
+			)	
+		)-> Policy_P4(RS,RO,RA)
+		+	
+		Policy_P5(RS,RO,RA)
+		+	
+		Policy_P6(RS,RO,RA)
+		+	
+		Policy_P7(RS,RO,RA)
+		+	
+		(
+			(
+				(attribute(resourceid,radiography81) in RO)
+			)	
+			||
+			(
+				(attribute(actionid,write104) in RA) 
+				&&
+				(attribute(resourceid,radiography26) in RO)
+			)	
+		)->	Policy_P8(RS,RO,RA)
+		+	
+		(
+			(
+				(attribute(actionid,read52) in RA) 
+				&&
+				(attribute(resourceid,radiography34) in RO)
+			)	
+		)->	Policy_P9(RS,RO,RA)
+		+	
+		(
+			(
+				(attribute(resourceid,patientrecord107) in RO) 
+				&&
+				(attribute(actionid,read41) in RA)
+			)	
+				
+		)->	Policy_P10(RS,RO,RA)
+		+	
+		Policy_P11(RS,RO,RA)
+		+	
+		Policy_P12(RS,RO,RA)
+		+	
+		(
+			(
+				(attribute(resourceid, medicalfile21) in RO) 
+				&&
+				(attribute(resourceid,medicalfile22) in RO)
+			)	
+			||
+			(
+				(attribute(resourceid,patientrecord80) in RO) 
+				&&
+				(attribute(resourceid,patientrecord) in RO)
+			)	
+		)->	Policy_P13(RS,RO,RA)
+		+	
+		(
+			(
+				(attribute(resourceid, patientrecord71) in RO) 
+				&&
+				(attribute(resourceid,patientrecord118) in RO)
+			)	
+			||
+			(
+				(attribute(resourceid,patientrecord25) in RO) 
+				&&
+				(attribute(actionid,read93) in RA)
+			)	
+		)->	Policy_P14(RS,RO,RA)
+		+	
+		(
+			(
+				(attribute(actionid,write5) in RA) 
+				&&
+				(attribute(actionid,read9) in RA)
+			)	
+		)->	Policy_P15(RS,RO,RA)
+		+	
+		(
+			(
+				(attribute(resourceid, medicalfile20) in RO) 
+				&&
+				(attribute(actionid,read21) in RA)
+			)	
+			||
+			(
+				(attribute(resourceid,medicalfile65) in RO) 
+				&&
+				(attribute(actionid,read50) in RA)
+			)	
+		)->	Policy_P16(RS,RO,RA)
+		+	
+		(
+			(
+				(attribute(actionid,read43) in RA)
+			)	
+		)->	Policy_P17(RS,RO,RA)
+		+	
+		(
+			(
+				(attribute(actionid,read28) in RA) 
+				&&
+				(attribute(resourceid,radiography10) in RO)
+			)	
+		)->	Policy_P18(RS,RO,RA)
+		+	
+		(
+			(
+				(attribute(resourceid,patientrecord108) in RO) 
+				&&
+				(attribute(resourceid,patientrecord) in RO)
+			)	
+		)->	Policy_P19(RS,RO,RA)
+		+	
+		Policy_P20(RS,RO,RA);	
+			
+	Policy_P1(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	
+		(	
+			(
+				(attribute(resourceid,medicalfile20) in RO) 
+				&&
+				(attribute(actionid, read21) in RA) 
+			)			
+			||
+			(
+				(attribute(resourceid,medicalfile65) in RO) 
+				&&
+				(attribute(actionid,read50) in RA) 
+			)		
+		)->	Rule_R1(RS,RO,RA);
+				
+	Policy_P2(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	Rule_R2(RS,RO,RA);
+				
+	Policy_P3(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	
+		(	
+			(
+				(attribute(resourceid, radiography81) in RO) 
+			)			
+			||
+			(
+				(attribute(actionid,write104) in RA) 
+				&&
+				(attribute(resourceid,radiography26) in RO) 
+			)		
+		)->	Rule_R3(RS,RO,RA);
+				
+	Policy_P4(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	Rule_R4(RS,RO,RA);
+				
+	Policy_P5(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	Rule_R5(RS,RO,RA);
+				
+	Policy_P6(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	Rule_R6(RS,RO,RA);
+				
+	Policy_P7(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	
+		(	
+			(
+				(attribute(resourceid,medicalfile) in RO) 
+				&&
+				(attribute(actionid, read102) in RA) 
+			)			
+			||
+			(
+				(attribute(resourceid,patientrecord19) in RO) 
+				&&
+				(attribute(actionid,read38) in RA) 
+			)		
+		)->	Rule_R7(RS,RO,RA);
+				
+	Policy_P8(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	Rule_R8(RS,RO,RA);
+				
+	Policy_P9(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	Rule_R9(RS,RO,RA);
+				
+	Policy_P10(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))= Rule_R10(RS,RO,RA);
+				
+	Policy_P11(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	
+		(	
+			(
+				(attribute(actionid,write22) in RA) 
+				&&
+				(attribute(actionid,write3) in RA) 
+			)		
+		)->	Rule_R11(RS,RO,RA);
+				
+	Policy_P12(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))= Rule_R12(RS,RO,RA);
+				
+	Policy_P13(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	
+		(	
+			(
+				(attribute(resourceid,medicalfile21) in RO) 
+				&&
+				(attribute(resourceid, medicalfile22) in RO) 
+			)			
+			||
+			(
+				(attribute(resourceid,radiography47) in RO) 
+				&&
+				(attribute(resourceid,patientrecord38) in RO) 
+			)		
+		)->	Rule_R13(RS,RO,RA);
+				
+	Policy_P14(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))= Rule_R14(RS,RO,RA);
+				
+	Policy_P15(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))= Rule_R15(RS,RO,RA);
+				
+	Policy_P16(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	
+		(	
+			(
+				(attribute(actionid,write104) in RA) 
+				&&
+				(attribute(resourceid,radiography26) in RO)
+			)		
+		)->	Rule_R16(RS,RO,RA);
+				
+	Policy_P17(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))= Rule_R17(RS,RO,RA);
+				
+	Policy_P18(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	
+		(	
+			(
+				(attribute(resourceid, patientrecord85) in RO) 
+			)			
+			||
+			(
+				(attribute(resourceid,medicalfile20) in RO) 
+				&&
+				(attribute(actionid,read21) in RA) 
+			)		
+		)->	Rule_R18(RS,RO,RA);
+				
+	Policy_P19(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))= Rule_R19(RS,RO,RA);
+				
+	Policy_P20(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	
+		(	
+			(
+				(attribute(actionid,read55) in RA) 
+			)		
+		)->	Rule_R20(RS,RO,RA);
+					
+	Rule_R1(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+		!(attribute(hospital, ValdeGrace) in RS)-> Response(RS,RO,RA,Permit);
+			
+	Rule_R2(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+		(attribute(role, radiologist) in RS)-> Response(RS,RO,RA,Permit);
+			
+	Rule_R3(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+		(
+			(attribute(role, clinicalresearcher) in RS) 
+			&&
+			(attribute(resourceconfidentiality, personal) in RO) 
+		)-> Response(RS,RO,RA,Permit);
+			
+	Rule_R4(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+		(attribute(role, radiologist) in RS)-> Response(RS,RO,RA,Deny);
+			
+	Rule_R5(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+		(attribute(role, physician) in RS)-> Response(RS,RO,RA,Permit);
+			
+	Rule_R6(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+		(attribute(role, physician) in RS)-> Response(RS,RO,RA,Deny);
+			
+	Rule_R7(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+		(attribute(role, radiologist) in RS)-> Response(RS,RO,RA,Permit);
+			
+	Rule_R8(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+		(attribute(role, radiologist) in RS)-> Response(RS,RO,RA,Permit);
+			
+	Rule_R9(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))= 
+		!(attribute(hospital, ValdeGrace) in RS)-> Response(RS,RO,RA,Permit);
+			
+	Rule_R10(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))= 
+		!(attribute(location, Europe) in RS)-> Response(RS,RO,RA,Permit);
+			
+	Rule_R11(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+		(attribute(role, physician) in RS)-> Response(RS,RO,RA,Permit);
+			
+	Rule_R12(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+		(attribute(role, radiologist) in RS)-> Response(RS,RO,RA,Permit);
+			
+	Rule_R13(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+		(attribute(role, administrator) in RS)-> Response(RS,RO,RA,Deny);
+			
+	Rule_R14(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+		!(attribute(hospital, ValdeGrace) in RS)-> Response(RS,RO,RA,Permit);
+			
+	Rule_R15(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+		(attribute(role, radiologist) in RS)-> Response(RS,RO,RA,Permit);
+			
+	Rule_R16(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+		(
+			(attribute(role, clinicalresearcher) in RS) 
+			&&
+			(attribute(resourceconfidentiality, personal) in RO) 
+		)-> Response(RS,RO,RA,Permit);
+			
+	Rule_R17(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+		!(attribute(location, Europe) in RS)-> Response(RS,RO,RA,Deny);
+			
+	Rule_R18(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+		!(attribute(hospital, ValdeGrace) in RS)-> Response(RS,RO,RA,Permit);
+			
+	Rule_R19(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+		(
+			(attribute(role, clinicalresearcher) in RS) 
+			&&
+			(attribute(resourceconfidentiality, personal) in RO) 
+		)-> Response(RS,RO,RA,Permit);
+			
+	Rule_R20(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+		!(attribute(hospital, ValdeGrace) in RS)-> Response(RS,RO,RA,Permit);
+		
+init sum RS:FSet(SAtt).sum RO:FSet(OAtt).sum RA:FSet(AAtt).(RS !={} && RO !={} && RA !={})-> Request(RS,RO,RA).PolicySet_root_ps(RS,RO,RA);
+
+```
+
+***************************************
