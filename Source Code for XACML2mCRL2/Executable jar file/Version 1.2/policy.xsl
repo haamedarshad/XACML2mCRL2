@@ -175,13 +175,13 @@
 	<xsl:template name="ANDinCondition">
 	<xsl:param name="attname"/>	
 		(
-		<xsl:for-each select = "xacml:Condition/xacml:Apply/xacml:Apply/xacml:Apply/xacml:AttributeDesignator">        
+		<xsl:for-each select = "xacml:Condition/xacml:Apply/xacml:Apply/xacml:Apply">        
 			<xsl:if test="position() != last()">
-				(attribute(<xsl:call-template name="getName"><xsl:with-param name="attname" select="translate(@AttributeId,'-','')"/></xsl:call-template><xsl:value-of select = "$attname"/>, <xsl:value-of select = "translate(../../xacml:AttributeValue,'- :/.','')"/>) in 
+				(attribute(<xsl:call-template name="getName"><xsl:with-param name="attname" select="translate(xacml:AttributeDesignator/@AttributeId,'-','')"/></xsl:call-template><xsl:value-of select = "$attname"/>, <xsl:value-of select = "translate(../xacml:AttributeValue,'- :/.','')"/>) in 
 				<xsl:call-template name="CategoryFunction"/> &amp;&amp;
 			</xsl:if>
 			<xsl:if test="position() = last()">
-				(attribute(<xsl:call-template name="getName"><xsl:with-param name="attname" select="translate(@AttributeId,'-','')"/></xsl:call-template><xsl:value-of select = "$attname"/>, <xsl:value-of select = "translate(../../xacml:AttributeValue,'- :/.','')"/>) in 
+				(attribute(<xsl:call-template name="getName"><xsl:with-param name="attname" select="translate(xacml:AttributeDesignator/@AttributeId,'-','')"/></xsl:call-template><xsl:value-of select = "$attname"/>, <xsl:value-of select = "translate(../xacml:AttributeValue,'- :/.','')"/>) in 
 				<xsl:call-template name="CategoryFunction"/>
 			</xsl:if>
 		</xsl:for-each>    
@@ -195,13 +195,13 @@
 	<xsl:template name="ORinCondition">
 	<xsl:param name="attname"/>	
 		(
-		<xsl:for-each select = "xacml:Condition/xacml:Apply/xacml:Apply/xacml:Apply/xacml:AttributeDesignator">        
+		<xsl:for-each select = "xacml:Condition/xacml:Apply/xacml:Apply/xacml:Apply">        
 			<xsl:if test="position() != last()">
-				(attribute(<xsl:call-template name="getName"><xsl:with-param name="attname" select="translate(@AttributeId,'-','')"/></xsl:call-template><xsl:value-of select = "$attname"/>, <xsl:value-of select = "translate(../../xacml:AttributeValue,'- :/.','')"/>) in 
+				(attribute(<xsl:call-template name="getName"><xsl:with-param name="attname" select="translate(xacml:AttributeDesignator/@AttributeId,'-','')"/></xsl:call-template><xsl:value-of select = "$attname"/>, <xsl:value-of select = "translate(../xacml:AttributeValue,'- :/.','')"/>) in 
 				<xsl:call-template name="CategoryFunction"/> ||
 			</xsl:if>
 			<xsl:if test="position() = last()">
-				(attribute(<xsl:call-template name="getName"><xsl:with-param name="attname" select="translate(@AttributeId,'-','')"/></xsl:call-template><xsl:value-of select = "$attname"/>, <xsl:value-of select = "translate(../../xacml:AttributeValue,'- :/.','')"/>) in 
+				(attribute(<xsl:call-template name="getName"><xsl:with-param name="attname" select="translate(xacml:AttributeDesignator/@AttributeId,'-','')"/></xsl:call-template><xsl:value-of select = "$attname"/>, <xsl:value-of select = "translate(../xacml:AttributeValue,'- :/.','')"/>) in 
 				<xsl:call-template name="CategoryFunction"/> 
 			</xsl:if>
 		</xsl:for-each>    
@@ -214,10 +214,15 @@
 <!-- This template (function) translates the NOT part in the Condition part of a Rule. This template (function) is called a few times using "<xsl:call-template name="NOTinCondition"/>" -->
 	<xsl:template name="NOTinCondition">	
 	<xsl:param name="attname"/>	
-		<xsl:if test="xacml:Condition/xacml:Apply/xacml:Apply/xacml:Apply/xacml:AttributeDesignator/@AttributeId !=''">
-			!(attribute(<xsl:call-template name="getName"><xsl:with-param name="attname" select="translate(xacml:Condition/xacml:Apply/xacml:Apply/xacml:Apply/xacml:AttributeDesignator/@AttributeId,'- :/.','')"/></xsl:call-template><xsl:value-of select = "$attname"/>, <xsl:value-of select = "translate(xacml:Condition/xacml:Apply/xacml:Apply/xacml:AttributeValue,'- :/.','')"/>) in 
-			<xsl:call-template name="CategoryFunction"/> ->   <!-- select="xacml:Condition/xacml:Apply/xacml:Apply/xacml:Apply/xacml:AttributeDesignator"-->
+		
+		<xsl:for-each select = "xacml:Condition/xacml:Apply/xacml:Apply/xacml:Apply">        
+		(
+		<xsl:if test="xacml:AttributeDesignator/@AttributeId !=''">
+			!(attribute(<xsl:call-template name="getName"><xsl:with-param name="attname" select="translate(xacml:AttributeDesignator/@AttributeId,'-','')"/></xsl:call-template><xsl:value-of select = "$attname"/>, <xsl:value-of select = "translate(../xacml:AttributeValue,'- :/.','')"/>) in 
+			<xsl:call-template name="CategoryFunction"/>    <!-- select="xacml:Condition/xacml:Apply/xacml:Apply/xacml:Apply/xacml:AttributeDesignator"-->
 		</xsl:if>
+		)->
+		</xsl:for-each>    		
 	</xsl:template>
 <!-- End of the template (function) for translating NOT part in Condition of a Rule -->
 
