@@ -1,0 +1,5 @@
+forall e:EL.nu X.([!emergency(e, true)]X && 
+[exists cg:CareGivers.assignment(e, cg, true)]false && 
+[emergency(e, true)]nu Y.
+([!exists cg:CareGivers.assignment(e, cg, false)]Y && 
+[exists cg:CareGivers.assignment(e, cg, false)] X))

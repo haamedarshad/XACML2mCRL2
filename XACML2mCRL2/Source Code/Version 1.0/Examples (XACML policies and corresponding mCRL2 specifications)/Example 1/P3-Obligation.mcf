@@ -1,0 +1,4 @@
+forall rs:FSet(SAtt), ro:FSet(OAtt), ra:FSet(AAtt).
+[Request(rs, ro, ra)]!(<exists o:ObgID.Obligation(rs, ro, ra, o)>true 
+&& 
+<!exists o:ObgID.Obligation(rs, ro, ra, o)>true)

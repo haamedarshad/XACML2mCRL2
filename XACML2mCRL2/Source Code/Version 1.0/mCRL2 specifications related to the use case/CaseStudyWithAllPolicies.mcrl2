@@ -1,0 +1,89 @@
+sort CareGivers = struct CG1 | CG2;
+sort EL = struct EID1 | EID2;
+sort SAtt = struct attribute(name:SAttName, value:SAttValue);
+
+sort SAttName = struct subjectid;
+sort SAttValue = struct CareGiverA|Doctor;		
+sort OAtt = struct attribute(name:OAttName, value:OAttValue);
+sort OAttName = struct resourceid;		
+sort OAttValue = struct HealthData;		
+sort AAtt = struct attribute(name:AAttName, value:AAttValue);
+sort AAttName = struct actionid;		
+sort AAttValue = struct Read;		
+sort Decision = struct Permit | Deny;		
+sort ObgID = struct email | log;
+
+act Fall, Panic, Read,Notwilling,Willing;
+SndAlarm,RcvAlarm,Alarm:EL;
+SndNotification,RcvNotification,Notification,SndAssigned,RcvAssigned,Assigned, SndFinished, RcvFinished, Finished,SndOpenLock,RcvOpenLock,OpenLock,LockOpened,Rejected:EL#CareGivers;
+SndReply,RcvReply,Reply,assignment,get_assignment,set_assignment:EL#CareGivers#Bool;
+set_emergency,get_emergency,emergency:EL#Bool;
+SndACRequest, RcvACRequest, ACRequest, Request:FSet(SAtt)#FSet(OAtt)#FSet(AAtt);
+Obligation:FSet(SAtt)#FSet(OAtt)#FSet(AAtt)#ObgID;
+RcvACResponse,SndACResponse,ACResponse, Response:FSet(SAtt)#FSet(OAtt)#FSet(AAtt)#Decision;
+		
+proc Elderly=(Fall+Panic).sum E:EL.SndAlarm(E).Elderly;
+
+	CareService(L:FSet(CareGivers)) = sum E:EL.RcvAlarm(E).set_emergency(E, true).
+	sum cg:CareGivers.(cg in L) -> SndNotification(E, cg).set_assignment(E, cg, true).RcvFinished(E, cg).set_emergency(E, false).set_assignment(E, cg, false).CareService();
+
+	CareGiver(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt)) = 
+	Willing.sum E:EL,CG:CareGivers.RcvNotification(E, CG).SndOpenLock(E, CG).
+	(
+		(SndACRequest(RS,RO,RA).sum D:Decision.RcvACResponse(RS,RO,RA,D).(D==Permit)->Read.SndFinished(E, CG).CareGiver())
+	+
+		(SndFinished(E, CG).CareGiver())
+	)
+	+	Notwilling.CareGiver();
+
+	Lock(ev, av:Bool) = sum E:EL,CG:CareGivers.RcvOpenLock(E,CG).((ev && av) -> LockOpened(E,CG) <> Rejected(E,CG)).Lock(ev, av)
+					   + sum E:EL. sum ev':Bool.get_emergency(E,ev').Lock(ev', av)
+					   + sum E:EL, CG:CareGivers.sum av':Bool.get_assignment(E, CG, av').Lock(ev, av');
+					   
+	PolicySet_root(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt)) = Policy_Policy1(RS,RO,RA);	
+			
+	Policy_Policy1(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	
+	(
+		(attribute(resourceid,HealthData) in RO) 
+		&& 
+		(attribute(actionid,Read) in RA) 
+							
+	)->				
+		Rule_Rule1(RS,RO,RA)
+	+							
+	(	
+		(attribute(resourceid,HealthData) in RO) 
+		&&
+		(attribute(actionid,Read) in RA) 
+	)->				
+		Rule_Rule3(RS,RO,RA)
+	+
+	(	
+		(attribute(resourceid,HealthData) in RO) 
+		&&
+		(attribute(actionid,Read) in RA) 
+	)->				
+		Rule_Rule4(RS,RO,RA);
+					
+	Rule_Rule1(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+	(attribute(subjectid,Doctor) in RS)-> 
+										Response(RS,RO,RA,Permit);
+			
+	Rule_Rule3(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+	!(attribute(subjectid,Doctor) in RS)-> 
+										Obligation(RS,RO,RA,email).Response(RS,RO,RA,Deny);
+			
+	Rule_Rule4(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+	(attribute(subjectid,CareGiverA) in RS)-> 
+											Response(RS,RO,RA,Permit);
+
+	AccessControl = 
+	(sum RS:FSet(SAtt).sum RO:FSet(OAtt).sum RA:FSet(AAtt).(RS !={} && RO !={} && RA !={})->Request(RS,RO,RA).PolicySet_root(RS,RO,RA)).AccessControl;
+
+init allow({Notwilling,Willing,Alarm,Reply,Assigned, Notification,Fall,Panic,emergency,OpenLock,LockOpened,Rejected,Finished,assignment, ACRequest, ACResponse, Read},
+       comm({set_assignment|get_assignment->assignment,set_emergency|get_emergency->emergency,
+	   SndAlarm|RcvAlarm->Alarm, SndNotification|RcvNotification->Notification,SndReply|RcvReply->Reply,SndAssigned|RcvAssigned->Assigned,SndOpenLock|RcvOpenLock->OpenLock,SndFinished|RcvFinished->Finished,SndACRequest|RcvACRequest->ACRequest, SndACResponse|RcvACResponse->ACResponse},
+			rename({Request-> RcvACRequest, Response->SndACResponse},
+				Elderly||CareService({CG1,CG2})||CareGiver({attribute(subjectid, CareGiverA)},{attribute(resourceid,HealthData)},{attribute(actionid, Read)})||Lock(false, false)||AccessControl
+     )));	 
