@@ -219,7 +219,7 @@
 		(
 		<xsl:if test="xacml:AttributeDesignator/@AttributeId !=''">
 			!(attribute(<xsl:call-template name="getName"><xsl:with-param name="attname" select="translate(xacml:AttributeDesignator/@AttributeId,'-','')"/></xsl:call-template><xsl:value-of select = "$attname"/>, <xsl:value-of select = "translate(../xacml:AttributeValue,'- :/.','')"/>) in 
-			<xsl:call-template name="CategoryFunction"/>    <!-- select="xacml:Condition/xacml:Apply/xacml:Apply/xacml:Apply/xacml:AttributeDesignator"-->
+			<xsl:call-template name="CategoryFunction"/>   
 		</xsl:if>
 		)->
 		</xsl:for-each>    		
@@ -403,16 +403,17 @@
 		<xsl:when test="(xacml:PolicySet!='')">
 			PolicySet_<xsl:call-template name="getName"><xsl:with-param name="attname" select="translate(xacml:PolicySet/@PolicySetId,'-','')"/></xsl:call-template><xsl:value-of select = "$attname"/>(RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt)) = 
 
+
 			<!-- If the policyset has a target, the Target will be translated into an mCRL2 condition in the PolicySet process CHECK this hamed you may specify PolicSet in the select-->		
 			<xsl:call-template name="TargetFunction"/> 
 			<!-- End of checking/translating the Target of the PolicySet -->
 	
+
 			<!-- For every Policy in the PolicySet -->		
 			<xsl:for-each select="xacml:PolicySet/xacml:Policy">
 				
 				<!-- If a Policy in a PolicySet has a target, then the Target of the Policy will be translated into an mCRL2 condition in the parent PolicySet before calling the Policy process -->		
-				<xsl:call-template name="TargetFunction"/> 
-				
+				<xsl:call-template name="TargetFunction"/> 				
 			
 				<!-- Calling the policies inside a PolicySet -->
 				<xsl:if test="position() != last()">			
