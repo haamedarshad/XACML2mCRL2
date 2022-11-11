@@ -1,0 +1,82 @@
+
+	sort AAtt = struct attribute(name:AAttName, value:AAttValue);
+	sort AAttName = struct 
+		actionapprovedby;
+	sort AAttValue = struct
+		JuliusHibbert;
+	
+
+	
+	
+	
+
+
+
+
+							
+	sort Decision = struct Permit | Deny;
+	
+
+
+							
+			
+	
+
+
+		
+							
+	act
+		Request:
+			FSet(AAtt);
+				
+		Response:
+			FSet(AAtt)#Decision;
+	
+
+
+	
+
+
+
+		
+	
+	proc	
+		
+	
+	Policy_policy(
+			RA:FSet(AAtt)) = 
+	
+			
+		
+			Rule_rule(
+			RA);
+			
+	
+		Rule_rule(
+			RA:FSet(AAtt))=
+		
+		
+		
+					(attribute(actionapprovedby, JuliusHibbert) in 
+					
+				RA) 
+			 ->  
+					
+		
+
+		Response(
+			RA,Permit);
+	
+	
+
+
+		
+
+
+
+		init 
+			sum RA:FSet(AAtt).(
+			RA !={})-> Request(
+			RA).Policy_policy(
+			RA);	
+	

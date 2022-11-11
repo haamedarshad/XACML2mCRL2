@@ -1,0 +1,1489 @@
+[error]   Cannot open input file: /home/macbook/Downloads/mandatory/mandatory/*/policy.mcrl2.
+the file '/home/macbook/Downloads/mandatory/mandatory/IIA001/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIA003/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIA006/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIA007/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIA008/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIA009/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIA011/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIA013/Policy.mcrl2' contains a well-formed mCRL2 specification
+[parser::error]   Line 23, column 10: syntax error after ':'
+[parser::error]     		Request:;
+[parser::error]               ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+the file '/home/macbook/Downloads/mandatory/mandatory/IIA015/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIA016_FIXED/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIA017/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIA018_FIXED/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIA019/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIA020_FIXED/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIA021/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIA022_FIXED_NO_CONTENT_NO_XPATH/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIA023_FIXED_NO_CONTENT_NO_XPATH/Policy.mcrl2' contains a well-formed mCRL2 specification
+[parser::error]   Line 23, column 10: syntax error after ':'
+[parser::error]     		Request:;
+[parser::error]               ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+the file '/home/macbook/Downloads/mandatory/mandatory/IIB002/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIB003/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIB004/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIB005/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIB006/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIB007/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIB008/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIB009/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIB010/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIB011/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIB012/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIB013/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIB014/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIB015/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIB016/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIB017/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIB018/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIB019/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIB020/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIB021/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIB022/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIB023/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIB024/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIB025/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIB026/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIB027/Policy.mcrl2' contains a well-formed mCRL2 specification
+[error]   Unknown operation httpwwwmedicocomapplicationsPatientRecordAccess.
+[error]   Unknown operation httpwwwmedicocomapplicationsPatientRecordAccess.
+the file '/home/macbook/Downloads/mandatory/mandatory/IIB030/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIB031/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIB032/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIB033/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIB034/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIB035/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIB036/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIB037/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIB038/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIB039/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIB040/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIB041/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIB042/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIB043/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIB044/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIB045/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIB046/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIB047/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIB048/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIB049/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIB050/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIB051/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIB052/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIB053/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIB300/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIB301/Policy.mcrl2' contains a well-formed mCRL2 specification
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 23, column 10: syntax error after ':'
+[parser::error]     		Request:;
+[parser::error]               ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC006/Policy.mcrl2' contains a well-formed mCRL2 specification
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 15, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 15, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC022/Policy.mcrl2' contains a well-formed mCRL2 specification
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC036/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC037/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC038/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC039/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC040/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC041/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC042/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC043/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC044/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC045/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC046/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC047/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC048/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC049/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC050/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC051/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC052/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC053/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC056/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC057/Policy.mcrl2' contains a well-formed mCRL2 specification
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC062/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC063/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC064/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC065/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC066/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC067/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC068/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC069/Policy.mcrl2' contains a well-formed mCRL2 specification
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC074/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC075/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC076/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC077/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC078/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC079/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC080/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC081/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC082/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC083/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC084/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC085/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC086/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC087/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC090/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC091/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC094/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC095/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC096/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC097/Policy.mcrl2' contains a well-formed mCRL2 specification
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC102/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC103/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC104/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC105/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC106/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC107/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC108/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC109/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC110/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC111/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC112/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC113/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC114/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC115/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC116/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC117/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC118/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC119/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC120/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC121/Policy.mcrl2' contains a well-formed mCRL2 specification
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		true;
+[parser::error]       ^
+[parser::error]   Unexpected keyword 'true'
+[error]   syntax error
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC123/Policy.mcrl2' contains a well-formed mCRL2 specification
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		true;
+[parser::error]       ^
+[parser::error]   Unexpected keyword 'true'
+[error]   syntax error
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC126/Policy.mcrl2' contains a well-formed mCRL2 specification
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC128/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC129/Policy.mcrl2' contains a well-formed mCRL2 specification
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC131/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC132/Policy.mcrl2' contains a well-formed mCRL2 specification
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC134/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC135/Policy.mcrl2' contains a well-formed mCRL2 specification
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC137/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC138/Policy.mcrl2' contains a well-formed mCRL2 specification
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC140/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC141/Policy.mcrl2' contains a well-formed mCRL2 specification
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC143/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC144/Policy.mcrl2' contains a well-formed mCRL2 specification
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC146/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC147/Policy.mcrl2' contains a well-formed mCRL2 specification
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC149/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC150/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC151/Policy.mcrl2' contains a well-formed mCRL2 specification
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC153/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC154/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC155/Policy.mcrl2' contains a well-formed mCRL2 specification
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC157/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC158/Policy.mcrl2' contains a well-formed mCRL2 specification
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC160/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC161/Policy.mcrl2' contains a well-formed mCRL2 specification
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC163/Policy.mcrl2' contains a well-formed mCRL2 specification
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC170/Policy.mcrl2' contains a well-formed mCRL2 specification
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC231/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC232/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC300/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC301/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC302/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC303/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC310/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC311/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC312/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC313/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC320/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC321/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC322/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC323/Policy.mcrl2' contains a well-formed mCRL2 specification
+[parser::error]   Line 23, column 10: syntax error after ':'
+[parser::error]     		Request:;
+[parser::error]               ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 23, column 10: syntax error after ':'
+[parser::error]     		Request:;
+[parser::error]               ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 23, column 10: syntax error after ':'
+[parser::error]     		Request:;
+[parser::error]               ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 23, column 10: syntax error after ':'
+[parser::error]     		Request:;
+[parser::error]               ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 23, column 10: syntax error after ':'
+[parser::error]     		Request:;
+[parser::error]               ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 23, column 10: syntax error after ':'
+[parser::error]     		Request:;
+[parser::error]               ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 6, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC350/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC351/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC352/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC353/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC354/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC355/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC356/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC357/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC358/Policy.mcrl2' contains a well-formed mCRL2 specification
+the file '/home/macbook/Downloads/mandatory/mandatory/IIC359/Policy.mcrl2' contains a well-formed mCRL2 specification
+[parser::error]   Line 8, column 3: syntax error after '|'
+[parser::error]     			;
+[parser::error]        ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 9, column 3: syntax error after '|'
+[parser::error]     			|
+[parser::error]        ^
+[parser::error]   Unexpected '|'
+[error]   syntax error
+[parser::error]   Line 8, column 3: syntax error after '|'
+[parser::error]     			;
+[parser::error]        ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 9, column 3: syntax error after '|'
+[parser::error]     			|
+[parser::error]        ^
+[parser::error]   Unexpected '|'
+[error]   syntax error
+[parser::error]   Line 8, column 3: syntax error after '|'
+[parser::error]     			;
+[parser::error]        ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 9, column 3: syntax error after '|'
+[parser::error]     			|
+[parser::error]        ^
+[parser::error]   Unexpected '|'
+[error]   syntax error
+[parser::error]   Line 8, column 3: syntax error after '|'
+[parser::error]     			;
+[parser::error]        ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 9, column 3: syntax error after '|'
+[parser::error]     			|
+[parser::error]        ^
+[parser::error]   Unexpected '|'
+[error]   syntax error
+[parser::error]   Line 9, column 3: syntax error after '|'
+[parser::error]     			|
+[parser::error]        ^
+[parser::error]   Unexpected '|'
+[error]   syntax error
+[parser::error]   Line 9, column 3: syntax error after '|'
+[parser::error]     			|
+[parser::error]        ^
+[parser::error]   Unexpected '|'
+[error]   syntax error
+[parser::error]   Line 8, column 3: syntax error after '|'
+[parser::error]     			;
+[parser::error]        ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 9, column 3: syntax error after '|'
+[parser::error]     			|
+[parser::error]        ^
+[parser::error]   Unexpected '|'
+[error]   syntax error
+[parser::error]   Line 9, column 3: syntax error after '|'
+[parser::error]     			|
+[parser::error]        ^
+[parser::error]   Unexpected '|'
+[error]   syntax error
+[parser::error]   Line 8, column 3: syntax error after '|'
+[parser::error]     			|
+[parser::error]        ^
+[parser::error]   Unexpected '|'
+[error]   syntax error
+[parser::error]   Line 8, column 3: syntax error after '|'
+[parser::error]     			;
+[parser::error]        ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 9, column 3: syntax error after '|'
+[parser::error]     			|
+[parser::error]        ^
+[parser::error]   Unexpected '|'
+[error]   syntax error
+[parser::error]   Line 8, column 3: syntax error after '|'
+[parser::error]     			;
+[parser::error]        ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 11, column 3: syntax error after '|'
+[parser::error]     			;
+[parser::error]        ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 8, column 3: syntax error after '|'
+[parser::error]     			;
+[parser::error]        ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 9, column 3: syntax error after '|'
+[parser::error]     			|
+[parser::error]        ^
+[parser::error]   Unexpected '|'
+[error]   syntax error
+[parser::error]   Line 8, column 3: syntax error after '|'
+[parser::error]     			;
+[parser::error]        ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 11, column 3: syntax error after '|'
+[parser::error]     			;
+[parser::error]        ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 8, column 3: syntax error after '|'
+[parser::error]     			;
+[parser::error]        ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 8, column 3: syntax error after '|'
+[parser::error]     			|
+[parser::error]        ^
+[parser::error]   Unexpected '|'
+[error]   syntax error
+[parser::error]   Line 8, column 3: syntax error after '|'
+[parser::error]     			;
+[parser::error]        ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 13, column 3: syntax error after '|'
+[parser::error]     			;
+[parser::error]        ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 13, column 3: syntax error after '|'
+[parser::error]     			;
+[parser::error]        ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 13, column 3: syntax error after '|'
+[parser::error]     			;
+[parser::error]        ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 9, column 3: syntax error after '|'
+[parser::error]     			|
+[parser::error]        ^
+[parser::error]   Unexpected '|'
+[error]   syntax error
+[parser::error]   Line 8, column 3: syntax error after '|'
+[parser::error]     			;
+[parser::error]        ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 9, column 3: syntax error after '|'
+[parser::error]     			|
+[parser::error]        ^
+[parser::error]   Unexpected '|'
+[error]   syntax error
+[parser::error]   Line 10, column 3: syntax error after '|'
+[parser::error]     			|
+[parser::error]        ^
+[parser::error]   Unexpected '|'
+[error]   syntax error
+[parser::error]   Line 8, column 3: syntax error after '|'
+[parser::error]     			;
+[parser::error]        ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 9, column 3: syntax error after '|'
+[parser::error]     			|
+[parser::error]        ^
+[parser::error]   Unexpected '|'
+[error]   syntax error
+[parser::error]   Line 8, column 3: syntax error after '|'
+[parser::error]     			;
+[parser::error]        ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 9, column 3: syntax error after '|'
+[parser::error]     			|
+[parser::error]        ^
+[parser::error]   Unexpected '|'
+[error]   syntax error
+[parser::error]   Line 9, column 3: syntax error after '|'
+[parser::error]     			|
+[parser::error]        ^
+[parser::error]   Unexpected '|'
+[error]   syntax error
+[parser::error]   Line 8, column 3: syntax error after '|'
+[parser::error]     			;
+[parser::error]        ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 9, column 3: syntax error after '|'
+[parser::error]     			|
+[parser::error]        ^
+[parser::error]   Unexpected '|'
+[error]   syntax error
+[parser::error]   Line 9, column 3: syntax error after '|'
+[parser::error]     			|
+[parser::error]        ^
+[parser::error]   Unexpected '|'
+[error]   syntax error
+[parser::error]   Line 9, column 3: syntax error after '|'
+[parser::error]     			|
+[parser::error]        ^
+[parser::error]   Unexpected '|'
+[error]   syntax error
+[parser::error]   Line 9, column 3: syntax error after '|'
+[parser::error]     			|
+[parser::error]        ^
+[parser::error]   Unexpected '|'
+[error]   syntax error
+[parser::error]   Line 8, column 3: syntax error after '|'
+[parser::error]     			;
+[parser::error]        ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 9, column 3: syntax error after '|'
+[parser::error]     			|
+[parser::error]        ^
+[parser::error]   Unexpected '|'
+[error]   syntax error
+[parser::error]   Line 9, column 3: syntax error after '|'
+[parser::error]     			|
+[parser::error]        ^
+[parser::error]   Unexpected '|'
+[error]   syntax error
+[parser::error]   Line 9, column 3: syntax error after '|'
+[parser::error]     			|
+[parser::error]        ^
+[parser::error]   Unexpected '|'
+[error]   syntax error
+[parser::error]   Line 8, column 3: syntax error after '|'
+[parser::error]     			|
+[parser::error]        ^
+[parser::error]   Unexpected '|'
+[error]   syntax error
+[parser::error]   Line 8, column 3: syntax error after '|'
+[parser::error]     			;
+[parser::error]        ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 9, column 3: syntax error after '|'
+[parser::error]     			|
+[parser::error]        ^
+[parser::error]   Unexpected '|'
+[error]   syntax error
+[parser::error]   Line 9, column 3: syntax error after '|'
+[parser::error]     			|
+[parser::error]        ^
+[parser::error]   Unexpected '|'
+[error]   syntax error
+[parser::error]   Line 9, column 3: syntax error after '|'
+[parser::error]     			|
+[parser::error]        ^
+[parser::error]   Unexpected '|'
+[error]   syntax error
+[parser::error]   Line 9, column 3: syntax error after '|'
+[parser::error]     			|
+[parser::error]        ^
+[parser::error]   Unexpected '|'
+[error]   syntax error
+[parser::error]   Line 9, column 3: syntax error after '|'
+[parser::error]     			|
+[parser::error]        ^
+[parser::error]   Unexpected '|'
+[error]   syntax error
+[parser::error]   Line 9, column 3: syntax error after '|'
+[parser::error]     			|
+[parser::error]        ^
+[parser::error]   Unexpected '|'
+[error]   syntax error
+[parser::error]   Line 9, column 3: syntax error after '|'
+[parser::error]     			|
+[parser::error]        ^
+[parser::error]   Unexpected '|'
+[error]   syntax error
+[parser::error]   Line 9, column 3: syntax error after '|'
+[parser::error]     			|
+[parser::error]        ^
+[parser::error]   Unexpected '|'
+[error]   syntax error
+[parser::error]   Line 9, column 3: syntax error after '|'
+[parser::error]     			|
+[parser::error]        ^
+[parser::error]   Unexpected '|'
+[error]   syntax error
+[parser::error]   Line 23, column 10: syntax error after ':'
+[parser::error]     		Request:;
+[parser::error]               ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 23, column 10: syntax error after ':'
+[parser::error]     		Request:;
+[parser::error]               ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 8, column 3: syntax error after '|'
+[parser::error]     			;
+[parser::error]        ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 8, column 3: syntax error after '|'
+[parser::error]     			;
+[parser::error]        ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 9, column 3: syntax error after '|'
+[parser::error]     			|
+[parser::error]        ^
+[parser::error]   Unexpected '|'
+[error]   syntax error
+[parser::error]   Line 8, column 3: syntax error after '|'
+[parser::error]     			;
+[parser::error]        ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 9, column 3: syntax error after '|'
+[parser::error]     			|
+[parser::error]        ^
+[parser::error]   Unexpected '|'
+[error]   syntax error
+[parser::error]   Line 9, column 3: syntax error after '|'
+[parser::error]     			|
+[parser::error]        ^
+[parser::error]   Unexpected '|'
+[error]   syntax error
+[parser::error]   Line 9, column 3: syntax error after '|'
+[parser::error]     			|
+[parser::error]        ^
+[parser::error]   Unexpected '|'
+[error]   syntax error
+[parser::error]   Line 8, column 3: syntax error after '|'
+[parser::error]     			;
+[parser::error]        ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 9, column 3: syntax error after '|'
+[parser::error]     			|
+[parser::error]        ^
+[parser::error]   Unexpected '|'
+[error]   syntax error
+[parser::error]   Line 8, column 3: syntax error after '|'
+[parser::error]     			;
+[parser::error]        ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 11, column 3: syntax error after '|'
+[parser::error]     			;
+[parser::error]        ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 8, column 3: syntax error after '|'
+[parser::error]     			;
+[parser::error]        ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 9, column 3: syntax error after '|'
+[parser::error]     			|
+[parser::error]        ^
+[parser::error]   Unexpected '|'
+[error]   syntax error
+[parser::error]   Line 8, column 3: syntax error after '|'
+[parser::error]     			;
+[parser::error]        ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 8, column 3: syntax error after '|'
+[parser::error]     			|
+[parser::error]        ^
+[parser::error]   Unexpected '|'
+[error]   syntax error
+[parser::error]   Line 8, column 3: syntax error after '|'
+[parser::error]     			;
+[parser::error]        ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 9, column 3: syntax error after '|'
+[parser::error]     			|
+[parser::error]        ^
+[parser::error]   Unexpected '|'
+[error]   syntax error
+[parser::error]   Line 9, column 3: syntax error after '|'
+[parser::error]     			|
+[parser::error]        ^
+[parser::error]   Unexpected '|'
+[error]   syntax error
+[parser::error]   Line 8, column 3: syntax error after '|'
+[parser::error]     			|
+[parser::error]        ^
+[parser::error]   Unexpected '|'
+[error]   syntax error
+[parser::error]   Line 8, column 3: syntax error after '|'
+[parser::error]     			;
+[parser::error]        ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 9, column 3: syntax error after '|'
+[parser::error]     			|
+[parser::error]        ^
+[parser::error]   Unexpected '|'
+[error]   syntax error
+[parser::error]   Line 8, column 3: syntax error after '|'
+[parser::error]     			;
+[parser::error]        ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 11, column 3: syntax error after '|'
+[parser::error]     			;
+[parser::error]        ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 8, column 3: syntax error after '|'
+[parser::error]     			;
+[parser::error]        ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 8, column 3: syntax error after '|'
+[parser::error]     			|
+[parser::error]        ^
+[parser::error]   Unexpected '|'
+[error]   syntax error
+[parser::error]   Line 8, column 3: syntax error after '|'
+[parser::error]     			;
+[parser::error]        ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 13, column 3: syntax error after '|'
+[parser::error]     			;
+[parser::error]        ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 13, column 3: syntax error after '|'
+[parser::error]     			;
+[parser::error]        ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 13, column 3: syntax error after '|'
+[parser::error]     			;
+[parser::error]        ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 8, column 3: syntax error after '|'
+[parser::error]     			;
+[parser::error]        ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 9, column 3: syntax error after '|'
+[parser::error]     			|
+[parser::error]        ^
+[parser::error]   Unexpected '|'
+[error]   syntax error
+[parser::error]   Line 8, column 3: syntax error after '|'
+[parser::error]     			;
+[parser::error]        ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 9, column 3: syntax error after '|'
+[parser::error]     			|
+[parser::error]        ^
+[parser::error]   Unexpected '|'
+[error]   syntax error
+[parser::error]   Line 9, column 3: syntax error after '|'
+[parser::error]     			|
+[parser::error]        ^
+[parser::error]   Unexpected '|'
+[error]   syntax error
+[parser::error]   Line 9, column 3: syntax error after '|'
+[parser::error]     			|
+[parser::error]        ^
+[parser::error]   Unexpected '|'
+[error]   syntax error
+[parser::error]   Line 8, column 3: syntax error after '|'
+[parser::error]     			;
+[parser::error]        ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 9, column 3: syntax error after '|'
+[parser::error]     			|
+[parser::error]        ^
+[parser::error]   Unexpected '|'
+[error]   syntax error
+[parser::error]   Line 8, column 3: syntax error after '|'
+[parser::error]     			;
+[parser::error]        ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 11, column 3: syntax error after '|'
+[parser::error]     			;
+[parser::error]        ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 8, column 3: syntax error after '|'
+[parser::error]     			;
+[parser::error]        ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 9, column 3: syntax error after '|'
+[parser::error]     			|
+[parser::error]        ^
+[parser::error]   Unexpected '|'
+[error]   syntax error
+[parser::error]   Line 8, column 3: syntax error after '|'
+[parser::error]     			;
+[parser::error]        ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 8, column 3: syntax error after '|'
+[parser::error]     			|
+[parser::error]        ^
+[parser::error]   Unexpected '|'
+[error]   syntax error
+[parser::error]   Line 8, column 3: syntax error after '|'
+[parser::error]     			;
+[parser::error]        ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 9, column 3: syntax error after '|'
+[parser::error]     			|
+[parser::error]        ^
+[parser::error]   Unexpected '|'
+[error]   syntax error
+[parser::error]   Line 9, column 3: syntax error after '|'
+[parser::error]     			|
+[parser::error]        ^
+[parser::error]   Unexpected '|'
+[error]   syntax error
+[parser::error]   Line 8, column 3: syntax error after '|'
+[parser::error]     			|
+[parser::error]        ^
+[parser::error]   Unexpected '|'
+[error]   syntax error
+[parser::error]   Line 8, column 3: syntax error after '|'
+[parser::error]     			;
+[parser::error]        ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 9, column 3: syntax error after '|'
+[parser::error]     			|
+[parser::error]        ^
+[parser::error]   Unexpected '|'
+[error]   syntax error
+[parser::error]   Line 8, column 3: syntax error after '|'
+[parser::error]     			;
+[parser::error]        ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 11, column 3: syntax error after '|'
+[parser::error]     			;
+[parser::error]        ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 8, column 3: syntax error after '|'
+[parser::error]     			;
+[parser::error]        ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 8, column 3: syntax error after '|'
+[parser::error]     			|
+[parser::error]        ^
+[parser::error]   Unexpected '|'
+[error]   syntax error
+[parser::error]   Line 8, column 3: syntax error after '|'
+[parser::error]     			;
+[parser::error]        ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 13, column 3: syntax error after '|'
+[parser::error]     			;
+[parser::error]        ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 13, column 3: syntax error after '|'
+[parser::error]     			;
+[parser::error]        ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 13, column 3: syntax error after '|'
+[parser::error]     			;
+[parser::error]        ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 8, column 3: syntax error after '|'
+[parser::error]     			;
+[parser::error]        ^
+[parser::error]   Unexpected ';'
+[error]   syntax error
+[parser::error]   Line 16, column 2: syntax error after 'struct'
+[parser::error]     		;
+[parser::error]       ^
+[parser::error]   Unexpected ';'
+[error]   syntax error

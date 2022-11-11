@@ -1,0 +1,132 @@
+
+	sort SAtt = struct attribute(name:SAttName, value:SAttValue);
+	sort SAttName = struct
+		subjectid|
+				subjectcategory;
+	sort SAttValue = struct 	
+		JuliusHibbert|
+			urnoasisnamestcxacml10subjectcategoryaccesssubject;
+	
+	sort AAtt = struct attribute(name:AAttName, value:AAttValue);
+	sort AAttName = struct 
+		resourceid|
+				actionid;
+	sort AAttValue = struct
+		httpmedicocomrecordpatientBartSimpson|
+			read|
+			write;
+	
+
+	
+	
+	
+
+
+
+
+							
+	sort Decision = struct Permit | Deny;
+	
+
+
+							
+			
+	
+
+
+		
+							
+	act
+		Request:
+			FSet(SAtt)#FSet(AAtt);
+				
+		Response:
+			FSet(SAtt)#FSet(AAtt)#Decision;
+	
+
+
+	
+
+
+
+		
+	
+	proc	
+		
+	
+	Policy_policy(
+			RS:FSet(SAtt), RA:FSet(AAtt)) = 
+	
+			
+					
+		(	
+		
+				(
+					
+					(attribute(subjectid, JuliusHibbert) in 
+					
+				RS) 
+			 &&
+					
+					(attribute(subjectcategory,urnoasisnamestcxacml10subjectcategoryaccesssubject) in 
+					
+				RS) 
+			
+				)			
+				||
+				
+				(
+						
+					(attribute(resourceid,httpmedicocomrecordpatientBartSimpson) in 
+					
+				RA) 
+			
+				)			
+				||
+				
+				(
+						
+					(attribute(actionid,read) in 
+					
+				RA) 
+			
+				)			
+				||
+				
+				(
+						
+					(attribute(actionid,write) in 
+					
+				RA) 
+			
+				)		
+				
+		)->				
+		
+			Rule_rule(
+			RS, RA);
+			
+	
+		Rule_rule(
+			RS:FSet(SAtt), RA:FSet(AAtt))=
+		
+		
+		
+		
+
+		Response(
+			RS, RA,Permit);
+	
+	
+
+
+		
+
+
+
+		init 
+			sum RS:FSet(SAtt).sum RA:FSet(AAtt).(
+			RS !={}&& RA !={})-> Request(
+			RS, RA).Policy_policy(
+			RS, RA);	
+	

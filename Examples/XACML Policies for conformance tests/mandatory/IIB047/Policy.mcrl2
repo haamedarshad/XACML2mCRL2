@@ -1,0 +1,104 @@
+
+	sort SAtt = struct attribute(name:SAttName, value:SAttValue);
+	sort SAttName = struct
+		subjectid;
+	sort SAttValue = struct 	
+		JuliusHibbert;
+	
+	sort OAtt = struct attribute(name:OAttName, value:OAttValue);
+	sort OAttName = struct
+		resourceid;
+	sort OAttValue = struct 
+		httpmedicocomrecordpatientBartSimpson;
+	
+
+	
+	
+	
+
+
+
+
+							
+	sort Decision = struct Permit | Deny;
+	
+
+
+							
+			
+	
+
+
+		
+							
+	act
+		Request:
+			FSet(SAtt)#FSet(OAtt);
+				
+		Response:
+			FSet(SAtt)#FSet(OAtt)#Decision;
+	
+
+
+	
+
+
+
+		
+	
+	proc	
+		
+	
+	Policy_policy(
+			RS:FSet(SAtt), RO:FSet(OAtt)) = 
+	
+			
+					
+		(	
+		
+				(
+						
+					(attribute(subjectid,JuliusHibbert) in 
+					
+				RS) 
+			
+				)			
+				||
+				
+				(
+						
+					(attribute(resourceid,httpmedicocomrecordpatientBartSimpson) in 
+					
+				RO) 
+			
+				)		
+				
+		)->				
+		
+			Rule_rule(
+			RS, RO);
+			
+	
+		Rule_rule(
+			RS:FSet(SAtt), RO:FSet(OAtt))=
+		
+		
+		
+		
+
+		Response(
+			RS, RO,Permit);
+	
+	
+
+
+		
+
+
+
+		init 
+			sum RS:FSet(SAtt).sum RO:FSet(OAtt).(
+			RS !={}&& RO !={})-> Request(
+			RS, RO).Policy_policy(
+			RS, RO);	
+	

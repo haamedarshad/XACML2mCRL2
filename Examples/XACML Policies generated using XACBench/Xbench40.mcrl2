@@ -1,0 +1,2952 @@
+
+	sort SAtt = struct attribute(name:SAttName, value:SAttValue);
+	sort SAttName = struct
+		location|
+				role;
+	sort SAttValue = struct 	
+		ValdeGrace|
+			physician|
+			Europe;
+	
+	sort OAtt = struct attribute(name:OAttName, value:OAttValue);
+	sort OAttName = struct
+		resourceid|
+				resourceconfidentiality;
+	sort OAttValue = struct 
+		medicalfile|
+			personal;
+	
+	sort AAtt = struct attribute(name:AAttName, value:AAttValue);
+	sort AAttName = struct 
+		actionid;
+	sort AAttValue = struct
+		read|
+			write;
+	
+
+	
+	
+	
+
+
+
+
+							
+	sort Decision = struct Permit | Deny;
+	
+
+
+							
+			
+	
+
+
+		
+							
+	act
+		Request:
+			FSet(SAtt)#FSet(OAtt)#FSet(AAtt);
+				
+		Response:
+			FSet(SAtt)#FSet(OAtt)#FSet(AAtt)#Decision;
+	
+
+
+	
+
+
+
+		
+	
+	proc	
+		
+	
+			PolicySet_root_ps(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt)) = 
+
+
+					
+						
+					Policy_P1(
+			RS, RO, RA)+	
+								
+		(	
+		
+				(
+					
+					(attribute(actionid, write) in 
+					
+				RA) 
+			 &&
+					
+					(attribute(resourceid,medicalfile) in 
+					
+				RO) 
+			
+				)		
+				
+		)->				
+				
+					Policy_P2(
+			RS, RO, RA)+	
+							
+					Policy_P3(
+			RS, RO, RA)+	
+								
+		(	
+		
+				(
+						
+					(attribute(actionid,read) in 
+					
+				RA) 
+			
+				)		
+				
+		)->				
+				
+					Policy_P4(
+			RS, RO, RA)+	
+							
+					Policy_P5(
+			RS, RO, RA)+	
+							
+					Policy_P6(
+			RS, RO, RA)+	
+							
+					Policy_P7(
+			RS, RO, RA)+	
+								
+		(	
+		
+				(
+						
+					(attribute(resourceid,medicalfile) in 
+					
+				RO) 
+			
+				)			
+				||
+				
+				(
+					
+					(attribute(actionid, write) in 
+					
+				RA) 
+			 &&
+					
+					(attribute(resourceid,medicalfile) in 
+					
+				RO) 
+			
+				)		
+				
+		)->				
+				
+					Policy_P8(
+			RS, RO, RA)+	
+								
+		(	
+		
+				(
+					
+					(attribute(actionid, read) in 
+					
+				RA) 
+			 &&
+					
+					(attribute(resourceid,medicalfile) in 
+					
+				RO) 
+			
+				)		
+				
+		)->				
+				
+					Policy_P9(
+			RS, RO, RA)+	
+								
+		(	
+		
+				(
+					
+					(attribute(resourceid, medicalfile) in 
+					
+				RO) 
+			 &&
+					
+					(attribute(actionid,read) in 
+					
+				RA) 
+			
+				)		
+				
+		)->				
+				
+					Policy_P10(
+			RS, RO, RA)+	
+							
+					Policy_P11(
+			RS, RO, RA)+	
+							
+					Policy_P12(
+			RS, RO, RA)+	
+								
+		(	
+		
+				(
+					
+					(attribute(resourceid, medicalfile) in 
+					
+				RO) 
+			 &&
+					
+					(attribute(resourceid,medicalfile) in 
+					
+				RO) 
+			
+				)			
+				||
+				
+				(
+					
+					(attribute(resourceid, medicalfile) in 
+					
+				RO) 
+			 &&
+					
+					(attribute(resourceid,medicalfile) in 
+					
+				RO) 
+			
+				)		
+				
+		)->				
+				
+					Policy_P13(
+			RS, RO, RA)+	
+								
+		(	
+		
+				(
+					
+					(attribute(resourceid, medicalfile) in 
+					
+				RO) 
+			 &&
+					
+					(attribute(resourceid,medicalfile) in 
+					
+				RO) 
+			
+				)			
+				||
+				
+				(
+					
+					(attribute(resourceid, medicalfile) in 
+					
+				RO) 
+			 &&
+					
+					(attribute(actionid,read) in 
+					
+				RA) 
+			
+				)		
+				
+		)->				
+				
+					Policy_P14(
+			RS, RO, RA)+	
+								
+		(	
+		
+				(
+					
+					(attribute(actionid, write) in 
+					
+				RA) 
+			 &&
+					
+					(attribute(actionid,read) in 
+					
+				RA) 
+			
+				)		
+				
+		)->				
+				
+					Policy_P15(
+			RS, RO, RA)+	
+								
+		(	
+		
+				(
+					
+					(attribute(resourceid, medicalfile) in 
+					
+				RO) 
+			 &&
+					
+					(attribute(actionid,read) in 
+					
+				RA) 
+			
+				)			
+				||
+				
+				(
+					
+					(attribute(resourceid, medicalfile) in 
+					
+				RO) 
+			 &&
+					
+					(attribute(actionid,read) in 
+					
+				RA) 
+			
+				)		
+				
+		)->				
+				
+					Policy_P16(
+			RS, RO, RA)+	
+								
+		(	
+		
+				(
+						
+					(attribute(actionid,read) in 
+					
+				RA) 
+			
+				)		
+				
+		)->				
+				
+					Policy_P17(
+			RS, RO, RA)+	
+								
+		(	
+		
+				(
+					
+					(attribute(actionid, read) in 
+					
+				RA) 
+			 &&
+					
+					(attribute(resourceid,medicalfile) in 
+					
+				RO) 
+			
+				)		
+				
+		)->				
+				
+					Policy_P18(
+			RS, RO, RA)+	
+								
+		(	
+		
+				(
+					
+					(attribute(resourceid, medicalfile) in 
+					
+				RO) 
+			 &&
+					
+					(attribute(resourceid,medicalfile) in 
+					
+				RO) 
+			
+				)		
+				
+		)->				
+				
+					Policy_P19(
+			RS, RO, RA)+	
+							
+					Policy_P20(
+			RS, RO, RA)+	
+							
+					Policy_P21(
+			RS, RO, RA)+	
+								
+		(	
+		
+				(
+					
+					(attribute(actionid, read) in 
+					
+				RA) 
+			 &&
+					
+					(attribute(resourceid,medicalfile) in 
+					
+				RO) 
+			
+				)		
+				
+		)->				
+				
+					Policy_P22(
+			RS, RO, RA)+	
+								
+		(	
+		
+				(
+					
+					(attribute(resourceid, medicalfile) in 
+					
+				RO) 
+			 &&
+					
+					(attribute(resourceid,medicalfile) in 
+					
+				RO) 
+			
+				)			
+				||
+				
+				(
+					
+					(attribute(actionid, read) in 
+					
+				RA) 
+			 &&
+					
+					(attribute(actionid,write) in 
+					
+				RA) 
+			
+				)			
+				||
+				
+				(
+					
+					(attribute(actionid, write) in 
+					
+				RA) 
+			 &&
+					
+					(attribute(actionid,write) in 
+					
+				RA) 
+			
+				)			
+				||
+				
+				(
+					
+					(attribute(actionid, write) in 
+					
+				RA) 
+			 &&
+					
+					(attribute(actionid,read) in 
+					
+				RA) 
+			
+				)		
+				
+		)->				
+				
+					Policy_P23(
+			RS, RO, RA)+	
+							
+					Policy_P24(
+			RS, RO, RA)+	
+							
+					Policy_P25(
+			RS, RO, RA)+	
+								
+		(	
+		
+				(
+					
+					(attribute(actionid, read) in 
+					
+				RA) 
+			 &&
+					
+					(attribute(actionid,read) in 
+					
+				RA) 
+			
+				)		
+				
+		)->				
+				
+					Policy_P26(
+			RS, RO, RA)+	
+							
+					Policy_P27(
+			RS, RO, RA)+	
+								
+		(	
+		
+				(
+					
+					(attribute(actionid, read) in 
+					
+				RA) 
+			 &&
+					
+					(attribute(actionid,read) in 
+					
+				RA) 
+			
+				)		
+				
+		)->				
+				
+					Policy_P28(
+			RS, RO, RA)+	
+								
+		(	
+		
+				(
+					
+					(attribute(actionid, read) in 
+					
+				RA) 
+			 &&
+					
+					(attribute(actionid,read) in 
+					
+				RA) 
+			
+				)		
+				
+		)->				
+				
+					Policy_P29(
+			RS, RO, RA)+	
+								
+		(	
+		
+				(
+					
+					(attribute(resourceid, medicalfile) in 
+					
+				RO) 
+			 &&
+					
+					(attribute(resourceid,medicalfile) in 
+					
+				RO) 
+			
+				)			
+				||
+				
+				(
+						
+					(attribute(resourceid,medicalfile) in 
+					
+				RO) 
+			
+				)		
+				
+		)->				
+				
+					Policy_P30(
+			RS, RO, RA)+	
+								
+		(	
+		
+				(
+						
+					(attribute(resourceid,medicalfile) in 
+					
+				RO) 
+			
+				)		
+				
+		)->				
+				
+					Policy_P31(
+			RS, RO, RA)+	
+							
+					Policy_P32(
+			RS, RO, RA)+	
+							
+					Policy_P33(
+			RS, RO, RA)+	
+							
+					Policy_P34(
+			RS, RO, RA)+	
+							
+					Policy_P35(
+			RS, RO, RA)+	
+								
+		(	
+		
+				(
+					
+					(attribute(actionid, read) in 
+					
+				RA) 
+			 &&
+					
+					(attribute(resourceid,medicalfile) in 
+					
+				RO) 
+			
+				)			
+				||
+				
+				(
+					
+					(attribute(actionid, read) in 
+					
+				RA) 
+			 &&
+					
+					(attribute(actionid,write) in 
+					
+				RA) 
+			
+				)		
+				
+		)->				
+				
+					Policy_P36(
+			RS, RO, RA)+	
+								
+		(	
+		
+				(
+					
+					(attribute(resourceid, medicalfile) in 
+					
+				RO) 
+			 &&
+					
+					(attribute(actionid,read) in 
+					
+				RA) 
+			
+				)		
+				
+		)->				
+				
+					Policy_P37(
+			RS, RO, RA)+	
+							
+					Policy_P38(
+			RS, RO, RA)+	
+							
+					Policy_P39(
+			RS, RO, RA)+	
+								
+		(	
+		
+				(
+					
+					(attribute(actionid, read) in 
+					
+				RA) 
+			 &&
+					
+					(attribute(resourceid,medicalfile) in 
+					
+				RO) 
+			
+				)		
+				
+		)->				
+		
+					Policy_P40(
+			RS, RO, RA);	
+				
+		
+			Policy_P1(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	
+			
+					
+							
+		(	
+		
+				(
+					
+					(attribute(resourceid, medicalfile) in 
+					
+				RO) 
+			 &&
+					
+					(attribute(actionid,read) in 
+					
+				RA) 
+			
+				)			
+				||
+				
+				(
+					
+					(attribute(resourceid, medicalfile) in 
+					
+				RO) 
+			 &&
+					
+					(attribute(actionid,read) in 
+					
+				RA) 
+			
+				)		
+				
+		)->				
+		
+					Rule_R1(
+			RS, RO, RA);
+				
+		
+			Policy_P2(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	
+			
+					
+				
+					Rule_R2(
+			RS, RO, RA);
+				
+		
+			Policy_P3(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	
+			
+					
+							
+		(	
+		
+				(
+						
+					(attribute(resourceid,medicalfile) in 
+					
+				RO) 
+			
+				)			
+				||
+				
+				(
+					
+					(attribute(actionid, write) in 
+					
+				RA) 
+			 &&
+					
+					(attribute(resourceid,medicalfile) in 
+					
+				RO) 
+			
+				)		
+				
+		)->				
+		
+					Rule_R3(
+			RS, RO, RA);
+				
+		
+			Policy_P4(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	
+			
+					
+				
+					Rule_R4(
+			RS, RO, RA);
+				
+		
+			Policy_P5(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	
+			
+					
+				
+					Rule_R5(
+			RS, RO, RA);
+				
+		
+			Policy_P6(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	
+			
+					
+				
+					Rule_R6(
+			RS, RO, RA);
+				
+		
+			Policy_P7(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	
+			
+					
+							
+		(	
+		
+				(
+					
+					(attribute(resourceid, medicalfile) in 
+					
+				RO) 
+			 &&
+					
+					(attribute(actionid,read) in 
+					
+				RA) 
+			
+				)			
+				||
+				
+				(
+					
+					(attribute(resourceid, medicalfile) in 
+					
+				RO) 
+			 &&
+					
+					(attribute(actionid,read) in 
+					
+				RA) 
+			
+				)		
+				
+		)->				
+		
+					Rule_R7(
+			RS, RO, RA);
+				
+		
+			Policy_P8(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	
+			
+					
+				
+					Rule_R8(
+			RS, RO, RA);
+				
+		
+			Policy_P9(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	
+			
+					
+				
+					Rule_R9(
+			RS, RO, RA);
+				
+		
+			Policy_P10(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	
+			
+					
+				
+					Rule_R10(
+			RS, RO, RA);
+				
+		
+			Policy_P11(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	
+			
+					
+							
+		(	
+		
+				(
+					
+					(attribute(actionid, write) in 
+					
+				RA) 
+			 &&
+					
+					(attribute(actionid,write) in 
+					
+				RA) 
+			
+				)		
+				
+		)->				
+		
+					Rule_R11(
+			RS, RO, RA);
+				
+		
+			Policy_P12(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	
+			
+					
+				
+					Rule_R12(
+			RS, RO, RA);
+				
+		
+			Policy_P13(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	
+			
+					
+							
+		(	
+		
+				(
+					
+					(attribute(resourceid, medicalfile) in 
+					
+				RO) 
+			 &&
+					
+					(attribute(resourceid,medicalfile) in 
+					
+				RO) 
+			
+				)			
+				||
+				
+				(
+						
+					(attribute(resourceid,medicalfile) in 
+					
+				RO) 
+			
+				)		
+				
+		)->				
+		
+					Rule_R13(
+			RS, RO, RA);
+				
+		
+			Policy_P14(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	
+			
+					
+				
+					Rule_R14(
+			RS, RO, RA);
+				
+		
+			Policy_P15(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	
+			
+					
+				
+					Rule_R15(
+			RS, RO, RA);
+				
+		
+			Policy_P16(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	
+			
+					
+							
+		(	
+		
+				(
+					
+					(attribute(actionid, write) in 
+					
+				RA) 
+			 &&
+					
+					(attribute(resourceid,medicalfile) in 
+					
+				RO) 
+			
+				)		
+				
+		)->				
+		
+					Rule_R16(
+			RS, RO, RA);
+				
+		
+			Policy_P17(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	
+			
+					
+				
+					Rule_R17(
+			RS, RO, RA);
+				
+		
+			Policy_P18(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	
+			
+					
+							
+		(	
+		
+				(
+						
+					(attribute(resourceid,medicalfile) in 
+					
+				RO) 
+			
+				)			
+				||
+				
+				(
+					
+					(attribute(resourceid, medicalfile) in 
+					
+				RO) 
+			 &&
+					
+					(attribute(actionid,read) in 
+					
+				RA) 
+			
+				)		
+				
+		)->				
+		
+					Rule_R18(
+			RS, RO, RA);
+				
+		
+			Policy_P19(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	
+			
+					
+				
+					Rule_R19(
+			RS, RO, RA);
+				
+		
+			Policy_P20(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	
+			
+					
+							
+		(	
+		
+				(
+						
+					(attribute(actionid,read) in 
+					
+				RA) 
+			
+				)		
+				
+		)->				
+		
+					Rule_R20(
+			RS, RO, RA);
+				
+		
+			Policy_P21(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	
+			
+					
+				
+					Rule_R21(
+			RS, RO, RA);
+				
+		
+			Policy_P22(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	
+			
+					
+				
+					Rule_R22(
+			RS, RO, RA);
+				
+		
+			Policy_P23(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	
+			
+					
+							
+		(	
+		
+				(
+					
+					(attribute(resourceid, medicalfile) in 
+					
+				RO) 
+			 &&
+					
+					(attribute(resourceid,medicalfile) in 
+					
+				RO) 
+			
+				)			
+				||
+				
+				(
+						
+					(attribute(actionid,read) in 
+					
+				RA) 
+			
+				)		
+				
+		)->				
+		
+					Rule_R23(
+			RS, RO, RA);
+				
+		
+			Policy_P24(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	
+			
+					
+							
+		(	
+		
+				(
+					
+					(attribute(actionid, write) in 
+					
+				RA) 
+			 &&
+					
+					(attribute(resourceid,medicalfile) in 
+					
+				RO) 
+			
+				)		
+				
+		)->				
+		
+					Rule_R24(
+			RS, RO, RA);
+				
+		
+			Policy_P25(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	
+			
+					
+				
+					Rule_R25(
+			RS, RO, RA);
+				
+		
+			Policy_P26(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	
+			
+					
+							
+		(	
+		
+				(
+					
+					(attribute(actionid, read) in 
+					
+				RA) 
+			 &&
+					
+					(attribute(resourceid,medicalfile) in 
+					
+				RO) 
+			
+				)		
+				
+		)->				
+		
+					Rule_R26(
+			RS, RO, RA);
+				
+		
+			Policy_P27(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	
+			
+					
+							
+		(	
+		
+				(
+					
+					(attribute(actionid, read) in 
+					
+				RA) 
+			 &&
+					
+					(attribute(resourceid,medicalfile) in 
+					
+				RO) 
+			
+				)			
+				||
+				
+				(
+					
+					(attribute(actionid, read) in 
+					
+				RA) 
+			 &&
+					
+					(attribute(actionid,write) in 
+					
+				RA) 
+			
+				)		
+				
+		)->				
+		
+					Rule_R27(
+			RS, RO, RA);
+				
+		
+			Policy_P28(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	
+			
+					
+							
+		(	
+		
+				(
+					
+					(attribute(actionid, read) in 
+					
+				RA) 
+			 &&
+					
+					(attribute(resourceid,medicalfile) in 
+					
+				RO) 
+			
+				)		
+				
+		)->				
+		
+					Rule_R28(
+			RS, RO, RA);
+				
+		
+			Policy_P29(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	
+			
+					
+							
+		(	
+		
+				(
+					
+					(attribute(actionid, read) in 
+					
+				RA) 
+			 &&
+					
+					(attribute(actionid,write) in 
+					
+				RA) 
+			
+				)		
+				
+		)->				
+		
+					Rule_R29(
+			RS, RO, RA);
+				
+		
+			Policy_P30(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	
+			
+					
+				
+					Rule_R30(
+			RS, RO, RA);
+				
+		
+			Policy_P31(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	
+			
+					
+				
+					Rule_R31(
+			RS, RO, RA);
+				
+		
+			Policy_P32(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	
+			
+					
+				
+					Rule_R32(
+			RS, RO, RA);
+				
+		
+			Policy_P33(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	
+			
+					
+							
+		(	
+		
+				(
+					
+					(attribute(resourceid, medicalfile) in 
+					
+				RO) 
+			 &&
+					
+					(attribute(resourceid,medicalfile) in 
+					
+				RO) 
+			
+				)		
+				
+		)->				
+	
+					Rule_R33(
+			RS, RO, RA)+
+				
+					Rule_R34(
+			RS, RO, RA)+
+								
+		(	
+		
+				(
+					
+					(attribute(actionid, read) in 
+					
+				RA) 
+			 &&
+					
+					(attribute(actionid,read) in 
+					
+				RA) 
+			
+				)		
+				
+		)->				
+		
+					Rule_R35(
+			RS, RO, RA);
+				
+		
+			Policy_P34(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	
+			
+					
+			
+					Rule_R36(
+			RS, RO, RA)+
+				
+					Rule_R37(
+			RS, RO, RA)+
+				
+					Rule_R38(
+			RS, RO, RA)+
+								
+		(	
+		
+				(
+						
+					(attribute(actionid,read) in 
+					
+				RA) 
+			
+				)			
+				||
+				
+				(
+					
+					(attribute(actionid, read) in 
+					
+				RA) 
+			 &&
+					
+					(attribute(resourceid,medicalfile) in 
+					
+				RO) 
+			
+				)			
+				||
+				
+				(
+					
+					(attribute(actionid, write) in 
+					
+				RA) 
+			 &&
+					
+					(attribute(resourceid,medicalfile) in 
+					
+				RO) 
+			
+				)		
+				
+		)->				
+		
+					Rule_R39(
+			RS, RO, RA);
+				
+		
+			Policy_P35(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	
+			
+					
+			
+					Rule_R40(
+			RS, RO, RA)+
+								
+		(	
+		
+				(
+					
+					(attribute(resourceid, medicalfile) in 
+					
+				RO) 
+			 &&
+					
+					(attribute(actionid,read) in 
+					
+				RA) 
+			
+				)			
+				||
+				
+				(
+					
+					(attribute(resourceid, medicalfile) in 
+					
+				RO) 
+			 &&
+					
+					(attribute(actionid,read) in 
+					
+				RA) 
+			
+				)		
+				
+		)->				
+	
+					Rule_R41(
+			RS, RO, RA)+
+								
+		(	
+		
+				(
+					
+					(attribute(resourceid, medicalfile) in 
+					
+				RO) 
+			 &&
+					
+					(attribute(actionid,read) in 
+					
+				RA) 
+			
+				)			
+				||
+				
+				(
+					
+					(attribute(resourceid, medicalfile) in 
+					
+				RO) 
+			 &&
+					
+					(attribute(actionid,read) in 
+					
+				RA) 
+			
+				)		
+				
+		)->				
+	
+					Rule_R42(
+			RS, RO, RA)+
+					
+					Rule_R43(
+			RS, RO, RA);
+				
+		
+			Policy_P36(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	
+			
+					
+			
+					Rule_R44(
+			RS, RO, RA)+
+								
+		(	
+		
+				(
+					
+					(attribute(actionid, read) in 
+					
+				RA) 
+			 &&
+					
+					(attribute(resourceid,medicalfile) in 
+					
+				RO) 
+			
+				)		
+				
+		)->				
+	
+					Rule_R45(
+			RS, RO, RA)+
+				
+					Rule_R46(
+			RS, RO, RA)+
+								
+		(	
+		
+				(
+					
+					(attribute(actionid, read) in 
+					
+				RA) 
+			 &&
+					
+					(attribute(actionid,read) in 
+					
+				RA) 
+			
+				)			
+				||
+				
+				(
+					
+					(attribute(resourceid, medicalfile) in 
+					
+				RO) 
+			 &&
+					
+					(attribute(actionid,read) in 
+					
+				RA) 
+			
+				)		
+				
+		)->				
+		
+					Rule_R47(
+			RS, RO, RA);
+				
+		
+			Policy_P37(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	
+			
+					
+							
+		(	
+		
+				(
+					
+					(attribute(actionid, read) in 
+					
+				RA) 
+			 &&
+					
+					(attribute(actionid,read) in 
+					
+				RA) 
+			
+				)		
+				
+		)->				
+	
+					Rule_R48(
+			RS, RO, RA)+
+				
+					Rule_R49(
+			RS, RO, RA)+
+				
+					Rule_R50(
+			RS, RO, RA)+
+								
+		(	
+		
+				(
+					
+					(attribute(resourceid, medicalfile) in 
+					
+				RO) 
+			 &&
+					
+					(attribute(resourceid,medicalfile) in 
+					
+				RO) 
+			
+				)			
+				||
+				
+				(
+					
+					(attribute(actionid, read) in 
+					
+				RA) 
+			 &&
+					
+					(attribute(actionid,write) in 
+					
+				RA) 
+			
+				)			
+				||
+				
+				(
+					
+					(attribute(actionid, write) in 
+					
+				RA) 
+			 &&
+					
+					(attribute(actionid,write) in 
+					
+				RA) 
+			
+				)			
+				||
+				
+				(
+					
+					(attribute(actionid, write) in 
+					
+				RA) 
+			 &&
+					
+					(attribute(actionid,read) in 
+					
+				RA) 
+			
+				)		
+				
+		)->				
+		
+					Rule_R51(
+			RS, RO, RA);
+				
+		
+			Policy_P38(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	
+			
+					
+							
+		(	
+		
+				(
+						
+					(attribute(resourceid,medicalfile) in 
+					
+				RO) 
+			
+				)		
+				
+		)->				
+	
+					Rule_R52(
+			RS, RO, RA)+
+				
+					Rule_R53(
+			RS, RO, RA)+
+								
+		(	
+		
+				(
+					
+					(attribute(resourceid, medicalfile) in 
+					
+				RO) 
+			 &&
+					
+					(attribute(resourceid,medicalfile) in 
+					
+				RO) 
+			
+				)			
+				||
+				
+				(
+						
+					(attribute(resourceid,medicalfile) in 
+					
+				RO) 
+			
+				)		
+				
+		)->				
+	
+					Rule_R54(
+			RS, RO, RA)+
+					
+					Rule_R55(
+			RS, RO, RA);
+				
+		
+			Policy_P39(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	
+			
+					
+			
+					Rule_R56(
+			RS, RO, RA)+
+								
+		(	
+		
+				(
+						
+					(attribute(actionid,read) in 
+					
+				RA) 
+			
+				)		
+				
+		)->				
+	
+					Rule_R57(
+			RS, RO, RA)+
+								
+		(	
+		
+				(
+					
+					(attribute(actionid, write) in 
+					
+				RA) 
+			 &&
+					
+					(attribute(actionid,read) in 
+					
+				RA) 
+			
+				)		
+				
+		)->				
+	
+					Rule_R58(
+			RS, RO, RA)+
+					
+					Rule_R59(
+			RS, RO, RA);
+				
+		
+			Policy_P40(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	
+			
+					
+							
+		(	
+		
+				(
+					
+					(attribute(actionid, read) in 
+					
+				RA) 
+			 &&
+					
+					(attribute(resourceid,medicalfile) in 
+					
+				RO) 
+			
+				)			
+				||
+				
+				(
+						
+					(attribute(resourceid,medicalfile) in 
+					
+				RO) 
+			
+				)		
+				
+		)->				
+	
+					Rule_R60(
+			RS, RO, RA)+
+								
+		(	
+		
+				(
+					
+					(attribute(actionid, write) in 
+					
+				RA) 
+			 &&
+					
+					(attribute(actionid,read) in 
+					
+				RA) 
+			
+				)		
+				
+		)->				
+	
+					Rule_R61(
+			RS, RO, RA)+
+				
+					Rule_R62(
+			RS, RO, RA)+
+					
+					Rule_R63(
+			RS, RO, RA);
+					
+		
+			Rule_R1(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+			        
+		(
+		
+			!(attribute(location, ValdeGrace) in 
+			
+				RS) 
+			
+		)->
+		
+			
+			
+			Response(
+			RS, RO, RA, Permit);
+			
+		
+			Rule_R2(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+			
+					(attribute(role, physician) in 
+					
+				RS) 
+			 ->  
+					
+			
+			
+			Response(
+			RS, RO, RA, Permit);
+			
+		
+			Rule_R3(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+				
+		(
+		
+				(attribute(role, physician) in 
+				
+				RS) 
+			 &&
+			
+				(attribute(resourceconfidentiality, personal) in 
+				
+				RO) 
+			    
+		)->
+	
+			
+			
+			Response(
+			RS, RO, RA, Permit);
+			
+		
+			Rule_R4(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+			
+					(attribute(role, physician) in 
+					
+				RS) 
+			 ->  
+					
+			
+			
+			Response(
+			RS, RO, RA, Deny);
+			
+		
+			Rule_R5(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+			
+					(attribute(role, physician) in 
+					
+				RS) 
+			 ->  
+					
+			
+			
+			Response(
+			RS, RO, RA, Permit);
+			
+		
+			Rule_R6(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+			
+					(attribute(role, physician) in 
+					
+				RS) 
+			 ->  
+					
+			
+			
+			Response(
+			RS, RO, RA, Deny);
+			
+		
+			Rule_R7(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+			
+					(attribute(role, physician) in 
+					
+				RS) 
+			 ->  
+					
+			
+			
+			Response(
+			RS, RO, RA, Permit);
+			
+		
+			Rule_R8(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+			
+					(attribute(role, physician) in 
+					
+				RS) 
+			 ->  
+					
+			
+			
+			Response(
+			RS, RO, RA, Permit);
+			
+		
+			Rule_R9(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+			        
+		(
+		
+			!(attribute(location, ValdeGrace) in 
+			
+				RS) 
+			
+		)->
+		
+			
+			
+			Response(
+			RS, RO, RA, Permit);
+			
+		
+			Rule_R10(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+			        
+		(
+		
+			!(attribute(location, Europe) in 
+			
+				RS) 
+			
+		)->
+		
+			
+			
+			Response(
+			RS, RO, RA, Permit);
+			
+		
+			Rule_R11(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+			
+					(attribute(role, physician) in 
+					
+				RS) 
+			 ->  
+					
+			
+			
+			Response(
+			RS, RO, RA, Permit);
+			
+		
+			Rule_R12(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+			
+					(attribute(role, physician) in 
+					
+				RS) 
+			 ->  
+					
+			
+			
+			Response(
+			RS, RO, RA, Permit);
+			
+		
+			Rule_R13(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+			
+					(attribute(role, physician) in 
+					
+				RS) 
+			 ->  
+					
+			
+			
+			Response(
+			RS, RO, RA, Deny);
+			
+		
+			Rule_R14(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+			        
+		(
+		
+			!(attribute(location, ValdeGrace) in 
+			
+				RS) 
+			
+		)->
+		
+			
+			
+			Response(
+			RS, RO, RA, Permit);
+			
+		
+			Rule_R15(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+			
+					(attribute(role, physician) in 
+					
+				RS) 
+			 ->  
+					
+			
+			
+			Response(
+			RS, RO, RA, Permit);
+			
+		
+			Rule_R16(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+				
+		(
+		
+				(attribute(role, physician) in 
+				
+				RS) 
+			 &&
+			
+				(attribute(resourceconfidentiality, personal) in 
+				
+				RO) 
+			    
+		)->
+	
+			
+			
+			Response(
+			RS, RO, RA, Permit);
+			
+		
+			Rule_R17(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+			        
+		(
+		
+			!(attribute(location, Europe) in 
+			
+				RS) 
+			
+		)->
+		
+			
+			
+			Response(
+			RS, RO, RA, Deny);
+			
+		
+			Rule_R18(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+			        
+		(
+		
+			!(attribute(location, ValdeGrace) in 
+			
+				RS) 
+			
+		)->
+		
+			
+			
+			Response(
+			RS, RO, RA, Permit);
+			
+		
+			Rule_R19(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+				
+		(
+		
+				(attribute(role, physician) in 
+				
+				RS) 
+			 &&
+			
+				(attribute(resourceconfidentiality, personal) in 
+				
+				RO) 
+			    
+		)->
+	
+			
+			
+			Response(
+			RS, RO, RA, Permit);
+			
+		
+			Rule_R20(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+			        
+		(
+		
+			!(attribute(location, ValdeGrace) in 
+			
+				RS) 
+			
+		)->
+		
+			
+			
+			Response(
+			RS, RO, RA, Permit);
+			
+		
+			Rule_R21(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+			        
+		(
+		
+			!(attribute(location, Europe) in 
+			
+				RS) 
+			
+		)->
+		
+			
+			
+			Response(
+			RS, RO, RA, Permit);
+			
+		
+			Rule_R22(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+				
+		(
+		
+				(attribute(role, physician) in 
+				
+				RS) 
+			 &&
+			
+				(attribute(resourceconfidentiality, personal) in 
+				
+				RO) 
+			    
+		)->
+	
+			
+			
+			Response(
+			RS, RO, RA, Permit);
+			
+		
+			Rule_R23(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+				
+		(
+		
+				(attribute(role, physician) in 
+				
+				RS) 
+			 &&
+			
+				(attribute(resourceconfidentiality, personal) in 
+				
+				RO) 
+			    
+		)->
+	
+			
+			
+			Response(
+			RS, RO, RA, Permit);
+			
+		
+			Rule_R24(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+			
+					(attribute(role, physician) in 
+					
+				RS) 
+			 ->  
+					
+			
+			
+			Response(
+			RS, RO, RA, Deny);
+			
+		
+			Rule_R25(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+				
+		(
+		
+				(attribute(role, physician) in 
+				
+				RS) 
+			 &&
+			
+				(attribute(resourceconfidentiality, personal) in 
+				
+				RO) 
+			    
+		)->
+	
+			
+			
+			Response(
+			RS, RO, RA, Deny);
+			
+		
+			Rule_R26(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+			        
+		(
+		
+			!(attribute(location, Europe) in 
+			
+				RS) 
+			
+		)->
+		
+			
+			
+			Response(
+			RS, RO, RA, Permit);
+			
+		
+			Rule_R27(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+			
+					(attribute(role, physician) in 
+					
+				RS) 
+			 ->  
+					
+			
+			
+			Response(
+			RS, RO, RA, Deny);
+			
+		
+			Rule_R28(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+			        
+		(
+		
+			!(attribute(location, ValdeGrace) in 
+			
+				RS) 
+			
+		)->
+		
+			
+			
+			Response(
+			RS, RO, RA, Deny);
+			
+		
+			Rule_R29(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+				
+		(
+		
+				(attribute(role, physician) in 
+				
+				RS) 
+			 &&
+			
+				(attribute(resourceconfidentiality, personal) in 
+				
+				RO) 
+			    
+		)->
+	
+			
+			
+			Response(
+			RS, RO, RA, Permit);
+			
+		
+			Rule_R30(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+				
+		(
+		
+				(attribute(role, physician) in 
+				
+				RS) 
+			 &&
+			
+				(attribute(resourceconfidentiality, personal) in 
+				
+				RO) 
+			    
+		)->
+	
+			
+			
+			Response(
+			RS, RO, RA, Permit);
+			
+		
+			Rule_R31(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+			        
+		(
+		
+			!(attribute(location, Europe) in 
+			
+				RS) 
+			
+		)->
+		
+			
+			
+			Response(
+			RS, RO, RA, Deny);
+			
+		
+			Rule_R32(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+			
+					(attribute(role, physician) in 
+					
+				RS) 
+			 ->  
+					
+			
+			
+			Response(
+			RS, RO, RA, Deny);
+			
+		
+			Rule_R33(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+			
+					(attribute(role, physician) in 
+					
+				RS) 
+			 ->  
+					
+			
+			
+			Response(
+			RS, RO, RA, Deny);
+			
+		
+			Rule_R34(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+			        
+		(
+		
+			!(attribute(location, ValdeGrace) in 
+			
+				RS) 
+			
+		)->
+		
+			
+			
+			Response(
+			RS, RO, RA, Permit);
+			
+		
+			Rule_R35(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+			
+					(attribute(role, physician) in 
+					
+				RS) 
+			 ->  
+					
+			
+			
+			Response(
+			RS, RO, RA, Permit);
+			
+		
+			Rule_R36(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+			        
+		(
+		
+			!(attribute(location, ValdeGrace) in 
+			
+				RS) 
+			
+		)->
+		
+			
+			
+			Response(
+			RS, RO, RA, Deny);
+			
+		
+			Rule_R37(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+			
+					(attribute(role, physician) in 
+					
+				RS) 
+			 ->  
+					
+			
+			
+			Response(
+			RS, RO, RA, Permit);
+			
+		
+			Rule_R38(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+				
+		(
+		
+				(attribute(role, physician) in 
+				
+				RS) 
+			 &&
+			
+				(attribute(resourceconfidentiality, personal) in 
+				
+				RO) 
+			    
+		)->
+	
+			
+			
+			Response(
+			RS, RO, RA, Deny);
+			
+		
+			Rule_R39(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+				
+		(
+		
+				(attribute(role, physician) in 
+				
+				RS) 
+			 &&
+			
+				(attribute(resourceconfidentiality, personal) in 
+				
+				RO) 
+			    
+		)->
+	
+			
+			
+			Response(
+			RS, RO, RA, Deny);
+			
+		
+			Rule_R40(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+			        
+		(
+		
+			!(attribute(location, Europe) in 
+			
+				RS) 
+			
+		)->
+		
+			
+			
+			Response(
+			RS, RO, RA, Permit);
+			
+		
+			Rule_R41(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+			        
+		(
+		
+			!(attribute(location, Europe) in 
+			
+				RS) 
+			
+		)->
+		
+			
+			
+			Response(
+			RS, RO, RA, Permit);
+			
+		
+			Rule_R42(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+			        
+		(
+		
+			!(attribute(location, Europe) in 
+			
+				RS) 
+			
+		)->
+		
+			
+			
+			Response(
+			RS, RO, RA, Permit);
+			
+		
+			Rule_R43(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+			
+					(attribute(role, physician) in 
+					
+				RS) 
+			 ->  
+					
+			
+			
+			Response(
+			RS, RO, RA, Deny);
+			
+		
+			Rule_R44(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+			
+					(attribute(role, physician) in 
+					
+				RS) 
+			 ->  
+					
+			
+			
+			Response(
+			RS, RO, RA, Permit);
+			
+		
+			Rule_R45(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+			
+					(attribute(role, physician) in 
+					
+				RS) 
+			 ->  
+					
+			
+			
+			Response(
+			RS, RO, RA, Permit);
+			
+		
+			Rule_R46(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+			        
+		(
+		
+			!(attribute(location, ValdeGrace) in 
+			
+				RS) 
+			
+		)->
+		
+			
+			
+			Response(
+			RS, RO, RA, Permit);
+			
+		
+			Rule_R47(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+			        
+		(
+		
+			!(attribute(location, ValdeGrace) in 
+			
+				RS) 
+			
+		)->
+		
+			
+			
+			Response(
+			RS, RO, RA, Permit);
+			
+		
+			Rule_R48(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+			
+					(attribute(role, physician) in 
+					
+				RS) 
+			 ->  
+					
+			
+			
+			Response(
+			RS, RO, RA, Permit);
+			
+		
+			Rule_R49(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+			
+					(attribute(role, physician) in 
+					
+				RS) 
+			 ->  
+					
+			
+			
+			Response(
+			RS, RO, RA, Permit);
+			
+		
+			Rule_R50(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+			
+					(attribute(role, physician) in 
+					
+				RS) 
+			 ->  
+					
+			
+			
+			Response(
+			RS, RO, RA, Deny);
+			
+		
+			Rule_R51(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+			
+					(attribute(role, physician) in 
+					
+				RS) 
+			 ->  
+					
+			
+			
+			Response(
+			RS, RO, RA, Permit);
+			
+		
+			Rule_R52(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+			
+					(attribute(role, physician) in 
+					
+				RS) 
+			 ->  
+					
+			
+			
+			Response(
+			RS, RO, RA, Deny);
+			
+		
+			Rule_R53(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+			        
+		(
+		
+			!(attribute(location, Europe) in 
+			
+				RS) 
+			
+		)->
+		
+			
+			
+			Response(
+			RS, RO, RA, Deny);
+			
+		
+			Rule_R54(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+			
+					(attribute(role, physician) in 
+					
+				RS) 
+			 ->  
+					
+			
+			
+			Response(
+			RS, RO, RA, Permit);
+			
+		
+			Rule_R55(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+			
+					(attribute(role, physician) in 
+					
+				RS) 
+			 ->  
+					
+			
+			
+			Response(
+			RS, RO, RA, Permit);
+			
+		
+			Rule_R56(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+			
+					(attribute(role, physician) in 
+					
+				RS) 
+			 ->  
+					
+			
+			
+			Response(
+			RS, RO, RA, Permit);
+			
+		
+			Rule_R57(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+			
+					(attribute(role, physician) in 
+					
+				RS) 
+			 ->  
+					
+			
+			
+			Response(
+			RS, RO, RA, Deny);
+			
+		
+			Rule_R58(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+			        
+		(
+		
+			!(attribute(location, ValdeGrace) in 
+			
+				RS) 
+			
+		)->
+		
+			
+			
+			Response(
+			RS, RO, RA, Permit);
+			
+		
+			Rule_R59(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+			        
+		(
+		
+			!(attribute(location, Europe) in 
+			
+				RS) 
+			
+		)->
+		
+			
+			
+			Response(
+			RS, RO, RA, Permit);
+			
+		
+			Rule_R60(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+			        
+		(
+		
+			!(attribute(location, Europe) in 
+			
+				RS) 
+			
+		)->
+		
+			
+			
+			Response(
+			RS, RO, RA, Permit);
+			
+		
+			Rule_R61(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+			
+					(attribute(role, physician) in 
+					
+				RS) 
+			 ->  
+					
+			
+			
+			Response(
+			RS, RO, RA, Permit);
+			
+		
+			Rule_R62(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+				
+		(
+		
+				(attribute(role, physician) in 
+				
+				RS) 
+			 &&
+			
+				(attribute(resourceconfidentiality, personal) in 
+				
+				RO) 
+			    
+		)->
+	
+			
+			
+			Response(
+			RS, RO, RA, Permit);
+			
+		
+			Rule_R63(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+			
+					(attribute(role, physician) in 
+					
+				RS) 
+			 ->  
+					
+			
+			
+			Response(
+			RS, RO, RA, Deny);
+		
+		
+
+
+
+
+
+		
+
+
+
+	init 
+			sum RS:FSet(SAtt).sum RO:FSet(OAtt).sum RA:FSet(AAtt).(
+			RS !={}&& RO !={}&& RA !={})-> Request(
+			RS, RO, RA).PolicySet_root_ps(
+			RS, RO, RA);	
+	

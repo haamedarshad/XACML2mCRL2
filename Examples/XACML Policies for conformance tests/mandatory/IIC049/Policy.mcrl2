@@ -1,0 +1,84 @@
+
+	sort SAtt = struct attribute(name:SAttName, value:SAttValue);
+	sort SAttName = struct
+		key;
+	sort SAttValue = struct 	
+		 
+				n0BF7A9876CDE;
+	
+
+	
+	
+	
+
+
+
+
+							
+	sort Decision = struct Permit | Deny;
+	
+
+
+							
+			
+	
+
+
+		
+							
+	act
+		Request:
+			FSet(SAtt);
+				
+		Response:
+			FSet(SAtt)#Decision;
+	
+
+
+	
+
+
+
+		
+	
+	proc	
+		
+	
+	Policy_policy(
+			RS:FSet(SAtt)) = 
+	
+			
+		
+			Rule_rule(
+			RS);
+			
+	
+		Rule_rule(
+			RS:FSet(SAtt))=
+		
+		
+		
+					(attribute(key,  
+				n0BF7A9876CDE) in 
+					
+				RS) 
+			 ->  
+					
+		
+
+		Response(
+			RS,Permit);
+	
+	
+
+
+		
+
+
+
+		init 
+			sum RS:FSet(SAtt).(
+			RS !={})-> Request(
+			RS).Policy_policy(
+			RS);	
+	

@@ -1,0 +1,322 @@
+
+	sort SAtt = struct attribute(name:SAttName, value:SAttValue);
+	sort SAttName = struct
+		location|
+				role;
+	sort SAttValue = struct 	
+		ValdeGrace|
+			physician|
+			Europe;
+	
+	sort OAtt = struct attribute(name:OAttName, value:OAttValue);
+	sort OAttName = struct
+		resourceid|
+				resourceconfidentiality;
+	sort OAttValue = struct 
+		medicalfile|
+			personal;
+	
+	sort AAtt = struct attribute(name:AAttName, value:AAttValue);
+	sort AAttName = struct 
+		actionid;
+	sort AAttValue = struct
+		read|
+			write;
+	
+
+	
+	
+	
+
+
+
+
+							
+	sort Decision = struct Permit | Deny;
+	
+
+
+							
+			
+	
+
+
+		
+							
+	act
+		Request:
+			FSet(SAtt)#FSet(OAtt)#FSet(AAtt);
+				
+		Response:
+			FSet(SAtt)#FSet(OAtt)#FSet(AAtt)#Decision;
+	
+
+
+	
+
+
+
+		
+	
+	proc	
+		
+	
+			PolicySet_root_ps(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt)) = 
+
+
+					
+						
+					Policy_P1(
+			RS, RO, RA)+	
+								
+		(	
+		
+				(
+					
+					(attribute(actionid, write) in 
+					
+				RA) 
+			 &&
+					
+					(attribute(resourceid,medicalfile) in 
+					
+				RO) 
+			
+				)		
+				
+		)->				
+				
+					Policy_P2(
+			RS, RO, RA)+	
+							
+					Policy_P3(
+			RS, RO, RA)+	
+								
+		(	
+		
+				(
+						
+					(attribute(actionid,read) in 
+					
+				RA) 
+			
+				)		
+				
+		)->				
+				
+					Policy_P4(
+			RS, RO, RA)+	
+					
+					Policy_P5(
+			RS, RO, RA);	
+				
+		
+			Policy_P1(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	
+			
+					
+							
+		(	
+		
+				(
+					
+					(attribute(resourceid, medicalfile) in 
+					
+				RO) 
+			 &&
+					
+					(attribute(actionid,read) in 
+					
+				RA) 
+			
+				)			
+				||
+				
+				(
+					
+					(attribute(resourceid, medicalfile) in 
+					
+				RO) 
+			 &&
+					
+					(attribute(actionid,read) in 
+					
+				RA) 
+			
+				)		
+				
+		)->				
+		
+					Rule_R1(
+			RS, RO, RA);
+				
+		
+			Policy_P2(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	
+			
+					
+				
+					Rule_R2(
+			RS, RO, RA);
+				
+		
+			Policy_P3(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	
+			
+					
+							
+		(	
+		
+				(
+						
+					(attribute(resourceid,medicalfile) in 
+					
+				RO) 
+			
+				)			
+				||
+				
+				(
+					
+					(attribute(actionid, write) in 
+					
+				RA) 
+			 &&
+					
+					(attribute(resourceid,medicalfile) in 
+					
+				RO) 
+			
+				)		
+				
+		)->				
+		
+					Rule_R3(
+			RS, RO, RA);
+				
+		
+			Policy_P4(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	
+			
+					
+				
+					Rule_R4(
+			RS, RO, RA);
+				
+		
+			Policy_P5(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=	
+			
+					
+				
+					Rule_R5(
+			RS, RO, RA);
+					
+		
+			Rule_R1(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+			        
+		(
+		
+			!(attribute(location, ValdeGrace) in 
+			
+				RS) 
+			
+		)->
+		
+			
+			
+			Response(
+			RS, RO, RA, Permit);
+			
+		
+			Rule_R2(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+			
+					(attribute(role, physician) in 
+					
+				RS) 
+			 ->  
+					
+			
+			
+			Response(
+			RS, RO, RA, Permit);
+			
+		
+			Rule_R3(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+				
+		(
+		
+				(attribute(role, physician) in 
+				
+				RS) 
+			 &&
+			
+				(attribute(resourceconfidentiality, personal) in 
+				
+				RO) 
+			    
+		)->
+	
+			
+			
+			Response(
+			RS, RO, RA, Permit);
+			
+		
+			Rule_R4(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+			
+					(attribute(role, physician) in 
+					
+				RS) 
+			 ->  
+					
+			
+			
+			Response(
+			RS, RO, RA, Deny);
+			
+		
+			Rule_R5(
+			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt))=
+			
+			
+			
+					(attribute(role, physician) in 
+					
+				RS) 
+			 ->  
+					
+			
+			
+			Response(
+			RS, RO, RA, Permit);
+		
+		
+
+
+
+
+
+		
+
+
+
+	init 
+			sum RS:FSet(SAtt).sum RO:FSet(OAtt).sum RA:FSet(AAtt).(
+			RS !={}&& RO !={}&& RA !={})-> Request(
+			RS, RO, RA).PolicySet_root_ps(
+			RS, RO, RA);	
+	

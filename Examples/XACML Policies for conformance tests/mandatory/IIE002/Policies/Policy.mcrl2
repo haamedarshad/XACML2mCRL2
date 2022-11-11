@@ -1,0 +1,54 @@
+
+
+	
+	
+	
+
+
+
+
+							
+	sort Decision = struct Permit | Deny;
+	
+
+
+							
+			
+	
+
+
+		
+							
+	act
+		Request:;
+				
+		Response:#Decision;
+	
+
+
+	
+
+
+
+		
+	
+	proc	
+		
+	
+			PolicySet_policyset() = 
+
+
+					
+			
+		
+
+
+
+
+
+		
+
+
+
+	init .()-> Request().PolicySet_policyset();	
+	

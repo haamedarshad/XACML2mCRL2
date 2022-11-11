@@ -1,0 +1,83 @@
+
+	sort SAtt = struct attribute(name:SAttName, value:SAttValue);
+	sort SAttName = struct
+		subjectid;
+	sort SAttValue = struct 	
+		;
+	
+	sort OAtt = struct attribute(name:OAttName, value:OAttValue);
+	sort OAttName = struct
+		author;
+	sort OAttValue = struct 
+		;
+	
+
+	
+	
+	
+
+
+
+
+							
+	sort Decision = struct Permit | Deny;
+	
+
+
+							
+			
+	
+
+
+		
+							
+	act
+		Request:
+			FSet(SAtt)#FSet(OAtt);
+				
+		Response:
+			FSet(SAtt)#FSet(OAtt)#Decision;
+	
+
+
+	
+
+
+
+		
+	
+	proc	
+		
+	
+	Policy_policy(
+			RS:FSet(SAtt), RO:FSet(OAtt)) = 
+	
+			
+		
+			Rule_rule(
+			RS, RO);
+			
+	
+		Rule_rule(
+			RS:FSet(SAtt), RO:FSet(OAtt))=
+		
+		
+		
+		
+
+		Response(
+			RS, RO,Permit);
+	
+	
+
+
+		
+
+
+
+		init 
+			sum RS:FSet(SAtt).sum RO:FSet(OAtt).(
+			RS !={}&& RO !={})-> Request(
+			RS, RO).Policy_policy(
+			RS, RO);	
+	

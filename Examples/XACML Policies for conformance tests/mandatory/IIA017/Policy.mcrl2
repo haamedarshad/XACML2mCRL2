@@ -1,0 +1,96 @@
+
+	sort EAtt = struct attribute(name:EAttName, value:EAttValue);
+	
+	sort EAttName = struct 
+		currenttime;
+	
+	sort EAttValue = struct
+		 
+				n1;
+	
+
+	
+	
+	
+
+
+
+
+							
+	sort Decision = struct Permit | Deny;
+	
+
+
+							
+			
+	
+
+
+		
+							
+	act
+		Request:
+			FSet(EAtt)
+			;
+				
+		Response:
+			FSet(EAtt)
+			#Decision;
+	
+
+
+	
+
+
+
+		
+	
+	proc	
+		
+	
+	Policy_policy(
+			RE:FSet(EAtt)
+			) = 
+	
+			
+		
+			Rule_rule(
+			RE
+			);
+			
+	
+		Rule_rule(
+			RE:FSet(EAtt)
+			)=
+		
+		
+		
+					(attribute(currenttime,  
+				n1) in 
+					
+				RE)  
+			 ->  
+					
+		
+
+		Response(
+			RE
+			,Permit);
+	
+	
+
+
+		
+
+
+
+		init 
+			sum RE:FSet(EAtt)
+			.(
+			RE !={}
+			)-> Request(
+			RE
+			).Policy_policy(
+			RE
+			);	
+	

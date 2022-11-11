@@ -1,0 +1,179 @@
+
+	sort SAtt = struct attribute(name:SAttName, value:SAttValue);
+	sort SAttName = struct
+		subjectid|
+				age|
+				test;
+	sort SAttValue = struct 	
+		JHibbert|
+			|
+			ZaphodBeedlebrox;
+	
+	sort EAtt = struct attribute(name:EAttName, value:EAttValue);
+	
+	sort EAttName = struct 
+		bartsimpsonage;
+	
+	sort EAttValue = struct
+		;
+	
+
+	
+	
+	
+
+
+
+
+							
+	sort Decision = struct Permit | Deny;
+	
+
+
+							
+	
+		sort ObgID = struct 
+		obligation1|
+				obligation2|
+				obligation3|
+				obligation4;
+				
+	
+
+
+		
+							
+	act
+		Request:
+			FSet(SAtt)#FSet(EAtt);
+		
+		Obligation:
+			FSet(SAtt)#FSet(EAtt)#ObgID;
+				
+		Response:
+			FSet(SAtt)#FSet(EAtt)#Decision;
+	
+
+
+	
+
+
+
+		
+	
+	proc	
+		
+	
+	Policy_policy(
+			RS:FSet(SAtt), RE:FSet(EAtt)) = 
+	
+			
+					
+		(	
+		
+				(
+						
+					(attribute(subjectid,JHibbert) in 
+					
+				RS) 
+			
+				)		
+				
+		)->				
+	
+			Rule_rule1(
+			RS, RE)+
+		
+			Rule_rule2(
+			RS, RE)+
+			
+			Rule_rule3(
+			RS, RE);
+			
+	
+		Rule_rule1(
+			RS:FSet(SAtt), RE:FSet(EAtt))=
+		
+		
+			
+				Obligation(
+			RS, RE, obligation1).
+				
+				Obligation(
+			RS, RE, obligation2).
+				
+				Obligation(
+			RS, RE, obligation3).
+				
+				Obligation(
+			RS, RE, obligation4).
+			
+		
+
+		Response(
+			RS, RE,Deny);
+		
+	
+		Rule_rule2(
+			RS:FSet(SAtt), RE:FSet(EAtt))=
+		
+		
+			
+				Obligation(
+			RS, RE, obligation1).
+				
+				Obligation(
+			RS, RE, obligation2).
+				
+				Obligation(
+			RS, RE, obligation3).
+				
+				Obligation(
+			RS, RE, obligation4).
+			
+		
+
+		Response(
+			RS, RE,Permit);
+		
+	
+		Rule_rule3(
+			RS:FSet(SAtt), RE:FSet(EAtt))=
+		
+		
+		
+					(attribute(test, ZaphodBeedlebrox) in 
+					
+				RS) 
+			 ->  
+						
+				Obligation(
+			RS, RE, obligation1).
+				
+				Obligation(
+			RS, RE, obligation2).
+				
+				Obligation(
+			RS, RE, obligation3).
+				
+				Obligation(
+			RS, RE, obligation4).
+			
+		
+
+		Response(
+			RS, RE,Permit);
+	
+	
+
+
+		
+
+
+
+		init 
+			sum RS:FSet(SAtt).sum RE:FSet(EAtt).(
+			RS !={}&& RE !={})-> Request(
+			RS, RE).Policy_policy(
+			RS, RE);	
+	

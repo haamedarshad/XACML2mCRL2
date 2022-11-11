@@ -1,0 +1,99 @@
+
+	sort AAtt = struct attribute(name:AAttName, value:AAttValue);
+	sort AAttName = struct 
+		actionid;
+	sort AAttValue = struct
+		read|
+			write;
+	
+
+	
+	
+	
+
+
+
+
+							
+	sort Decision = struct Permit | Deny;
+	
+
+
+							
+			
+	
+
+
+		
+							
+	act
+		Request:
+			FSet(AAtt);
+				
+		Response:
+			FSet(AAtt)#Decision;
+	
+
+
+	
+
+
+
+		
+	
+	proc	
+		
+	
+	Policy_policy(
+			RA:FSet(AAtt)) = 
+	
+			
+					
+		(	
+		
+				(
+						
+					(attribute(actionid,read) in 
+					
+				RA) 
+			
+				)			
+				||
+				
+				(
+						
+					(attribute(actionid,write) in 
+					
+				RA) 
+			
+				)		
+				
+		)->				
+		
+			Rule_rule(
+			RA);
+			
+	
+		Rule_rule(
+			RA:FSet(AAtt))=
+		
+		
+		
+		
+
+		Response(
+			RA,Permit);
+	
+	
+
+
+		
+
+
+
+		init 
+			sum RA:FSet(AAtt).(
+			RA !={})-> Request(
+			RA).Policy_policy(
+			RA);	
+	

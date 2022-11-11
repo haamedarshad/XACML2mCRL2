@@ -1,0 +1,67 @@
+
+
+	
+	
+	
+
+
+
+
+							
+	sort Decision = struct Permit | Deny;
+	
+
+
+							
+			
+	
+
+
+		
+							
+	act
+		Request:;
+				
+		Response:#Decision;
+	
+
+
+	
+
+
+
+		
+	
+	proc	
+		
+	
+	Policy_policy() = 
+	
+			
+		
+			Rule_rule();
+			
+	
+		Rule_rule()=
+		
+		
+		
+					(attribute(age,  
+				n45) in 
+					
+				RE)  
+			 ->  
+					
+		
+
+		Response(,Permit);
+	
+	
+
+
+		
+
+
+
+		init .()-> Request().Policy_policy();	
+	
