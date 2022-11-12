@@ -23,7 +23,6 @@ for folder in PATH-TO-ConformanceTestFOLDER/*; do
         xsltproc PATH-TO-XSLT-RULES-Folder/policy.xsl "$file" > $folder/Policy.mcrl2
     
     done
-
 done
 
 
