@@ -17,18 +17,26 @@ done
 
 
 for folder in PATH-TO-ConformanceTestFOLDER/*; do
+    
     for file in "$folder"/Policy.xml; do
+    
         xsltproc PATH-TO-XSLT-RULES-Folder/policy.xsl "$file" > $folder/Policy.mcrl2
+    
     done
+
 done
 
 
 *For example, I use the following script:*
 
 for folder in /home/macbook/Downloads/mandatory/*; do
+    
     for file in "$folder"/Policy.xml; do
+        
         xsltproc /home/macbook/Downloads/ExperimentsXACML/policy.xsl "$file" > $folder/Policy.mcrl2
+    
     done
+
 done
 
 
