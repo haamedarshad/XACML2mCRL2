@@ -2,113 +2,12 @@
 	<xsl:output method="text" indent="no"/>
       <xsl:strip-space elements="*"/>
 		
-
+<!-- A few global vriables for checking the existance of different types of attributes are defined/>" -->
 <xsl:variable name="SubjectAtt"><xsl:if test="descendant::*/xacml:AttributeDesignator[not(@AttributeId=../preceding::*/xacml:AttributeDesignator/@AttributeId) and (@Category='urn:oasis:names:tc:xacml:1.0:subject-category:access-subject')]">True</xsl:if></xsl:variable>
 <xsl:variable name="ObjectAtt"><xsl:if test="descendant::*/xacml:AttributeDesignator[not(@AttributeId=../preceding::*/xacml:AttributeDesignator/@AttributeId) and (@Category='urn:oasis:names:tc:xacml:3.0:attribute-category:resource')]">True</xsl:if></xsl:variable>
 <xsl:variable name="ActionAtt"><xsl:if test="descendant::*/xacml:AttributeDesignator[not(@AttributeId=../preceding::*/xacml:AttributeDesignator/@AttributeId) and (@Category='urn:oasis:names:tc:xacml:3.0:attribute-category:action')]">True</xsl:if></xsl:variable>
 <xsl:variable name="EnvironmentAtt"><xsl:if test="descendant::*/xacml:AttributeDesignator[not(@AttributeId=../preceding::*/xacml:AttributeDesignator/@AttributeId) and (@Category='urn:oasis:names:tc:xacml:3.0:attribute-category:environment')]">True</xsl:if></xsl:variable>
 
-
-<!-- This template (function) makes (RS,RO,RA,RE). This template (function) is called a few times using "<xsl:call-template name="RSRORARE"/>" -->
-	<xsl:template name="RSRORARE">
-		<xsl:choose>
-			<xsl:when test="$SubjectAtt = 'True'">
-			RS<xsl:if test="$ObjectAtt = 'True'">, RO</xsl:if><xsl:if test="$ActionAtt = 'True'">, RA</xsl:if><xsl:if test="$EnvironmentAtt = 'True'">, RE</xsl:if>
-			</xsl:when>
-			<xsl:when test="$SubjectAtt != 'True' and $ObjectAtt = 'True'">
-			RO<xsl:if test="$ActionAtt = 'True'">, RA</xsl:if><xsl:if test="$EnvironmentAtt = 'True'">, RE</xsl:if>
-			</xsl:when>
-			<xsl:when test="$SubjectAtt != 'True' and $ObjectAtt != 'True' and $ActionAtt = 'True'">
-			RA<xsl:if test="$EnvironmentAtt = 'True'">, RE</xsl:if>
-			</xsl:when>
-			<xsl:when test="$SubjectAtt != 'True' and $ObjectAtt != 'True' and $ActionAtt != 'True' and $EnvironmentAtt = 'True'">
-			RE
-			</xsl:when>
-		</xsl:choose>				
-	</xsl:template>
-
-
-
-
-<!-- This template (function) makes (RS:FSet(SAtt),RO:FSet(OAtt),RA:FSet(AAtt),RE:FSet(EAtt)). This template (function) is called a few times using "<xsl:call-template name="RSFSetROFSetRAFSetREFSet"/>" -->
-	<xsl:template name="RSFSetROFSetRAFSetREFSet">
-		<xsl:choose>
-			<xsl:when test="$SubjectAtt = 'True'">
-			RS:FSet(SAtt)<xsl:if test="$ObjectAtt = 'True'">, RO:FSet(OAtt)</xsl:if><xsl:if test="$ActionAtt = 'True'">, RA:FSet(AAtt)</xsl:if><xsl:if test="$EnvironmentAtt = 'True'">, RE:FSet(EAtt)</xsl:if>
-			</xsl:when>
-			<xsl:when test="$SubjectAtt != 'True' and $ObjectAtt = 'True'">
-			RO:FSet(OAtt)<xsl:if test="$ActionAtt = 'True'">, RA:FSet(AAtt)</xsl:if><xsl:if test="$EnvironmentAtt = 'True'">, RE:FSet(EAtt)</xsl:if>
-			</xsl:when>
-			<xsl:when test="$SubjectAtt != 'True' and $ObjectAtt != 'True' and $ActionAtt = 'True'">
-			RA:FSet(AAtt)<xsl:if test="$EnvironmentAtt = 'True'">, RE:FSet(EAtt)</xsl:if>
-			</xsl:when>
-			<xsl:when test="$SubjectAtt != 'True' and $ObjectAtt != 'True' and $ActionAtt != 'True' and $EnvironmentAtt = 'True'">
-			RE:FSet(EAtt)
-			</xsl:when>
-		</xsl:choose>				
-	</xsl:template>
-	
-
-
-<!-- This template (function) makes sum RS:FSet(SAtt).sum RO:FSet(OAtt).sum RA:FSet(AAtt).sum RE:FSet(EAtt). This template (function) is called a few times using "<xsl:call-template name="SUMinINIT"/>" -->
-	<xsl:template name="SUMinINIT">
-		<xsl:choose>
-			<xsl:when test="$SubjectAtt = 'True'">
-			sum RS:FSet(SAtt)<xsl:if test="$ObjectAtt = 'True'">.sum RO:FSet(OAtt)</xsl:if><xsl:if test="$ActionAtt = 'True'">.sum RA:FSet(AAtt)</xsl:if><xsl:if test="$EnvironmentAtt = 'True'">.sum RE:FSet(EAtt)</xsl:if>
-			</xsl:when>
-			<xsl:when test="$SubjectAtt != 'True' and $ObjectAtt = 'True'">
-			sum RO:FSet(OAtt)<xsl:if test="$ActionAtt = 'True'">. sum RA:FSet(AAtt)</xsl:if><xsl:if test="$EnvironmentAtt = 'True'">.sum RE:FSet(EAtt)</xsl:if>
-			</xsl:when>
-			<xsl:when test="$SubjectAtt != 'True' and $ObjectAtt != 'True' and $ActionAtt = 'True'">
-			sum RA:FSet(AAtt)<xsl:if test="$EnvironmentAtt = 'True'">.sum RE:FSet(EAtt)</xsl:if>
-			</xsl:when>
-			<xsl:when test="$SubjectAtt != 'True' and $ObjectAtt != 'True' and $ActionAtt != 'True' and $EnvironmentAtt = 'True'">
-			sum RE:FSet(EAtt)
-			</xsl:when>
-		</xsl:choose>				
-	</xsl:template>
-
-
-
-
-<!-- This template (function) makes RS !={} && RO !={} && RA !={} && RE !={}. This template (function) is called a few times using "<xsl:call-template name="SETinINIT"/>" -->
-	<xsl:template name="SETinINIT">
-		<xsl:choose>
-			<xsl:when test="$SubjectAtt = 'True'">
-			RS !={}<xsl:if test="$ObjectAtt = 'True'">&amp;&amp; RO !={}</xsl:if><xsl:if test="$ActionAtt = 'True'">&amp;&amp; RA !={}</xsl:if><xsl:if test="$EnvironmentAtt = 'True'">&amp;&amp; RE !={}</xsl:if>
-			</xsl:when>
-			<xsl:when test="$SubjectAtt != 'True' and $ObjectAtt = 'True'">
-			RO !={}<xsl:if test="$ActionAtt = 'True'">&amp;&amp; RA !={}</xsl:if><xsl:if test="$EnvironmentAtt = 'True'">&amp;&amp; RE !={}</xsl:if>
-			</xsl:when>
-			<xsl:when test="$SubjectAtt != 'True' and $ObjectAtt != 'True' and $ActionAtt = 'True'">
-			RA !={}<xsl:if test="$EnvironmentAtt = 'True'">&amp;&amp; RE !={}</xsl:if>
-			</xsl:when>
-			<xsl:when test="$SubjectAtt != 'True' and $ObjectAtt != 'True' and $ActionAtt != 'True' and $EnvironmentAtt = 'True'">
-			RE !={}
-			</xsl:when>
-		</xsl:choose>				
-	</xsl:template>
-
-
-
-<!-- This template (function) makes FSet(SAtt)#FSet(OAtt)#FSet(AAtt)#FSet(EAtt). This template (function) is called a few times using "<xsl:call-template name="FSETinACT"/>" -->
-	<xsl:template name="FSETinACT">
-		<xsl:choose>
-			<xsl:when test="$SubjectAtt = 'True'">
-			FSet(SAtt)<xsl:if test="$ObjectAtt = 'True'">#FSet(OAtt)</xsl:if><xsl:if test="$ActionAtt = 'True'">#FSet(AAtt)</xsl:if><xsl:if test="$EnvironmentAtt = 'True'">#FSet(EAtt)</xsl:if>
-			</xsl:when>
-			<xsl:when test="$SubjectAtt != 'True' and $ObjectAtt = 'True'">
-			FSet(OAtt)<xsl:if test="$ActionAtt = 'True'">#FSet(AAtt)</xsl:if><xsl:if test="$EnvironmentAtt = 'True'">#FSet(EAtt)</xsl:if>
-			</xsl:when>
-			<xsl:when test="$SubjectAtt != 'True' and $ObjectAtt != 'True' and $ActionAtt = 'True'">
-			FSet(AAtt)<xsl:if test="$EnvironmentAtt = 'True'">#FSet(EAtt)</xsl:if>
-			</xsl:when>
-			<xsl:when test="$SubjectAtt != 'True' and $ObjectAtt != 'True' and $ActionAtt != 'True' and $EnvironmentAtt = 'True'">
-			FSet(EAtt)
-			</xsl:when>
-		</xsl:choose>				
-	</xsl:template>
-	
 	
 <!-- A list of templates i.e., functions, are defined here. These functions are called in the main part of the code using <xsl:call-template name="NAME-OF-Function"/> -->  
   
@@ -387,6 +286,107 @@
 <!--  End of the template (function) for moving and translating obligation expressions from the Parent PolicySet. -->
 
 
+<!-- This template (function) makes (RS,RO,RA,RE). This template (function) is called a few times using "<xsl:call-template name="RSRORARE"/>" -->
+	<xsl:template name="RSRORARE">
+		<xsl:choose>
+			<xsl:when test="$SubjectAtt = 'True'">
+			RS<xsl:if test="$ObjectAtt = 'True'">, RO</xsl:if><xsl:if test="$ActionAtt = 'True'">, RA</xsl:if><xsl:if test="$EnvironmentAtt = 'True'">, RE</xsl:if>
+			</xsl:when>
+			<xsl:when test="$SubjectAtt != 'True' and $ObjectAtt = 'True'">
+			RO<xsl:if test="$ActionAtt = 'True'">, RA</xsl:if><xsl:if test="$EnvironmentAtt = 'True'">, RE</xsl:if>
+			</xsl:when>
+			<xsl:when test="$SubjectAtt != 'True' and $ObjectAtt != 'True' and $ActionAtt = 'True'">
+			RA<xsl:if test="$EnvironmentAtt = 'True'">, RE</xsl:if>
+			</xsl:when>
+			<xsl:when test="$SubjectAtt != 'True' and $ObjectAtt != 'True' and $ActionAtt != 'True' and $EnvironmentAtt = 'True'">
+			RE
+			</xsl:when>
+		</xsl:choose>				
+	</xsl:template>
+
+
+
+
+<!-- This template (function) makes (RS:FSet(SAtt),RO:FSet(OAtt),RA:FSet(AAtt),RE:FSet(EAtt)). This template (function) is called a few times using "<xsl:call-template name="RSFSetROFSetRAFSetREFSet"/>" -->
+	<xsl:template name="RSFSetROFSetRAFSetREFSet">
+		<xsl:choose>
+			<xsl:when test="$SubjectAtt = 'True'">
+			RS:FSet(SAtt)<xsl:if test="$ObjectAtt = 'True'">, RO:FSet(OAtt)</xsl:if><xsl:if test="$ActionAtt = 'True'">, RA:FSet(AAtt)</xsl:if><xsl:if test="$EnvironmentAtt = 'True'">, RE:FSet(EAtt)</xsl:if>
+			</xsl:when>
+			<xsl:when test="$SubjectAtt != 'True' and $ObjectAtt = 'True'">
+			RO:FSet(OAtt)<xsl:if test="$ActionAtt = 'True'">, RA:FSet(AAtt)</xsl:if><xsl:if test="$EnvironmentAtt = 'True'">, RE:FSet(EAtt)</xsl:if>
+			</xsl:when>
+			<xsl:when test="$SubjectAtt != 'True' and $ObjectAtt != 'True' and $ActionAtt = 'True'">
+			RA:FSet(AAtt)<xsl:if test="$EnvironmentAtt = 'True'">, RE:FSet(EAtt)</xsl:if>
+			</xsl:when>
+			<xsl:when test="$SubjectAtt != 'True' and $ObjectAtt != 'True' and $ActionAtt != 'True' and $EnvironmentAtt = 'True'">
+			RE:FSet(EAtt)
+			</xsl:when>
+		</xsl:choose>				
+	</xsl:template>
+	
+
+
+<!-- This template (function) makes sum RS:FSet(SAtt).sum RO:FSet(OAtt).sum RA:FSet(AAtt).sum RE:FSet(EAtt). This template (function) is called a few times using "<xsl:call-template name="SUMinINIT"/>" -->
+	<xsl:template name="SUMinINIT">
+		<xsl:choose>
+			<xsl:when test="$SubjectAtt = 'True'">
+			sum RS:FSet(SAtt)<xsl:if test="$ObjectAtt = 'True'">.sum RO:FSet(OAtt)</xsl:if><xsl:if test="$ActionAtt = 'True'">.sum RA:FSet(AAtt)</xsl:if><xsl:if test="$EnvironmentAtt = 'True'">.sum RE:FSet(EAtt)</xsl:if>
+			</xsl:when>
+			<xsl:when test="$SubjectAtt != 'True' and $ObjectAtt = 'True'">
+			sum RO:FSet(OAtt)<xsl:if test="$ActionAtt = 'True'">. sum RA:FSet(AAtt)</xsl:if><xsl:if test="$EnvironmentAtt = 'True'">.sum RE:FSet(EAtt)</xsl:if>
+			</xsl:when>
+			<xsl:when test="$SubjectAtt != 'True' and $ObjectAtt != 'True' and $ActionAtt = 'True'">
+			sum RA:FSet(AAtt)<xsl:if test="$EnvironmentAtt = 'True'">.sum RE:FSet(EAtt)</xsl:if>
+			</xsl:when>
+			<xsl:when test="$SubjectAtt != 'True' and $ObjectAtt != 'True' and $ActionAtt != 'True' and $EnvironmentAtt = 'True'">
+			sum RE:FSet(EAtt)
+			</xsl:when>
+		</xsl:choose>				
+	</xsl:template>
+
+
+
+
+<!-- This template (function) makes RS !={} && RO !={} && RA !={} && RE !={}. This template (function) is called a few times using "<xsl:call-template name="SETinINIT"/>" -->
+	<xsl:template name="SETinINIT">
+		<xsl:choose>
+			<xsl:when test="$SubjectAtt = 'True'">
+			RS !={}<xsl:if test="$ObjectAtt = 'True'">&amp;&amp; RO !={}</xsl:if><xsl:if test="$ActionAtt = 'True'">&amp;&amp; RA !={}</xsl:if><xsl:if test="$EnvironmentAtt = 'True'">&amp;&amp; RE !={}</xsl:if>
+			</xsl:when>
+			<xsl:when test="$SubjectAtt != 'True' and $ObjectAtt = 'True'">
+			RO !={}<xsl:if test="$ActionAtt = 'True'">&amp;&amp; RA !={}</xsl:if><xsl:if test="$EnvironmentAtt = 'True'">&amp;&amp; RE !={}</xsl:if>
+			</xsl:when>
+			<xsl:when test="$SubjectAtt != 'True' and $ObjectAtt != 'True' and $ActionAtt = 'True'">
+			RA !={}<xsl:if test="$EnvironmentAtt = 'True'">&amp;&amp; RE !={}</xsl:if>
+			</xsl:when>
+			<xsl:when test="$SubjectAtt != 'True' and $ObjectAtt != 'True' and $ActionAtt != 'True' and $EnvironmentAtt = 'True'">
+			RE !={}
+			</xsl:when>
+		</xsl:choose>				
+	</xsl:template>
+
+
+
+<!-- This template (function) makes FSet(SAtt)#FSet(OAtt)#FSet(AAtt)#FSet(EAtt). This template (function) is called a few times using "<xsl:call-template name="FSETinACT"/>" -->
+	<xsl:template name="FSETinACT">
+		<xsl:choose>
+			<xsl:when test="$SubjectAtt = 'True'">
+			FSet(SAtt)<xsl:if test="$ObjectAtt = 'True'">#FSet(OAtt)</xsl:if><xsl:if test="$ActionAtt = 'True'">#FSet(AAtt)</xsl:if><xsl:if test="$EnvironmentAtt = 'True'">#FSet(EAtt)</xsl:if>
+			</xsl:when>
+			<xsl:when test="$SubjectAtt != 'True' and $ObjectAtt = 'True'">
+			FSet(OAtt)<xsl:if test="$ActionAtt = 'True'">#FSet(AAtt)</xsl:if><xsl:if test="$EnvironmentAtt = 'True'">#FSet(EAtt)</xsl:if>
+			</xsl:when>
+			<xsl:when test="$SubjectAtt != 'True' and $ObjectAtt != 'True' and $ActionAtt = 'True'">
+			FSet(AAtt)<xsl:if test="$EnvironmentAtt = 'True'">#FSet(EAtt)</xsl:if>
+			</xsl:when>
+			<xsl:when test="$SubjectAtt != 'True' and $ObjectAtt != 'True' and $ActionAtt != 'True' and $EnvironmentAtt = 'True'">
+			FSet(EAtt)
+			</xsl:when>
+		</xsl:choose>				
+	</xsl:template>
+	
+
 <!-- End of declaration of templates (functions)/> -->  
 
 
@@ -398,7 +398,7 @@
 <!-- Constructing the DECLARATION part of the mCRL2 specifications. This part declares the required sorts (data types) and actions for the mCRL2 processes -->	
 
 
-	<!-- This is constant for all inputs, and it defines a datatype for subject attributes   -->	
+	<!-- Defining the required datatypes for subject attributes  -->
 	<xsl:if test="descendant::*/xacml:AttributeDesignator[not(@AttributeId=../preceding::*/xacml:AttributeDesignator/@AttributeId) and (@Category='urn:oasis:names:tc:xacml:1.0:subject-category:access-subject')]">
 	sort SAtt = struct attribute(name:SAttName, value:SAttValue);
 	sort SAttName = struct
@@ -410,42 +410,11 @@
 			<xsl:call-template name="ListAttributeValues"/>
 		</xsl:for-each>;
 	</xsl:if>
-	<!-- End of the definition of the datatype for subject attributes  -->
+	<!-- End of the definition of the required datatypes for subject attributes  -->
 	
-	<!--
-	
-	Defining a datatype for NAMES of subject attributes (this datatype will be populated with all names for subject attributes that exist in the input policy )	
-	sort SAttName = struct
-	<xsl:choose>
-		<xsl:when test="descendant::*/xacml:AttributeDesignator[not(@AttributeId=../preceding::*/xacml:AttributeDesignator/@AttributeId) and (@Category='urn:oasis:names:tc:xacml:1.0:subject-category:access-subject')]">
-			<xsl:for-each select = "descendant::*/xacml:AttributeDesignator[not(@AttributeId=../preceding::*/xacml:AttributeDesignator/@AttributeId) and (@Category='urn:oasis:names:tc:xacml:1.0:subject-category:access-subject')]">
-				<xsl:call-template name="ListAttributeNames"/>
-			</xsl:for-each>
-		</xsl:when>
-		<xsl:otherwise>
-			DSAN
-		</xsl:otherwise>			
-	</xsl:choose>;
-	 End of the definition of the datatype for NAMES of subject attributes  
-
-
-	Defining a datatype for VALUES of subject attributes (this datatype will be populated with all values for subject attributes that exist in the input policy )
-	sort SAttValue = struct 
-	<xsl:choose>
-		<xsl:when test = "(descendant::*/xacml:Match[not(AttributeValue=preceding::*/xacml:AttributeValue) and (xacml:AttributeDesignator/@Category ='urn:oasis:names:tc:xacml:1.0:subject-category:access-subject')])|(descendant::*/xacml:Apply[not(AttributeValue=preceding::*/xacml:AttributeValue) and (xacml:Apply/xacml:AttributeDesignator/@Category ='urn:oasis:names:tc:xacml:1.0:subject-category:access-subject')])">
-			<xsl:for-each select = "(descendant::*/xacml:Match[not(xacml:AttributeValue=preceding::*/xacml:AttributeValue) and (xacml:AttributeDesignator/@Category ='urn:oasis:names:tc:xacml:1.0:subject-category:access-subject')])|(descendant::*/xacml:Apply[not(xacml:AttributeValue=preceding::*/xacml:AttributeValue) and (xacml:Apply/xacml:AttributeDesignator/@Category ='urn:oasis:names:tc:xacml:1.0:subject-category:access-subject')])">
-				<xsl:call-template name="ListAttributeValues"/>
-			</xsl:for-each>
-		</xsl:when>
-		<xsl:otherwise>
-			DSAV
-		</xsl:otherwise>			
-	</xsl:choose>;
-	
--->
 
 	
-<!--	This is constant for all inputs, and it defines a datatype for object attributes  	-->	
+	<!-- Defining the required datatypes for object attributes  -->
 	<xsl:if test="descendant::*/xacml:AttributeDesignator[not(@AttributeId=../preceding::*/xacml:AttributeDesignator/@AttributeId) and (@Category='urn:oasis:names:tc:xacml:3.0:attribute-category:resource')]">
 	sort OAtt = struct attribute(name:OAttName, value:OAttValue);
 	sort OAttName = struct
@@ -456,42 +425,11 @@
 		<xsl:for-each select = "(descendant::*/xacml:Match[not(xacml:AttributeValue=preceding::*/xacml:AttributeValue) and (xacml:AttributeDesignator/@Category ='urn:oasis:names:tc:xacml:3.0:attribute-category:resource')])|(descendant::*/xacml:Apply[not(xacml:AttributeValue=preceding::*/xacml:AttributeValue) and (xacml:Apply/xacml:AttributeDesignator/@Category ='urn:oasis:names:tc:xacml:3.0:attribute-category:resource')])">
 			<xsl:call-template name="ListAttributeValues"/>
 		</xsl:for-each>;
-	</xsl:if>
-	<!--
-	 End of the definition of the datatype for object attributes  
+	</xsl:if>	
+	<!-- End of the definition of the required datatypes for object attributes  -->
 
 
-	 Defining a datatype for NAMES of object attributes (this datatype will be populated with all names for object attributes that exist in the input policy )		
-	sort OAttName = struct
-	<xsl:choose>
-		<xsl:when test="descendant::*/xacml:AttributeDesignator[not(@AttributeId=../preceding::*/xacml:AttributeDesignator/@AttributeId) and (@Category='urn:oasis:names:tc:xacml:3.0:attribute-category:resource')]">
-			<xsl:for-each select = "descendant::*/xacml:AttributeDesignator[not(@AttributeId=../preceding::*/xacml:AttributeDesignator/@AttributeId) and (@Category='urn:oasis:names:tc:xacml:3.0:attribute-category:resource')]">
-				<xsl:call-template name="ListAttributeNames"/>
-			</xsl:for-each>
-		</xsl:when>
-		<xsl:otherwise>
-			DOAN
-		</xsl:otherwise>			
-	</xsl:choose>;		
-	End of the definition of the datatype for NAMES of object attributes 
-
-
-	Defining a datatype for VALUES of object attributes (this datatype will be populated with all values for object attributes that exist in the input policy )
-	sort OAttValue = struct 
-	<xsl:choose>
-		<xsl:when test = "(descendant::*/xacml:Match[not(xacml:AttributeValue=preceding::*/xacml:AttributeValue) and (xacml:AttributeDesignator/@Category ='urn:oasis:names:tc:xacml:3.0:attribute-category:resource')])|(descendant::*/xacml:Apply[not(xacml:AttributeValue=preceding::*/xacml:AttributeValue) and (xacml:Apply/xacml:AttributeDesignator/@Category ='urn:oasis:names:tc:xacml:3.0:attribute-category:resource')])">
-			<xsl:for-each select = "(descendant::*/xacml:Match[not(xacml:AttributeValue=preceding::*/xacml:AttributeValue) and (xacml:AttributeDesignator/@Category ='urn:oasis:names:tc:xacml:3.0:attribute-category:resource')])|(descendant::*/xacml:Apply[not(xacml:AttributeValue=preceding::*/xacml:AttributeValue) and (xacml:Apply/xacml:AttributeDesignator/@Category ='urn:oasis:names:tc:xacml:3.0:attribute-category:resource')])">
-				<xsl:call-template name="ListAttributeValues"/>
-			</xsl:for-each>
-		</xsl:when>
-		<xsl:otherwise>
-			DOAV
-		</xsl:otherwise>			
-	</xsl:choose>;
-	End of the definition of the datatype for VALUES of object attributes  -->
-	
-
-	<!-- This is constant for all inputs, and it defines a datatype for action attributes   -->				
+	<!-- Defining the required datatypes for action attributes  -->
 	<xsl:if test="descendant::*/xacml:AttributeDesignator[not(@AttributeId=../preceding::*/xacml:AttributeDesignator/@AttributeId) and (@Category='urn:oasis:names:tc:xacml:3.0:attribute-category:action')]">
 	sort AAtt = struct attribute(name:AAttName, value:AAttValue);
 	sort AAttName = struct 
@@ -503,44 +441,10 @@
 			<xsl:call-template name="ListAttributeValues"/>
 		</xsl:for-each>;
 	</xsl:if>
-	
-	<!-- 
-	End of the definition of the datatype for action attributes  
+	<!-- End of the definition of the required datatypes for action attributes  -->
 
 
-	Defining a datatype for NAMES of action attributes (this datatype will be populated with all names for action attributes that exist in the input policy )			
-	sort AAttName = struct 
-	<xsl:choose>
-		<xsl:when test="descendant::*/xacml:AttributeDesignator[not(@AttributeId=../preceding::*/xacml:AttributeDesignator/@AttributeId) and (@Category='urn:oasis:names:tc:xacml:3.0:attribute-category:action')]">
-			<xsl:for-each select = "descendant::*/xacml:AttributeDesignator[not(@AttributeId=../preceding::*/xacml:AttributeDesignator/@AttributeId) and (@Category='urn:oasis:names:tc:xacml:3.0:attribute-category:action')]">
-				<xsl:call-template name="ListAttributeNames"/>
-			</xsl:for-each>
-		</xsl:when>
-		<xsl:otherwise>
-			DAAN
-		</xsl:otherwise>			
-	</xsl:choose>;		
-	End of the definition of the datatype for NAMES of action attributes  
-
-
-	Defining a datatype for VALUES of action attributes (this datatype will be populated with all values for action attributes that exist in the input policy )				
-	sort AAttValue = struct 
-	<xsl:choose>
-		<xsl:when test = "(descendant::*/xacml:Match[not(xacml:AttributeValue=preceding::*/xacml:AttributeValue) and (xacml:AttributeDesignator/@Category ='urn:oasis:names:tc:xacml:3.0:attribute-category:action')])|(descendant::*/xacml:Apply[not(xacml:AttributeValue=preceding::*/xacml:AttributeValue) and (xacml:Apply/xacml:AttributeDesignator/@Category ='urn:oasis:names:tc:xacml:3.0:attribute-category:action')])">
-			<xsl:for-each select = "(descendant::*/xacml:Match[not(xacml:AttributeValue=preceding::*/xacml:AttributeValue) and (xacml:AttributeDesignator/@Category ='urn:oasis:names:tc:xacml:3.0:attribute-category:action')])|(descendant::*/xacml:Apply[not(xacml:AttributeValue=preceding::*/xacml:AttributeValue) and (xacml:Apply/xacml:AttributeDesignator/@Category ='urn:oasis:names:tc:xacml:3.0:attribute-category:action')])">
-				<xsl:call-template name="ListAttributeValues"/>
-			</xsl:for-each>
-		</xsl:when>
-		<xsl:otherwise>
-			DAAV
-		</xsl:otherwise>			
-	</xsl:choose>;
-	End of the definition of the datatype for VALUES of action attributes  -->
-
-	<!-- This is constant for all inputs, and it defines a datatype for Environment attributes   -->
-	
-
-			
+	<!-- Defining the required datatypes for Environment attributes  -->		
 	<xsl:if test="descendant::*/xacml:AttributeDesignator[not(@AttributeId=../preceding::*/xacml:AttributeDesignator/@AttributeId) and (@Category='urn:oasis:names:tc:xacml:3.0:attribute-category:environment')]">
 	sort EAtt = struct attribute(name:EAttName, value:EAttValue);
 	
@@ -554,45 +458,14 @@
 			<xsl:call-template name="ListAttributeValues"/>
 		</xsl:for-each>;
 	</xsl:if>
-
-	<!-- End of the definition of the datatype for Environment attributes  -->
-	
-	<!-- 
-	Defining a datatype for NAMES of Environment attributes (this datatype will be populated with all names for Environment attributes that exist in the input policy )
-	sort EAttName = struct 
-	<xsl:choose>
-		<xsl:when test="descendant::*/xacml:AttributeDesignator[not(@AttributeId=../preceding::*/xacml:AttributeDesignator/@AttributeId) and (@Category='urn:oasis:names:tc:xacml:3.0:attribute-category:environment')]">
-			<xsl:for-each select = "descendant::*/xacml:AttributeDesignator[not(@AttributeId=../preceding::*/xacml:AttributeDesignator/@AttributeId) and (@Category='urn:oasis:names:tc:xacml:3.0:attribute-category:environment')]">
-				<xsl:call-template name="ListAttributeNames"/>
-			</xsl:for-each>
-		</xsl:when>
-		<xsl:otherwise>
-			DEAN
-		</xsl:otherwise>			
-	</xsl:choose>;		
-	End of the definition of the datatype for NAMES of action attributes  
-
-
-	Defining a datatype for VALUES of Environment attributes (this datatype will be populated with all values for Environment attributes that exist in the input policy )
-	sort EAttValue = struct 
-	<xsl:choose>
-		<xsl:when test = "(descendant::*/xacml:Match[not(xacml:AttributeValue=preceding::*/xacml:AttributeValue) and (xacml:AttributeDesignator/@Category ='urn:oasis:names:tc:xacml:3.0:attribute-category:environment')])|(descendant::*/xacml:Apply[not(xacml:AttributeValue=preceding::*/xacml:AttributeValue) and (xacml:Apply/xacml:AttributeDesignator/@Category ='urn:oasis:names:tc:xacml:3.0:attribute-category:environment')])">
-			<xsl:for-each select = "(descendant::*/xacml:Match[not(xacml:AttributeValue=preceding::*/xacml:AttributeValue) and (xacml:AttributeDesignator/@Category ='urn:oasis:names:tc:xacml:3.0:attribute-category:environment')])|(descendant::*/xacml:Apply[not(xacml:AttributeValue=preceding::*/xacml:AttributeValue) and (xacml:Apply/xacml:AttributeDesignator/@Category ='urn:oasis:names:tc:xacml:3.0:attribute-category:environment')])">
-				<xsl:call-template name="ListAttributeValues"/>
-			</xsl:for-each>
-		</xsl:when>
-		<xsl:otherwise>
-			DEAV
-		</xsl:otherwise>			
-	</xsl:choose>;
-	End of the definition of the datatype for VALUES of action attributes  -->
-
+	<!-- End of the definition of the required datatypes for Environment attributes  -->
 
 
 
 	<!-- This is constant for all inputs, and it defines a datatype for Decisions   -->						
 	sort Decision = struct Permit | Deny;
 	<!-- End of the definition of the datatype for Decisions  -->
+
 
 
 	<!-- Defining a datatype for Obligations (this datatype will be populated with all Obligation IDs that exist in the input policy )-->						
