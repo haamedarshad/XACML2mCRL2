@@ -13,7 +13,7 @@ done
 
 ****************************************
 
-**In order to transform a list of policies (existing in different folders) using *xsltproc* and our transformation rules, the following script can be used:
+**In order to transform a list of policies (existing in different folders) using *xsltproc* and our transformation rules, the following script can be used:**
 
 
 for folder in PATH-TO-ConformanceTestFOLDER/*; do
