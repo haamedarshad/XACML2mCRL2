@@ -9,8 +9,7 @@
     ├── ...
     ├── Examples                   							# A few examples used for testing **XACML2mCRL2**.
     │   ├── Examples used throught our papers				# Examples used throught our papers
-    │   ├── XACML Policies for conformance tests         	# OASIS XACML Committee's 2.0 version of conformance tests upgraded to conform to the XACML 3.0 standard, taken from 
-**https://github.com/authzforce/core/tree/develop/pdp-testutils/src/test/resources/conformance/xacml-3.0-from-2.0-ct/mandatory**
+    │   ├── XACML Policies for conformance tests         	# OASIS XACML Committee's 2.0 version of conformance tests upgraded to conform to the XACML 3.0 standard, taken from **https://github.com/authzforce/core/tree/develop/pdp-testutils/src/test/resources/conformance/xacml-3.0-from-2.0-ct/mandatory**
     │   ├── XACML Policies generated using XACBench         # XACML Policies generated using XACBench: **https://github.com/nassirim/xacBench**
 	├── XACML2mCRL2                    						# Source codes and executables
     │   ├── Executable jar file								# Executable jar files
