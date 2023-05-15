@@ -23,6 +23,10 @@
 	│   │	├── Version 1.2
 	│   │	└── Version 1.3	                           # The latest version
     │   └── User Manual	# User manuals
-	│	    ├── How to use XACML2mCRL2 *[Link](/XACML2mCRL2/User%20Manual/How%20to%20check%20the%20code%20for%20XACML2mCRL2.pdf)
-	│       └── How to interpret Counterexamples *[Link](/XACML2mCRL2/User%20Manual/How%20to%20interpret%20Counterexamples.pdf)
+	│       ├── How to use XACML2mCRL2 [Link](/XACML2mCRL2/User%20Manual/How%20to%20check%20the%20code%20for%20XACML2mCRL2.pdf)
+	│       └── How to interpret Counterexamples [Link](/XACML2mCRL2/User%20Manual/How%20to%20interpret%20Counterexamples.pdf)
     └── ...
+	
+	
+	[See How to use XACML2mCRL2](/XACML2mCRL2/User%20Manual/How%20to%20check%20the%20code%20for%20XACML2mCRL2.pdf)
+	[See How to interpret Counterexamples](/XACML2mCRL2/User%20Manual/How%20to%20interpret%20Counterexamples.pdf)
