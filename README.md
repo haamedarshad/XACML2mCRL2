@@ -6,7 +6,6 @@
 
 ***Repository Structure:***
 
-	```
     ├── ...
     ├── Examples                               	        # A few examples used for testing **XACML2mCRL2**.
     │   ├── Examples used throught our papers	          # Examples used throught our papers
@@ -27,4 +26,3 @@
 	│		├── How to use XACML2mCRL2 [Link](.\XACML2mCRL2\User Manual\How to check the code for XACML2mCRL2.pdf)
 	│		└── How to interpret Counterexamples [Link](.\XACML2mCRL2\User Manual\How to interpret Counterexamples.pdf)
     └── ...
-	```
