@@ -6,6 +6,7 @@
 
 ***Repository Structure:***
 
+	```
     ├── ...
     ├── Examples                               	        # A few examples used for testing **XACML2mCRL2**.
     │   ├── Examples used throught our papers	          # Examples used throught our papers
@@ -23,6 +24,7 @@
 	│   │	├── Version 1.2
 	│   │	└── Version 1.3	                           # The latest version
     │   └── User Manual	# User manuals
-	│		├── How to use XACML2mCRL2 [Link](https://github.com/haamedarshad/XACML2mCRL2/blob/6e8b91d93c202b0066abcb8d8fa75a963d6e1115/XACML2mCRL2/User%20Manual/How%20to%20check%20the%20code%20for%20XACML2mCRL2.pdf)
-	│		└── How to interpret Counterexamples [Link](https://github.com/haamedarshad/XACML2mCRL2/blob/bd23223cd7efb555ae830c16bfb74c353f043826/XACML2mCRL2/User%20Manual/How%20to%20interpret%20Counterexamples.pdf)
+	│		├── How to use XACML2mCRL2 [Link](.\XACML2mCRL2\User Manual\How to check the code for XACML2mCRL2.pdf)
+	│		└── How to interpret Counterexamples [Link](.\XACML2mCRL2\User Manual\How to interpret Counterexamples.pdf)
     └── ...
+	```
