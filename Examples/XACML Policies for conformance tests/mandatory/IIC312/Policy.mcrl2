@@ -4,26 +4,8 @@
 		resourceid;
 	sort OAttValue = struct 
 		patientBartSimpson;
-	
-
-	
-	
-	
-
-
-
-
 							
 	sort Decision = struct Permit | Deny;
-	
-
-
-							
-			
-	
-
-
-		
 							
 	act
 		Request:
@@ -31,22 +13,13 @@
 				
 		Response:
 			FSet(OAtt)#Decision;
-	
-
-
-	
-
-
-
 		
-	
 	proc	
 		
 	
 	Policy_policy(
 			RO:FSet(OAtt)) = 
 	
-			
 		
 			Rule_rule(
 			RO);
@@ -54,7 +27,6 @@
 	
 		Rule_rule(
 			RO:FSet(OAtt))=
-		
 		
 		
 					(attribute(resourceid, patientBartSimpson) in 
@@ -67,13 +39,6 @@
 		Response(
 			RO,Permit);
 	
-	
-
-
-		
-
-
-
 		init 
 			sum RO:FSet(OAtt).(
 			RO !={})-> Request(

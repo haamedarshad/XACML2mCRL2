@@ -11,26 +11,8 @@
 	sort AAttValue = struct
 		read|
 			write;
-	
-
-	
-	
-	
-
-
-
-
 							
 	sort Decision = struct Permit | Deny;
-	
-
-
-							
-			
-	
-
-
-		
 							
 	act
 		Request:
@@ -38,22 +20,13 @@
 				
 		Response:
 			FSet(OAtt)#FSet(AAtt)#Decision;
-	
-
-
-	
-
-
-
 		
-	
 	proc	
 		
 	
 	Policy_policy(
 			RO:FSet(OAtt), RA:FSet(AAtt)) = 
 	
-			
 					
 		(	
 		
@@ -94,18 +67,10 @@
 		
 		
 		
-		
 
 		Response(
 			RO, RA,Permit);
 	
-	
-
-
-		
-
-
-
 		init 
 			sum RO:FSet(OAtt). sum RA:FSet(AAtt).(
 			RO !={}&& RA !={})-> Request(

@@ -1,67 +1,50 @@
 
-
-	
-	
-	
-
-
-
-
+	sort SAtt = struct attribute(name:SAttName, value:SAttValue);
+	sort SAttName = struct
+		age;
+		
+	sort SAttValue = struct 	
+    
+				n45;
 							
 	sort Decision = struct Permit | Deny;
-	
-
-
-							
-			
-	
-
-
-		
 							
 	act
-		Request:;
+		Request:
+			FSet(SAtt);
 				
-		Response:#Decision;
-	
-
-
-	
-
-
-
+		Response:
+			FSet(SAtt)#Decision;
 		
-	
 	proc	
 		
 	
-	Policy_policy() = 
+	Policy_policy(
+			RS:FSet(SAtt)) = 
 	
-			
 		
-			Rule_rule();
+			Rule_rule(
+			RS);
 			
 	
-		Rule_rule()=
-		
+		Rule_rule(
+			RS:FSet(SAtt))=
 		
 		
 					(attribute(age,  
 				n45) in 
 					
-				RE)  
+				RS) 
 			 ->  
 					
 		
 
-		Response(,Permit);
+		Response(
+			RS,Permit);
 	
-	
-
-
-		
-
-
-
-		init .()-> Request().Policy_policy();	
+		init 
+			sum RS:FSet(SAtt).(
+			RS !={})-> Request(
+			RS).Policy_policy(
+			RS);	
 	

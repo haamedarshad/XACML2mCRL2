@@ -3,9 +3,10 @@
 	sort SAttName = struct
 		subjectid|
 				subjectcategory;
+		
 	sort SAttValue = struct 	
-		JuliusHibbert|
-			urnoasisnamestcxacml10subjectcategoryaccesssubject;
+   JuliusHibbert|
+					urnoasisnamestcxacml10subjectcategoryaccesssubject;
 	
 	sort AAtt = struct attribute(name:AAttName, value:AAttValue);
 	sort AAttName = struct 
@@ -15,26 +16,8 @@
 		httpmedicocomrecordpatientBartSimpson|
 			read|
 			write;
-	
-
-	
-	
-	
-
-
-
-
 							
 	sort Decision = struct Permit | Deny;
-	
-
-
-							
-			
-	
-
-
-		
 							
 	act
 		Request:
@@ -42,22 +25,13 @@
 				
 		Response:
 			FSet(SAtt)#FSet(AAtt)#Decision;
-	
-
-
-	
-
-
-
 		
-	
 	proc	
 		
 	
 	Policy_policy(
 			RS:FSet(SAtt), RA:FSet(AAtt)) = 
 	
-			
 					
 		(	
 		
@@ -112,18 +86,10 @@
 		
 		
 		
-		
 
 		Response(
 			RS, RA,Permit);
 	
-	
-
-
-		
-
-
-
 		init 
 			sum RS:FSet(SAtt).sum RA:FSet(AAtt).(
 			RS !={}&& RA !={})-> Request(

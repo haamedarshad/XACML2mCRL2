@@ -4,26 +4,8 @@
 		actionapprovedby;
 	sort AAttValue = struct
 		JuliusHibbert;
-	
-
-	
-	
-	
-
-
-
-
 							
 	sort Decision = struct Permit | Deny;
-	
-
-
-							
-			
-	
-
-
-		
 							
 	act
 		Request:
@@ -31,22 +13,13 @@
 				
 		Response:
 			FSet(AAtt)#Decision;
-	
-
-
-	
-
-
-
 		
-	
 	proc	
 		
 	
 	Policy_policy(
 			RA:FSet(AAtt)) = 
 	
-			
 		
 			Rule_rule(
 			RA);
@@ -54,7 +27,6 @@
 	
 		Rule_rule(
 			RA:FSet(AAtt))=
-		
 		
 		
 					(attribute(actionapprovedby, JuliusHibbert) in 
@@ -67,13 +39,6 @@
 		Response(
 			RA,Permit);
 	
-	
-
-
-		
-
-
-
 		init 
 			sum RA:FSet(AAtt).(
 			RA !={})-> Request(

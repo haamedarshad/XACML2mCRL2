@@ -3,9 +3,10 @@
 	sort SAttName = struct
 		subjectid|
 				sessionstarttime;
+		
 	sort SAttValue = struct 	
-		JuliusHibbert|
-			 
+   JuliusHibbert|
+					 
 				n20020208T0823470500;
 	
 	sort OAtt = struct attribute(name:OAttName, value:OAttValue);
@@ -20,26 +21,8 @@
 	sort AAttValue = struct
 		read|
 			write;
-	
-
-	
-	
-	
-
-
-
-
 							
 	sort Decision = struct Permit | Deny;
-	
-
-
-							
-			
-	
-
-
-		
 							
 	act
 		Request:
@@ -47,22 +30,13 @@
 				
 		Response:
 			FSet(SAtt)#FSet(OAtt)#FSet(AAtt)#Decision;
-	
-
-
-	
-
-
-
 		
-	
 	proc	
 		
 	
 	Policy_policy(
 			RS:FSet(SAtt), RO:FSet(OAtt), RA:FSet(AAtt)) = 
 	
-			
 					
 		(	
 		
@@ -118,18 +92,10 @@
 		
 		
 		
-		
 
 		Response(
 			RS, RO, RA,Permit);
 	
-	
-
-
-		
-
-
-
 		init 
 			sum RS:FSet(SAtt).sum RO:FSet(OAtt).sum RA:FSet(AAtt).(
 			RS !={}&& RO !={}&& RA !={})-> Request(

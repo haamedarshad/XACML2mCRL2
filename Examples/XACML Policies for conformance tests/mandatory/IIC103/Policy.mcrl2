@@ -2,28 +2,13 @@
 	sort SAtt = struct attribute(name:SAttName, value:SAttValue);
 	sort SAttName = struct
 		testattr;
+		
 	sort SAttValue = struct 	
-		P1Y2M;
-	
-
-	
-	
-	
-
-
-
-
+    
+				n20010122T0823470500|
+					P1Y2M;
 							
 	sort Decision = struct Permit | Deny;
-	
-
-
-							
-			
-	
-
-
-		
 							
 	act
 		Request:
@@ -31,22 +16,13 @@
 				
 		Response:
 			FSet(SAtt)#Decision;
-	
-
-
-	
-
-
-
 		
-	
 	proc	
 		
 	
 	Policy_policy(
 			RS:FSet(SAtt)) = 
 	
-			
 		
 			Rule_rule(
 			RS);
@@ -57,18 +33,10 @@
 		
 		
 		
-		
 
 		Response(
 			RS,Permit);
 	
-	
-
-
-		
-
-
-
 		init 
 			sum RS:FSet(SAtt).(
 			RS !={})-> Request(

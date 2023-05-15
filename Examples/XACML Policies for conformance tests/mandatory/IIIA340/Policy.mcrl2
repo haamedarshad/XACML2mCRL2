@@ -2,75 +2,38 @@
 	sort SAtt = struct attribute(name:SAttName, value:SAttValue);
 	sort SAttName = struct
 		subjectid;
+		
 	sort SAttValue = struct 	
-		JuliusHibbert;
-	
-	sort EAtt = struct attribute(name:EAttName, value:EAttValue);
-	
-	sort EAttName = struct 
-		NaN|
-				INF|
-				NegativeINF;
-	
-	sort EAttValue = struct
-		;
-	
-
-	
-	
-	
-
-
-
-
+   JuliusHibbert;
 							
 	sort Decision = struct Permit | Deny;
 	
-
-
-							
-	
 		sort ObgID = struct 
 		obligation1;
-				
-	
-
-
-		
-							
+								
 	act
 		Request:
-			FSet(SAtt)#FSet(EAtt);
+			FSet(SAtt);
 		
 		Obligation:
-			FSet(SAtt)#FSet(EAtt)#ObgID;
+			FSet(SAtt)#ObgID;
 				
 		Response:
-			FSet(SAtt)#FSet(EAtt)#Decision;
-	
-
-
-	
-
-
-
+			FSet(SAtt)#Decision;
 		
-	
 	proc	
 		
 	
 	Policy_policy(
-			RS:FSet(SAtt), RE:FSet(EAtt)) = 
+			RS:FSet(SAtt)) = 
 	
-			
 		
 			Rule_rule(
-			RS, RE);
+			RS);
 			
 	
 		Rule_rule(
-			RS:FSet(SAtt), RE:FSet(EAtt))=
-		
+			RS:FSet(SAtt))=
 		
 		
 					(attribute(subjectid, JuliusHibbert) in 
@@ -79,23 +42,16 @@
 			 ->  
 						
 				Obligation(
-			RS, RE, obligation1).
+			RS, obligation1).
 			
 		
 
 		Response(
-			RS, RE,Permit);
+			RS,Permit);
 	
-	
-
-
-		
-
-
-
 		init 
-			sum RS:FSet(SAtt).sum RE:FSet(EAtt).(
-			RS !={}&& RE !={})-> Request(
-			RS, RE).Policy_policy(
-			RS, RE);	
+			sum RS:FSet(SAtt).(
+			RS !={})-> Request(
+			RS).Policy_policy(
+			RS);	
 	

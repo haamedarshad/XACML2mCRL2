@@ -2,8 +2,9 @@
 	sort SAtt = struct attribute(name:SAttName, value:SAttValue);
 	sort SAttName = struct
 		subjectid;
+		
 	sort SAttValue = struct 	
-		JuliusHibbert;
+   JuliusHibbert;
 	
 	sort AAtt = struct attribute(name:AAttName, value:AAttValue);
 	sort AAttName = struct 
@@ -11,26 +12,8 @@
 	sort AAttValue = struct
 		read|
 			write;
-	
-
-	
-	
-	
-
-
-
-
 							
 	sort Decision = struct Permit | Deny;
-	
-
-
-							
-			
-	
-
-
-		
 							
 	act
 		Request:
@@ -38,22 +21,13 @@
 				
 		Response:
 			FSet(SAtt)#FSet(AAtt)#Decision;
-	
-
-
-	
-
-
-
 		
-	
 	proc	
 		
 	
 	Policy_policy(
 			RS:FSet(SAtt), RA:FSet(AAtt)) = 
 	
-			
 					
 		(	
 		
@@ -94,18 +68,10 @@
 		
 		
 		
-		
 
 		Response(
 			RS, RA,Permit);
 	
-	
-
-
-		
-
-
-
 		init 
 			sum RS:FSet(SAtt).sum RA:FSet(AAtt).(
 			RS !={}&& RA !={})-> Request(

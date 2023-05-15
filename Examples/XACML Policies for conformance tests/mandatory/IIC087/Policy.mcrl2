@@ -3,30 +3,13 @@
 	sort SAttName = struct
 		subjectid|
 				age;
+		
 	sort SAttValue = struct 	
-		JuliusHibbert|
-			 
+   JuliusHibbert|
+					 
 				n45;
-	
-
-	
-	
-	
-
-
-
-
 							
 	sort Decision = struct Permit | Deny;
-	
-
-
-							
-			
-	
-
-
-		
 							
 	act
 		Request:
@@ -34,22 +17,13 @@
 				
 		Response:
 			FSet(SAtt)#Decision;
-	
-
-
-	
-
-
-
 		
-	
 	proc	
 		
 	
 	Policy_policy(
 			RS:FSet(SAtt)) = 
 	
-			
 		
 			Rule_rule(
 			RS);
@@ -57,7 +31,6 @@
 	
 		Rule_rule(
 			RS:FSet(SAtt))=
-		
 		
 			
 		(
@@ -79,13 +52,6 @@
 		Response(
 			RS,Permit);
 	
-	
-
-
-		
-
-
-
 		init 
 			sum RS:FSet(SAtt).(
 			RS !={})-> Request(
